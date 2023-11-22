@@ -1,8 +1,8 @@
 import java.io.IOException;
 
-public class RegistrationController extends Controller<PlayerRegistration>{
+public class RegistrationController extends Controller<PlayerRegistrator>{
 
-    public RegistrationController(PlayerRegistration registration){super(registration);}
+    public RegistrationController(PlayerRegistrator registration){super(registration);}
 
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
@@ -18,9 +18,12 @@ public class RegistrationController extends Controller<PlayerRegistration>{
                 break;
 
             case SELECT:
-                Player p1 = new Player('X');
-                Player p2 = new Player('O');
-                if(getModel().symbolChosen()) game.setState(new GameState(new Board(p1,p2)));
+
+                if(getModel().symbolChosen()) {
+                    Player player1 = new Player(getModel().getPlayerSymbol(1),0);
+                    Player player2 = new Player(getModel().getPlayerSymbol(2),0);
+                    game.setState(new GameState(new Board(player1,player2)));
+                }
         }
     }
 

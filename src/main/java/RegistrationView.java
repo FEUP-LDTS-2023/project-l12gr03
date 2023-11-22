@@ -1,6 +1,6 @@
-public class RegistrationView extends Viewer<PlayerRegistration> {
+public class RegistrationView extends Viewer<PlayerRegistrator> {
 
-    public RegistrationView(PlayerRegistration registration) {super(registration);}
+    public RegistrationView(PlayerRegistrator registration) {super(registration);}
 
     @Override
     public void drawElements(GUI gui) {
