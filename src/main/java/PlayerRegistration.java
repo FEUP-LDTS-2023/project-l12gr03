@@ -1,14 +1,28 @@
 public class PlayerRegistration {
 
-    private String message="Player 1, pick crosses or circles[X/O]: ";
+    private String message = "Player 1, pick crosses or circles[X/O]: ";
     private char symbol = ' ';
 
-    private boolean isAssigned;
-    public PlayerRegistration(){}
+    private boolean isSymbolChosen = false;
 
-    public String getMessage() {return (message + symbol);}
+    public PlayerRegistration() {
+    }
 
-    public void assignX(){symbol='X'; isAssigned=true;}
+    public String getMessage() {
+        return (message + symbol);
+    }
 
-    public void assignO(){symbol='O'; isAssigned=true;}
+    public void assignX() {
+        symbol = 'X';
+        isSymbolChosen = true;
+    }
+
+    public void assignO() {
+        symbol = 'O';
+        isSymbolChosen = true;
+    }
+
+    public boolean symbolChosen() {return isSymbolChosen;}
+    public void registrate() {}
+
 }

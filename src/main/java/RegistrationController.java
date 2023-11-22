@@ -15,7 +15,12 @@ public class RegistrationController extends Controller<PlayerRegistration>{
                 break;
             case QUIT:
                 game.setState(new MenuState(new Menu()));
+                break;
 
+            case SELECT:
+                Player p1 = new Player('X');
+                Player p2 = new Player('O');
+                if(getModel().symbolChosen()) game.setState(new GameState(new Board(p1,p2)));
         }
     }
 
