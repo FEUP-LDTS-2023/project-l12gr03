@@ -1,0 +1,35 @@
+--------------------------RULES--------------------------
+
+                      The Game Goal:
+
+  The game consists of a Main Tic Tac Toe board, where
+  each space contains a Mini Tic Tac Toe game. Players
+  "X" and "O" determine their order through a coin toss.
+
+  The starting player selects a space to play, determining
+  which Mini Tic Tac Toe game the opponent should play.
+  Winning a Mini Tic Tac Toe awards a point, and whoever
+  forms a line of three Mini Tic Tac Toe wins the overall
+  game. During the game, two scenarios can occur:
+
+  -> A player can be forced to play a full Mini Tic Tac Toe,
+  being able to choose any available space for their move.
+
+  -> A Mini Tic Tac Toe may end in a tie, serving as a wild
+  card for both players in forming the Main Tic Tac Toe row.
+
+
+
+                    How to Play:
+
+                ARROW_UP   : Move Up
+                ARROW_DOWN : Move Down
+                ARROW_LEFT : Move Left
+                ARROW_RIGHT: Move Right
+                ENTER      : Select position
+                ESC        : Leave the game
+
+
+             PRESS ESC TO RETURN TO THE MENU
+
+-----------------------------------------------------------

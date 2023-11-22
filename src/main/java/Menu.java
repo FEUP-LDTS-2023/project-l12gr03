@@ -33,9 +33,7 @@ public class Menu {
         return isSelected(2);
     }
 
-    public boolean isSelectedRules() {
-        return isSelected(1);
-    }
+    public boolean isSelectedRules() {return isSelected(1);}
 
     public boolean isSelectedStart() {
         return isSelected(0);
