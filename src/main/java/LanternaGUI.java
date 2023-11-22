@@ -8,9 +8,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
-import java.awt.*;
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 public class LanternaGUI implements GUI {
     private final Screen screen;
@@ -19,7 +17,7 @@ public class LanternaGUI implements GUI {
         this.screen = screen;
     }
 
-    public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
+    public LanternaGUI(int width, int height) throws IOException {
         Terminal terminal = createTerminal(width, height);
         this.screen = createScreen(terminal);
     }
@@ -35,7 +33,7 @@ public class LanternaGUI implements GUI {
     }
 
     private Terminal createTerminal(int width, int height) throws IOException {
-        TerminalSize terminalSize = new TerminalSize(width, height + 1);
+        TerminalSize terminalSize = new TerminalSize(width, height);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
                 .setInitialTerminalSize(terminalSize);
         return terminalFactory.createTerminal();
@@ -56,6 +54,11 @@ public class LanternaGUI implements GUI {
         if (keyStroke.getKeyType() == KeyType.ArrowDown) return ACTION.DOWN;
         if (keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
 
+        if (keyStroke.getKeyType() == KeyType.Character &&
+                (keyStroke.getCharacter() == 'x' || keyStroke.getCharacter() == 'X')) return ACTION.PRESS_X;
+        if (keyStroke.getKeyType() == KeyType.Character &&
+                (keyStroke.getCharacter() == 'o' || keyStroke.getCharacter() == 'O')) return ACTION.PRESS_O;
+
         if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
 
         return ACTION.NONE;
@@ -72,7 +75,7 @@ public class LanternaGUI implements GUI {
     private void drawCharacter(int x, int y, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString(color));
-        tg.putString(x, y + 1, "" + c);
+        tg.putString(x, y, "" + c);
     }
 
     @Override
