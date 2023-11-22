@@ -17,7 +17,7 @@ public class Game {
     }
 
     public void start() throws IOException {
-        /*
+
         int FPS = 10;
         int frameTime = 1000 / FPS;
 
@@ -35,6 +35,6 @@ public class Game {
             }
         }
 
-        gui.close();*/
+        gui.close();
     }
 }

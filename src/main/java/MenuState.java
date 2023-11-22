@@ -8,4 +8,9 @@ public class MenuState extends State<Menu> {
         return new MenuViewer(getModel());
     }
 
+    @Override
+    protected Controller<Menu> getController() {
+        return new MenuController(getModel());
+    }
+
 }
