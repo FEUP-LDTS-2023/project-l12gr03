@@ -9,7 +9,7 @@ public class Game {
 
     private String message;
     public Game() throws IOException, URISyntaxException, FontFormatException {
-        this.gui = new LanternaGUI(21, 20);
+        this.gui = new LanternaGUI(25, 25);
         this.state = new MenuState(new Menu());
     }
     public void setState(State state) {
@@ -18,7 +18,7 @@ public class Game {
 
     public void start() throws IOException {
 
-        int FPS = 10;
+        int FPS = 30;
         int frameTime = 1000 / FPS;
 
         while (this.state != null) {
