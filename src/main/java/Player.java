@@ -8,5 +8,5 @@ public class Player {
 
     public int getScore() {return score;}
 
-    public void won() {score++;}
+    public void addScore() {score++;}
 }

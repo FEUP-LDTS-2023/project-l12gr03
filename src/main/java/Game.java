@@ -9,7 +9,7 @@ public class Game {
 
     private String message;
     public Game() throws IOException, URISyntaxException, FontFormatException {
-        this.gui = new LanternaGUI(25, 25);
+        this.gui = new LanternaGUI(100, 50);
         this.state = new MenuState(new Menu());
     }
     public void setState(State state) {
