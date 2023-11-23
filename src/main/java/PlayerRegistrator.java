@@ -2,7 +2,7 @@ public class PlayerRegistrator {
 
     private String message = "Player 1, pick crosses or circles[X/O]: ";
 
-    private String playersSymbols = "";
+    private String playersSymbols = "  ";
 
     private boolean isSymbolChosen = false;
     enum SymbolOptions {BallCross, CrossBall}
