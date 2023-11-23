@@ -1,0 +1,15 @@
+Lista de Features Planeadas
+
+
+Maior Prioridade:
+👉 Escolher o símbolo do jogador 1 (X ou O) 
+👉 Escolher o lugar da jogada, de acordo com as regras do jogo e lugares disponíveis
+👉 Mostrar o score de cada jogador
+👉 Permitir várias partidas ou iniciar um novo jogo (com score zerado)
+👉 Ao fim de um mini jogo, substituir a grelha pelo símbolo do jogador vencedor
+👉 Em caso de empate, substituir a grelha pelo símbolo Ø
+
+Menor Prioridade:
+👉 Escolher o jogador que vai começar o jogo com "jogo da moeda"
+👉 Mostrar o tempo de jogo
+👉 Mudar a cor da grelha que estão a fazer o jogo
