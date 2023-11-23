@@ -1,3 +1,5 @@
+package project.model.board;
+
 public class Player {
     private char symbol;
     private int score = 0;

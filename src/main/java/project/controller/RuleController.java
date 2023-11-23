@@ -1,3 +1,11 @@
+package project.controller;
+
+import project.Game;
+import project.gui.GUI;
+import project.model.Menu.Menu;
+import project.model.rules.Rule;
+import project.states.MenuState;
+
 import java.io.IOException;
 
 public class RuleController extends Controller<Rule> {
@@ -12,5 +20,5 @@ public class RuleController extends Controller<Rule> {
                 break;
         }
     }
-} // this is the controller
+} // this is the project.controller
 

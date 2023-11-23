@@ -1,3 +1,10 @@
+package project.states;
+
+import project.Game;
+import project.controller.Controller;
+import project.gui.GUI;
+import project.viewer.Viewer;
+
 import java.io.IOException;
 
 public abstract class State<T> {

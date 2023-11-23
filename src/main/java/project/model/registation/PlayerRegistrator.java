@@ -1,6 +1,8 @@
+package project.model.registation;
+
 public class PlayerRegistrator {
 
-    private String message = "Player 1, pick crosses or circles[X/O]: ";
+    private String message = "project.model.board.Player 1, pick crosses or circles[X/O]: ";
 
     private String playersSymbols = "  ";
 

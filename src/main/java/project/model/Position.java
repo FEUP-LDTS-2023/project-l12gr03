@@ -1,4 +1,5 @@
-import java.util.Objects;
+package project.model;
+
 
 public class Position {
     private final int x;

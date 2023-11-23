@@ -1,3 +1,12 @@
+package project.states;
+
+import project.controller.Controller;
+import project.controller.RuleController;
+import project.model.rules.Rule;
+import project.viewer.RuleViewer;
+import project.viewer.Viewer;
+
+
 public class RulesState extends State<Rule> {
 
     public RulesState(Rule model) {super(model);}

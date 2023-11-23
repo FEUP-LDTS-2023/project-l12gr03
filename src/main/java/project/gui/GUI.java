@@ -1,4 +1,7 @@
+package project.gui;
+
 import java.io.IOException;
+import project.model.Position;
 
 public interface GUI {
     ACTION getNextAction() throws IOException;

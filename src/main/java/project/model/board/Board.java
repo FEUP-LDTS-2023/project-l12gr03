@@ -1,8 +1,10 @@
+package project.model.board;
+
 public class Board  {
     private Player p1;
     private Player p2;
 
-    Integer dummy=0;
+    public Integer dummy=0;
     public Board(Player player1, Player player2){
         this.p1 = player1;
         this.p2 = player2;

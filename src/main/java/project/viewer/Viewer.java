@@ -1,3 +1,7 @@
+package project.viewer;
+
+import project.gui.GUI;
+
 import java.io.IOException;
 
 public abstract class Viewer<T> {

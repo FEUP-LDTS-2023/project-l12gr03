@@ -1,3 +1,7 @@
+package project.controller;
+
+import project.gui.GUI;
+import project.Game;
 import java.io.IOException;
 
 public abstract class Controller<T> {

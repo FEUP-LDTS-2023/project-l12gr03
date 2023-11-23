@@ -1,3 +1,9 @@
+package project.viewer;
+
+import project.gui.GUI;
+import project.model.Position;
+import project.model.rules.Rule;
+
 public class RuleViewer extends Viewer<Rule>{
     public RuleViewer(Rule rule) {
         super(rule);

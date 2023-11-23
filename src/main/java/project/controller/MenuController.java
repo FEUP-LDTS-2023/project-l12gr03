@@ -1,3 +1,13 @@
+package project.controller;
+
+import project.model.rules.Rule;
+import project.gui.GUI;
+import project.model.Menu.Menu;
+import project.model.registation.PlayerRegistrator;
+import project.Game;
+import project.states.RegistrationState;
+import project.states.RulesState;
+
 import java.io.IOException;
 
 public class MenuController extends Controller<Menu> {

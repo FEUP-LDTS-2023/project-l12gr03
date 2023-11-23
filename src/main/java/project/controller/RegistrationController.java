@@ -1,6 +1,17 @@
+package project.controller;
+
+import project.Game;
+import project.model.board.Player;
+import project.gui.GUI;
+import project.model.Menu.Menu;
+import project.model.board.Board;
+import project.model.registation.PlayerRegistrator;
+import project.states.GameState;
+import project.states.MenuState;
+
 import java.io.IOException;
 
-public class RegistrationController extends Controller<PlayerRegistrator>{
+public class RegistrationController extends Controller<PlayerRegistrator> {
 
     public RegistrationController(PlayerRegistrator registration){super(registration);}
 

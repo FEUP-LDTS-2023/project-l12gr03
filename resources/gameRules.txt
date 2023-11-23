@@ -1,6 +1,6 @@
 ------------------------RULES--------------------------
 
-                    The Game Goal:
+                    The project.Game Goal:
 
   The game consists of a Main Tic Tac Toe board, where
   each space contains a Mini Tic Tac Toe game. Players

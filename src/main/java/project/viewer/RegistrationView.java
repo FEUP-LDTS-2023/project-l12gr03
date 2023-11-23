@@ -1,3 +1,9 @@
+package project.viewer;
+
+import project.gui.GUI;
+import project.model.Position;
+import project.model.registation.PlayerRegistrator;
+
 public class RegistrationView extends Viewer<PlayerRegistrator> {
 
     public RegistrationView(PlayerRegistrator registration) {super(registration);}

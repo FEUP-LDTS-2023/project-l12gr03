@@ -1,6 +1,15 @@
+package project.controller;
+
+
+import project.gui.GUI;
+import project.model.Menu.Menu;
+import project.model.board.Board;
+import project.Game;
+import project.states.MenuState;
+
 import java.io.IOException;
 
-public class BoardController extends Controller<Board>{
+public class BoardController extends Controller<Board> {
 
     public BoardController(Board board) { super(board);}
 
