@@ -1,8 +1,7 @@
 Lista de Features Planeadas
 
-
 Maior Prioridade:
-👉 Escolher o símbolo do jogador 1 (X ou O) 
+👉 Escolher o símbolo do jogador 1 (X ou O)
 👉 Escolher o lugar da jogada, de acordo com as regras do jogo e lugares disponíveis
 👉 Mostrar o score de cada jogador
 👉 Permitir várias partidas ou iniciar um novo jogo (com score zerado)
@@ -13,3 +12,5 @@ Menor Prioridade:
 👉 Escolher o jogador que vai começar o jogo com "jogo da moeda"
 👉 Mostrar o tempo de jogo
 👉 Mudar a cor da grelha que estão a fazer o jogo
+👉 Música de fundo
+👉 Guardar histórico de partida mais rápida
