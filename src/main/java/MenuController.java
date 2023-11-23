@@ -16,9 +16,8 @@ public class MenuController extends Controller<Menu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedExit()) game.setState(null);
-
                 if (getModel().isSelectedStart()) game.setState(new RegistrationState(new PlayerRegistrator()));
-
+                if (getModel().isSelectedRules()) game.setState(new RulesState(new Rule()));
         }
     }
 }
