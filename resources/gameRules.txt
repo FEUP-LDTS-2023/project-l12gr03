@@ -1,6 +1,6 @@
---------------------------RULES--------------------------
+------------------------RULES--------------------------
 
-                      The Game Goal:
+                    The Game Goal:
 
   The game consists of a Main Tic Tac Toe board, where
   each space contains a Mini Tic Tac Toe game. Players
@@ -17,7 +17,6 @@
 
   -> A Mini Tic Tac Toe may end in a tie, serving as a wild
   card for both players in forming the Main Tic Tac Toe row.
-
 
 
                     How to Play:

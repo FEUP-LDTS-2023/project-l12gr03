@@ -4,9 +4,6 @@ public class MenuState extends State<Menu> {
     }
 
     @Override
-    //protected Viewer<Menu> getViewer() {return new MenuRulesViewer(getModel());}
-
-    @Override
     protected Viewer<Menu> getViewer() {
         return new MenuViewer(getModel());
     }
