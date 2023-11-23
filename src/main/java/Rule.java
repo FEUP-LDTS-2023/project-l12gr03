@@ -1,13 +1,14 @@
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Rule {
     private File file;
-    private List<String> stringRules;
+    private List<String> stringRules = new ArrayList<>();
 
     public Rule() throws IOException {ScanRule();}
 
