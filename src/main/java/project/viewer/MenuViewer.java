@@ -11,7 +11,7 @@ public class MenuViewer extends Viewer<Menu> {
 
     @Override
     public void drawElements(GUI gui) {
-        gui.drawText(new Position(10, 5), "project.model.Menu.Menu", "#FFFFFF");
+        gui.drawText(new Position(10, 5), "Menu", "#FFFFFF");
 
         for (int i = 0; i < getModel().getNumberEntries(); i++)
             gui.drawText(
