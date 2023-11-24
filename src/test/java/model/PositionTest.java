@@ -1,7 +1,11 @@
-package com.aor.hero.model;
+package model;
+
 
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
+
+import org.junit.jupiter.api.Test;
+import project.model.Position;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -9,7 +13,7 @@ class PositionTest {
     private Position position;
 
     @Property
-    void getLeft(@ForAll int x, @ForAll int y) {
+    void getLeft(@ForAll int x,@ForAll int y) {
         assertEquals(x - 1, new Position(x, y).getLeft().getX());
         assertEquals(y, new Position(x, y).getLeft().getY());
     }
