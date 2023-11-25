@@ -15,10 +15,10 @@ public class RuleController extends Controller<Rule> {
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         switch (action) {
-            case DOWN:
+            case QUIT:
                 game.setState(new MenuState(new Menu()));
                 break;
         }
     }
-} // this is the project.controller
+}
 
