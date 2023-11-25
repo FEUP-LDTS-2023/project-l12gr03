@@ -7,6 +7,7 @@ public class PlayerRegistrator {
     private String playersSymbols = "  ";
 
     private boolean isSymbolChosen = false;
+
     enum SymbolOptions {BallCross, CrossBall}
 
     public PlayerRegistrator() {}
