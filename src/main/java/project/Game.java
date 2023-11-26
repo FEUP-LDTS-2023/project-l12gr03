@@ -38,7 +38,7 @@ public class Game {
 
             try {
                 if (sleepTime > 0) Thread.sleep(sleepTime);
-            } catch (InterruptedException e) {
+            } catch (InterruptedException ignored) {
             }
         }
 
