@@ -43,7 +43,6 @@ public class Game {
             } catch (InterruptedException ignored) {
             }
         }
-
         gui.close();
     }
 }

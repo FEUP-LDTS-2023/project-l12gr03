@@ -1,21 +1,32 @@
 package project.model.board;
 
 import project.model.Position;
-import project.model.board.Board.TickTockToe;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class Mini extends TickTockToe {
+public class Mini extends TicTacToe {
 
-    char[] miniGame = new char[9];
+    ArrayList<Character> smallSquares = new ArrayList<>(Collections.nCopies(9, ' '));
 
     public Mini(Player player1, Player player2, int x, int y) throws IOException {
-        super(player1, player2, x, y);
+        super(x, y);
+        this.p1 = player1;
+        this.p2 = player2;
     }
 
     @Override
-    public void move(Position position) {}
+    public void goUp(){}
+    @Override
+    public void goDown(){}
+    @Override
+    public void goLeft(){}
+    @Override
+    public void goRight(){}
+
+    @Override
+    public void endGame() {}
 
     @Override
     public void select(Position position){}

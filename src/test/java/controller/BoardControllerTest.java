@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import project.Game;
 import project.controller.BoardController;
 import project.gui.GUI;
-import project.model.board.Board;
+import project.model.board.TicTacToe;
 import project.states.MenuState;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,7 +14,7 @@ public class BoardControllerTest {
 
     @Test
     void StepQuit() {
-        Board mockBoard = mock(Board.class);
+        TicTacToe mockBoard = mock(TicTacToe.class);
         BoardController boardController = new BoardController(mockBoard);
         Game mockGame = mock(Game.class);
 
