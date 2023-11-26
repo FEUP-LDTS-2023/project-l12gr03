@@ -18,6 +18,9 @@ public class BoardViewer extends Viewer<Board>{
 
         gui.drawText(new Position(73, 10), String.valueOf(getModel().getp1().getScore()),"#FFFFFF");
         gui.drawText(new Position(73, 11), String.valueOf(getModel().getp2().getScore()),"#FFFFFF");
+        gui.drawText(new Position(77, 28), getModel().findMinTimeFromFile(), "#FFFFFF");
+        gui.drawText(new Position(74, 27), getModel().getFormattedElapsedTime(), "#FFFFFF");
+
     }
 
 }
