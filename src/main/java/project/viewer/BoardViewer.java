@@ -11,8 +11,13 @@ public class BoardViewer extends Viewer<Board>{
 
     @Override
     public void drawElements(GUI gui) {
-        gui.drawText(new Position(10,7),getModel().dummy.toString(),"#FFD700");
+        gui.drawText(new Position(10, 5),  "Player " + getModel().getPlayer().getSymbol() + " it is your turn!", "#FFFFFF");
+        for (int i = 0; i < getModel().getNumberLines(); i++){
+            gui.drawText(new Position(10, 7 + i),
+                    getModel().getLine(i), "#FFFFFF");}
 
+        gui.drawText(new Position(73, 10), String.valueOf(getModel().getp1().getScore()),"#FFFFFF");
+        gui.drawText(new Position(73, 11), String.valueOf(getModel().getp2().getScore()),"#FFFFFF");
     }
 
 }
