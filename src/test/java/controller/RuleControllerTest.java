@@ -7,8 +7,6 @@ import project.controller.RuleController;
 import project.gui.GUI;
 import project.model.rules.Rule;
 import project.states.MenuState;
-
-import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -22,7 +20,7 @@ public class RuleControllerTest {
     }
 
     @Test
-    void testStepQuit() throws IOException {
+    void testStepQuit(){
 
         Game mockGame = mock(Game.class);
         assertDoesNotThrow(() -> ruleController.step(mockGame, GUI.ACTION.QUIT, 100));
