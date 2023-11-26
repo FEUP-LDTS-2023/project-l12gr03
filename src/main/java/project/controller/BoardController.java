@@ -17,16 +17,16 @@ public class BoardController extends Controller<Board> {
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         switch (action) {
             case UP:
-                getModel().UpperEntry();
+                getModel().getUp();
                 break;
             case DOWN:
-                getModel().LowerEntry();
+                getModel().getDown();
                 break;
             case LEFT:
-                getModel().LeftEntry();
+                getModel().getLeft();
                 break;
             case RIGHT:
-                getModel().RightEntry();
+                getModel().getRight();
                 break;
             case QUIT:
                 game.setState(new MenuState(new Menu()));
