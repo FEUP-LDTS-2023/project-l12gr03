@@ -22,7 +22,14 @@ public class Big extends TicTacToe {
         this.p2 = player2;
         ScanBoard();
         CoinToss();
-        bigSquares = new ArrayList<>(Collections.nCopies(9, new Mini(p1, p2, getPosition().getX(), getPosition().getY())));
+        for (int row=0;row<3;row++)
+        {
+            for (int column=0; column<3; column++)
+            {
+                bigSquares = new ArrayList<>(Collections.nCopies(9, new Mini(p1, p2, getPosition().getX()+column, getPosition().getY()+row)));
+            }
+        }
+
 
         new Thread(this::updateElapsedTime).start();
 

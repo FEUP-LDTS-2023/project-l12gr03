@@ -1,12 +1,3 @@
-"# project-l12gr03"
-# Tic Tac Toe project.Game 2.0
-
-The game is basically composed of a Main Tic Tac Toe project.Game that contains a Mini Tic Tac Toe project.Game within each space of the Main Tic Tac Toe project.Game. The game begins with the order of play of players "X" and "O" being defined by a coin toss, randomly. Next, the player who starts the game chooses where he wants to start playing, but the place where the player places his piece will define which Mini Tic Tac Toe project.Game the opponent will play in his turn.
-When someone wins one of the games, the entire mini tic-tac-toe becomes a point for that player and whoever makes a row with three mini tic-tac-toe games in the Main Tic-Tac-Toe project.Game wins.
-During the game two things can happen:
-- A player is forced to play in a Mini Tic Tac Toe project.Game that has already ended, in which case the player can choose which available Mini Tic Tac Toe project.Game he wants to play.
-- A Mini Tic Tac Toe will tie, in this case, this mini-game will work as a joker that works with both players to form the Main Tic Tac Toe row.
-
 ## LDTS_1203 - Tick Tock Toe
 In this 2 player game we have a tic-tac-toe grid where each square has inside it a traditional game of tic-tac-toe.
 At first a player chooses in which smaller tic-tac-toe square it wants to play, after that,the next player
@@ -21,21 +12,22 @@ or when there aren't any more spaces to be filled.
 After the game ends the players scores are updated accordingly to the result, it is shown how much time tha game lasted and the time of the shortest game,
 players also have the choice to keep playing in which case the game restarts. 
 
-This project was developed by Amanda Tartarotti (@up.pt) Gonçalo Sousa (@up.pt) and Pedro Oliveira (up202206498@up.pt) for LDTS 2023⁄24.
+This project was developed by Amanda Tartarotti (up202211647@up.pt) Gonçalo Sousa (up202207320@up.pt) and Pedro Oliveira (up202206498@up.pt) for LDTS 2023⁄24.
 
 ### IMPLEMENTED FEATURES
 
 - **Menu** - The game provides a menu capable of starting the game, showing the rules or exiting the program.
 - **Rules** - Shows on the screen a text describing the rules of the game.
 - **Symbol Assigment** - Allows player 1 to decide if it wants to have the crosses or circles symbol.
-
+- **Time** - Shows the players a clock with duration of the game and their best time.
+- **Coin Toss** - the first player that gets to place its symbol is decided randomly.
 
 ### PLANNED FEATURES
 
 - **Move** - A player can change the selected square either on the bigger grid or a smaller one when appropriate.
 - **Select** - A player can choose to play its symbol on the square that it has selected.
 - **Score** - Each player has a score that starts at 0 and is incremented by 1 if they win the bigger tic-tac-toe game.
-- **Time** - When the game ends it is shown the time it took and what percentage each player took with its plays.
+- **Time Statistics** - When the game ends it is shown the time it took and what percentage each player took with its plays.
 - **Continue** - After the game the players can choose to continue playing and keep their scores.
 
 
@@ -45,8 +37,8 @@ This project was developed by Amanda Tartarotti (@up.pt) Gonçalo Sousa (@up.pt)
 
 **Problem in Context**
 
-By its very nature our game needs to show itself to the user through the screen, take user inputs and also act accordingly to said input
-, while it is perfectly possible to have a single class that does this three functions said class would violate the **Single Responsibility Principle**
+By its very nature our game needs to show itself to the user through the screen, take user inputs and also act accordingly to said input,
+while it is perfectly possible to have a single class that does this three functions said class would violate the **Single Responsibility Principle**
 
 **The Pattern**
 
@@ -57,12 +49,13 @@ viewers that draw on the screen and controllers that takes user inputs and uses 
 
 The following figure shows how the pattern’s roles were mapped.
 
-***TODO IMPLEMENT THE CODE LINKS AND UML IMAGE***
+![img.png](resources/UML/img.png)
 
-These classes can be found in the following files:
+These classes can be found in the following folders:
 
--UML
-- [Character](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/Character.java)
+- [Models](src/main/java/project/model)
+- [Viewers](src/main/java/project/viewer)
+- [Generic Controller](src/main/java/project/controller)
 
 **Consequences**
 
@@ -88,12 +81,16 @@ of a main class 'State', attributing said State to our class 'Game' and switchin
 
 The following figure shows how the pattern’s roles were mapped.
 
-***TODO IMPLEMENT THE CODE LINKS AND UML IMAGE***
+![img.png](resources/UML/StatePattern.png)
 
 These classes can be found in the following files:
 
-
-- [Character](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/Character.java)
+- [Game](src/main/java/project/Game.java)
+- [Generic State](src/main/java/project/states/State.java)
+- [Game State](src/main/java/project/states/GameState.java)
+- [Menu State](src/main/java/project/states/MenuState.java)
+- [Registration State](src/main/java/project/states/RegistrationState.java)
+- [Rules State](src/main/java/project/states/RulesState.java)
 
 **Consequences**
 
@@ -124,12 +121,14 @@ between the bigger and smaller games
 
 The following figure shows how the pattern’s roles were mapped.
 
-***TODO IMPLEMENT THE CODE LINKS AND UML IMAGE***
+![img.png](resources/UML/CompositePattern.png)
 
 These classes can be found in the following files:
 
 
-- [Character](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/Character.java)
+- [Generic TicTacToe](src/main/java/project/model/board/TicTacToe.java)
+- [Big TicTacToe](src/main/java/project/model/board/Big.java)
+- [Mini TicTacToe](src/main/java/project/model/board/Mini.java)
 
 **Consequences**
 
@@ -151,11 +150,15 @@ having an iteration per user input and reacting accordingly
 
 The following figure shows how the pattern’s roles were mapped.
 
-***TODO IMPLEMENT THE CODE LINKS AND UML IMAGE***
+![img.png](resources/UML/GameLoop.png)
 
 These classes can be found in the following files:
 
-- [Character](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/Character.java)
+- [State](src/main/java/project/states/State.java)
+- [Registration step](src/main/java/project/controller/RegistrationController.java)
+- [Menu step](src/main/java/project/controller/MenuController.java)
+- [Rules step](src/main/java/project/controller/RuleController.java)
+- [Board step](src/main/java/project/controller/BoardController.java)
 
 **Consequences**
 
@@ -178,11 +181,15 @@ but lets the subclasses chose what classes to instantiate.
 
 The following figure shows how the pattern’s roles were mapped.
 
-***TODO IMPLEMENT THE CODE LINKS AND UML IMAGE***
+![img.png](resources/UML/FactoryMethod.png)
 
 These classes can be found in the following files:
 
-- [Character](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/Character.java)
+- [State](src/main/java/project/states/State.java)
+- [Registration step](src/main/java/project/controller/RegistrationController.java)
+- [Menu step](src/main/java/project/controller/MenuController.java)
+- [Rules step](src/main/java/project/controller/RuleController.java)
+- [Board step](src/main/java/project/controller/BoardController.java)
 
 **Consequences**
 

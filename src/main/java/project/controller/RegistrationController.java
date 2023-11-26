@@ -32,7 +32,7 @@ public class RegistrationController extends Controller<PlayerRegistrator> {
                 if(getModel().symbolChosen()) {
                     Player player1 = new Player(getModel().getPlayerSymbol(1),0);
                     Player player2 = new Player(getModel().getPlayerSymbol(2),0);
-                    game.setState(new GameState(new Big(player1,player2, 10, 10)));
+                    game.setState(new GameState(new Big(player1,player2, 0, 0)));
                 }
         }
     }
