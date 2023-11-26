@@ -3,7 +3,7 @@ package states;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import project.controller.BoardController;
-import project.model.board.Board;
+import project.model.board.TicTacToe;
 import project.states.GameState;
 import project.viewer.BoardViewer;
 
@@ -12,12 +12,12 @@ import static org.mockito.Mockito.*;
 
 public class GameStateTest {
 
-    private Board mockBoard;
+    private TicTacToe mockBoard;
     private GameState gameState;
 
     @BeforeEach
     void setUp() {
-        this.mockBoard = mock(Board.class);
+        this.mockBoard = mock(TicTacToe.class);
         this.gameState = new GameState(mockBoard);
     }
 
