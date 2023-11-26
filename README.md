@@ -148,15 +148,14 @@ The programme must know when to wait for players input as well as how to respond
 
 **The Pattern**
 
-The Pattern chosen to solve this problem was the Game Loop Pattern 
-that consists of a loop that will run for all the games runtime
-having an iteration per user input and reacting accordingly
+The Pattern chosen to solve this problem was the Game Loop Pattern that consists of a loop that will run for all the games runtime
+having an iteration per user input and reacting accordingly.
 
 **Implementation**
 
 The following figure shows how the pattern’s roles were mapped.
 
-![img.png](resources/UML/GameLoop.png)
+![img.png](resources/UML/GameLoopUML.png)
 
 These classes can be found in the following files:
 
@@ -187,7 +186,7 @@ but lets the subclasses chose what classes to instantiate.
 
 The following figure shows how the pattern’s roles were mapped.
 
-![img.png](resources/UML/FactoryMethod.png)
+![img_1.png](resources/UML/RefactoringPaternUML.png)
 
 These classes can be found in the following files:
 
