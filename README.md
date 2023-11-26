@@ -12,11 +12,9 @@ or when there aren't any more spaces to be filled.
 After the game ends the players scores are updated accordingly to the result, it is shown how much time tha game lasted and the time of the shortest game,
 players also have the choice to keep playing in which case the game restarts. 
 
-<<<<<<< HEAD
+
 This project was developed by Amanda Tartarotti (202211647@up.pt) Gonçalo Sousa (202207320@up.pt) and Pedro Oliveira (up202206498@up.pt) for LDTS 2023⁄24.
-=======
-This project was developed by Amanda Tartarotti (up202211647@up.pt) Gonçalo Sousa (up202207320@up.pt) and Pedro Oliveira (up202206498@up.pt) for LDTS 2023⁄24.
->>>>>>> ResolvinComposition
+
 
 ### IMPLEMENTED FEATURES
 
@@ -41,7 +39,13 @@ This project was developed by Amanda Tartarotti (up202211647@up.pt) Gonçalo Sou
 - **Continue** - After the game the players can choose to continue playing and keep their scores.
 
 
-### DESIGN
+### UML
+
+The Final version of our project is planned to have the following UML representation
+
+![img.png](resources/UML/UMLModel.png)
+
+### Design
 
 ##### THE GAME NEEDS TO WRITE ON THE SCREEN, KEEP DATA AND TAKE USER INPUT
 
@@ -63,14 +67,12 @@ The following figure shows how the pattern’s roles were mapped.
 
 These classes can be found in the following folders:
 
-<<<<<<< HEAD
--UML
-- [TickTockToe](https://drive.google.com/file/d/1AbH7X8FMZkZQTS1Rr7Vgw2EX7A-ipMdt/view?usp=sharing)
-=======
+
+
 - [Models](src/main/java/project/model)
 - [Viewers](src/main/java/project/viewer)
 - [Generic Controller](src/main/java/project/controller)
->>>>>>> ResolvinComposition
+
 
 **Consequences**
 
@@ -100,17 +102,15 @@ The following figure shows how the pattern’s roles were mapped.
 
 These classes can be found in the following files:
 
-<<<<<<< HEAD
 
-- [TickTockToe](https://drive.google.com/file/d/1AbH7X8FMZkZQTS1Rr7Vgw2EX7A-ipMdt/view?usp=sharing)
-=======
+
+
 - [Game](src/main/java/project/Game.java)
 - [Generic State](src/main/java/project/states/State.java)
 - [Game State](src/main/java/project/states/GameState.java)
 - [Menu State](src/main/java/project/states/MenuState.java)
 - [Registration State](src/main/java/project/states/RegistrationState.java)
 - [Rules State](src/main/java/project/states/RulesState.java)
->>>>>>> ResolvinComposition
 
 **Consequences**
 
@@ -146,13 +146,11 @@ The following figure shows how the pattern’s roles were mapped.
 These classes can be found in the following files:
 
 
-<<<<<<< HEAD
-- [TickTockToe](https://drive.google.com/file/d/1AbH7X8FMZkZQTS1Rr7Vgw2EX7A-ipMdt/view?usp=sharing)
-=======
+
 - [Generic TicTacToe](src/main/java/project/model/board/TicTacToe.java)
 - [Big TicTacToe](src/main/java/project/model/board/Big.java)
 - [Mini TicTacToe](src/main/java/project/model/board/Mini.java)
->>>>>>> ResolvinComposition
+
 
 **Consequences**
 
@@ -177,15 +175,12 @@ The following figure shows how the pattern’s roles were mapped.
 
 These classes can be found in the following files:
 
-<<<<<<< HEAD
-- [TickTockToe](https://drive.google.com/file/d/1AbH7X8FMZkZQTS1Rr7Vgw2EX7A-ipMdt/view?usp=sharing)
-=======
 - [State](src/main/java/project/states/State.java)
 - [Registration step](src/main/java/project/controller/RegistrationController.java)
 - [Menu step](src/main/java/project/controller/MenuController.java)
 - [Rules step](src/main/java/project/controller/RuleController.java)
 - [Board step](src/main/java/project/controller/BoardController.java)
->>>>>>> ResolvinComposition
+
 
 **Consequences**
 
@@ -213,7 +208,7 @@ The following figure shows how the pattern’s roles were mapped.
 These classes can be found in the following files:
 
 
-- [TickTockToe UML](https://drive.google.com/file/d/1AbH7X8FMZkZQTS1Rr7Vgw2EX7A-ipMdt/view?usp=sharing)
+
 - [State](src/main/java/project/states/State.java)
 - [Registration step](src/main/java/project/controller/RegistrationController.java)
 - [Menu step](src/main/java/project/controller/MenuController.java)
@@ -235,6 +230,10 @@ after that draw on the same position again with a different color that symbolize
 repeated use of drawText function. 
 
 ### TESTING
+
+Note:the test for the Game module and Controller have not been implemented yet.
+
+![img.png](resources/TestCoverage.png)
 
 ### SELF-EVALUATION
 
