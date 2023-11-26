@@ -10,6 +10,8 @@ import project.states.RulesState;
 
 import java.io.IOException;
 
+import static java.lang.System.exit;
+
 public class MenuController extends Controller<Menu> {
     public MenuController(Menu menu) {
         super(menu);
@@ -25,7 +27,7 @@ public class MenuController extends Controller<Menu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedExit()) game.setState(null);
+                if (getModel().isSelectedExit()) {game.setState(null); exit(0);}
                 if (getModel().isSelectedStart()) game.setState(new RegistrationState(new PlayerRegistrator()));
                 if (getModel().isSelectedRules()) game.setState(new RulesState(new Rule()));
         }
