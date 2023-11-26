@@ -16,8 +16,8 @@ public class BoardViewer extends Viewer<Board>{
             gui.drawText(new Position(10, 7 + i),
                     getModel().getLine(i), "#FFFFFF");}
 
-        gui.drawText(new Position(73, 10), String.valueOf(getModel().getp1().getScore()),"#FFFFFF");
-        gui.drawText(new Position(73, 11), String.valueOf(getModel().getp2().getScore()),"#FFFFFF");
+        gui.drawText(new Position(71, 10), String.valueOf(getModel().getp1().getScore()),"#FFFFFF");
+        gui.drawText(new Position(71, 11), String.valueOf(getModel().getp2().getScore()),"#FFFFFF");
 
 
         switch(getModel().getSelected()) {
@@ -94,8 +94,8 @@ public class BoardViewer extends Viewer<Board>{
 
         }
 
-        gui.drawText(new Position(77, 28), getModel().findMinTimeFromFile(), "#FFFFFF");
-        gui.drawText(new Position(74, 27), getModel().getFormattedElapsedTime(), "#FFFFFF");
+        gui.drawText(new Position(62, 28), "Playtime: " + getModel().findMinTimeFromFile(), "#FFFFFF");
+        gui.drawText(new Position(62, 27), "Record time: " + getModel().getFormattedElapsedTime(), "#FFFFFF");
 
 
     }

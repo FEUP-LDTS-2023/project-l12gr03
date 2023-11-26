@@ -131,7 +131,7 @@ public class Board extends Position {
     }
 
     public String findMinTimeFromFile() {
-        try (Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/best_time.txt"))) {
+        try (Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/total_time.txt"))) {
             String minTime = null;
 
             while (scanner.hasNext()) {
