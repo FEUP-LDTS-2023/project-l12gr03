@@ -13,12 +13,12 @@ public class GameState extends State<Board>{
     }
 
     @Override
-    protected Viewer<Board> getViewer() {
+    public Viewer<Board> getViewer() {
         return new BoardViewer(getModel());
     }
 
     @Override
-    protected Controller<Board> getController() {
+    public Controller<Board> getController() {
         return new BoardController(getModel());
     }
 }
