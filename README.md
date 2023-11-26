@@ -21,7 +21,7 @@ or when there aren't any more spaces to be filled.
 After the game ends the players scores are updated accordingly to the result, it is shown how much time tha game lasted and the time of the shortest game,
 players also have the choice to keep playing in which case the game restarts. 
 
-This project was developed by Amanda Tartarotti (@up.pt) Gonçalo Sousa (@up.pt) and Pedro Oliveira (up202206498@up.pt) for LDTS 2023⁄24.
+This project was developed by Amanda Tartarotti (202211647@up.pt) Gonçalo Sousa (202207320@up.pt) and Pedro Oliveira (up202206498@up.pt) for LDTS 2023⁄24.
 
 ### IMPLEMENTED FEATURES
 
@@ -62,7 +62,7 @@ The following figure shows how the pattern’s roles were mapped.
 These classes can be found in the following files:
 
 -UML
-- [Character](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/Character.java)
+- [TickTockToe](https://drive.google.com/file/d/1AbH7X8FMZkZQTS1Rr7Vgw2EX7A-ipMdt/view?usp=sharing)
 
 **Consequences**
 
@@ -93,7 +93,7 @@ The following figure shows how the pattern’s roles were mapped.
 These classes can be found in the following files:
 
 
-- [Character](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/Character.java)
+- [TickTockToe](https://drive.google.com/file/d/1AbH7X8FMZkZQTS1Rr7Vgw2EX7A-ipMdt/view?usp=sharing)
 
 **Consequences**
 
@@ -129,7 +129,7 @@ The following figure shows how the pattern’s roles were mapped.
 These classes can be found in the following files:
 
 
-- [Character](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/Character.java)
+- [TickTockToe](https://drive.google.com/file/d/1AbH7X8FMZkZQTS1Rr7Vgw2EX7A-ipMdt/view?usp=sharing)
 
 **Consequences**
 
@@ -155,7 +155,7 @@ The following figure shows how the pattern’s roles were mapped.
 
 These classes can be found in the following files:
 
-- [Character](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/Character.java)
+- [TickTockToe](https://drive.google.com/file/d/1AbH7X8FMZkZQTS1Rr7Vgw2EX7A-ipMdt/view?usp=sharing)
 
 **Consequences**
 
@@ -182,7 +182,7 @@ The following figure shows how the pattern’s roles were mapped.
 
 These classes can be found in the following files:
 
-- [Character](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/Character.java)
+- [TickTockToe](https://drive.google.com/file/d/1AbH7X8FMZkZQTS1Rr7Vgw2EX7A-ipMdt/view?usp=sharing)
 
 **Consequences**
 
