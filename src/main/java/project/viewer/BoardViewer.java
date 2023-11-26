@@ -2,10 +2,10 @@ package project.viewer;
 
 import project.gui.GUI;
 import project.model.Position;
-import project.model.board.Board;
+import project.model.board.TicTacToe;
 
-public class BoardViewer extends Viewer<Board>{
-    public BoardViewer(Board board) {
+public class BoardViewer extends Viewer<TicTacToe>{
+    public BoardViewer(TicTacToe board) {
         super(board);
     }
 
