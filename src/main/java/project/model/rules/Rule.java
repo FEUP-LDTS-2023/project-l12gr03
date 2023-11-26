@@ -23,6 +23,8 @@ public class Rule {
         }
     }
 
+
+
     public String getLine(int i) {
         return stringRules.get(i);
     }

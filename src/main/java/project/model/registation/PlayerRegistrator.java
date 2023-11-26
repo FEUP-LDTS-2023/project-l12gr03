@@ -8,7 +8,7 @@ public class PlayerRegistrator {
 
     private boolean isSymbolChosen = false;
 
-    enum SymbolOptions {BallCross, CrossBall}
+    //enum SymbolOptions {BallCross, CrossBall}
 
     public PlayerRegistrator() {}
 
