@@ -1,6 +1,8 @@
 package project.model;
 
 
+import java.util.Objects;
+
 public class Position {
     private final int x;
     private final int y;
@@ -40,5 +42,10 @@ public class Position {
         if (obj == null || getClass() != obj.getClass()) return false;
         Position position = (Position) obj;
         return x == position.x && y == position.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(y, x);
     }
 }
