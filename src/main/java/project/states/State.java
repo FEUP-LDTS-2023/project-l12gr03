@@ -25,9 +25,9 @@ public abstract class State<T> {
         return model;
     }
 
-    protected abstract Viewer<T> getViewer();
+    public abstract Viewer<T> getViewer();
 
-    protected abstract Controller<T> getController();
+    public abstract Controller<T> getController();
 
     public void step(Game game, GUI gui, long time) throws IOException {
         GUI.ACTION action = gui.getNextAction();
