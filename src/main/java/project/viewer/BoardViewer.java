@@ -19,6 +19,7 @@ public class BoardViewer extends Viewer<Board>{
         gui.drawText(new Position(73, 10), String.valueOf(getModel().getp1().getScore()),"#FFFFFF");
         gui.drawText(new Position(73, 11), String.valueOf(getModel().getp2().getScore()),"#FFFFFF");
 
+
         switch(getModel().getSelected()) {
             case 0:
                 gui.drawText(new Position(10, 14), "------------+", "#FFFF00");
@@ -92,6 +93,11 @@ public class BoardViewer extends Viewer<Board>{
                 gui.drawText(new Position(22,22),String.valueOf(getModel().getSelected()),"#0000FF");
 
         }
+
+        gui.drawText(new Position(77, 28), getModel().findMinTimeFromFile(), "#FFFFFF");
+        gui.drawText(new Position(74, 27), getModel().getFormattedElapsedTime(), "#FFFFFF");
+
+
     }
 
 }
