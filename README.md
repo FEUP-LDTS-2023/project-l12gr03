@@ -22,6 +22,12 @@ This project was developed by Amanda Tartarotti (up202211647@up.pt) Gonçalo Sou
 - **Time** - Shows the players a clock with duration of the game and their best time.
 - **Coin Toss** - the first player that gets to place its symbol is decided randomly.
 
+![img.png](resources/MainMenuPrint.png)
+
+![img.png](resources/RulesPrint.png)
+
+![img.png](resources/SquareSelectionPrint.png)
+
 ### PLANNED FEATURES
 
 - **Move** - A player can change the selected square either on the bigger grid or a smaller one when appropriate.
