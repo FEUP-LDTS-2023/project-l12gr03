@@ -19,13 +19,15 @@ public class Game {
         this.gui = new LanternaGUI(100, 50);
         this.state = new MenuState(new Menu());
     }
+
+
     public void setState(State state) {
         this.state = state;
     }
 
     public void start() throws IOException {
 
-        int FPS = 10;
+        int FPS = 50;
         int frameTime = 1000 / FPS;
 
         while (this.state != null) {
