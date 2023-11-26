@@ -25,6 +25,7 @@ public class PlayerRegistratorTest {
         playerRegistrator.assignX();
         Assertions.assertTrue(playerRegistrator.symbolChosen());
         Assertions.assertEquals('X', playerRegistrator.getPlayerSymbol(1));
+        Assertions.assertEquals('0', playerRegistrator.getPlayerSymbol(2));
         Assertions.assertEquals("Player 1, pick crosses or circles[X/O]: X", playerRegistrator.getMessage());
     }
 
@@ -33,6 +34,30 @@ public class PlayerRegistratorTest {
         playerRegistrator.assignO();
         Assertions.assertTrue(playerRegistrator.symbolChosen());
         Assertions.assertEquals('O', playerRegistrator.getPlayerSymbol(1));
+        Assertions.assertEquals('X', playerRegistrator.getPlayerSymbol(2));
+        Assertions.assertEquals("Player 1, pick crosses or circles[X/O]: O", playerRegistrator.getMessage());
+    }
+
+    @Test
+    void SymbolReassignOTest() {
+        playerRegistrator.assignO();
+        playerRegistrator.assignX();
+
+        Assertions.assertTrue(playerRegistrator.symbolChosen());
+        Assertions.assertEquals('X', playerRegistrator.getPlayerSymbol(1));
+        Assertions.assertEquals('0', playerRegistrator.getPlayerSymbol(2));
+        Assertions.assertEquals("Player 1, pick crosses or circles[X/O]: X", playerRegistrator.getMessage());
+
+    }
+
+    @Test
+    void SymbolReassignXTest() {
+        playerRegistrator.assignX();
+        playerRegistrator.assignO();
+
+        Assertions.assertTrue(playerRegistrator.symbolChosen());
+        Assertions.assertEquals('O', playerRegistrator.getPlayerSymbol(1));
+        Assertions.assertEquals('X', playerRegistrator.getPlayerSymbol(2));
         Assertions.assertEquals("Player 1, pick crosses or circles[X/O]: O", playerRegistrator.getMessage());
     }
 }
