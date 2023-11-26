@@ -18,15 +18,19 @@ public class BoardController extends Controller<Board> {
         switch (action) {
             case UP:
                 getModel().getUp();
+                getModel().goUp();
                 break;
             case DOWN:
                 getModel().getDown();
+                getModel().goDown();
                 break;
             case LEFT:
                 getModel().getLeft();
+                getModel().goLeft();
                 break;
             case RIGHT:
                 getModel().getRight();
+                getModel().goRight();
                 break;
             case QUIT:
                 game.setState(new MenuState(new Menu()));

@@ -13,9 +13,16 @@ import java.util.Scanner;
 public class Board extends Position {
 
     private Position position;
+    private int selected = 4;
+
+    public int getSelected() {
+        return selected;
+    }
+
     private Player currentPlayer;
     private Player p1;
     private Player p2;
+
 
     public Board(Player player1, Player player2, int x, int y) throws IOException {
         super(x, y);
@@ -24,6 +31,11 @@ public class Board extends Position {
         ScanBoard();
         CoinToss();
     }
+
+    public void goUp(){selected = (((selected-3) % 9) + 9) % 9;}
+    public void goDown(){selected = (selected+3) % 9;}
+    public void goLeft(){selected = (((selected-1) % 9) + 9) % 9;}
+    public void goRight(){selected = (selected+1) % 9;}
 
     public void CoinToss() {
         Random random = new Random();
@@ -59,7 +71,7 @@ public class Board extends Position {
     private File file;
     private List<String> initialBoard = new ArrayList<>();
     public void ScanBoard() throws IOException {
-        this.file = new File(System.getProperty("user.dir") + "/resources/initialBoard.txt");
+        this.file = new File(System.getProperty("user.dir") + "/resources/initialBoard2.txt");
         Scanner myReader = new Scanner(file,  Charset.defaultCharset().name());
         while (myReader.hasNextLine()) {
             String data = myReader.nextLine();
