@@ -76,7 +76,7 @@ public class Board extends Position {
     }
 
 
-    public abstract class TickTockToe extends Board{
+    public abstract static class TickTockToe extends Board{
 
         public TickTockToe(Player player1, Player player2, int x, int y) throws IOException {
             super(player1, player2, x, y);
@@ -86,8 +86,5 @@ public class Board extends Position {
 
         public void select(Position position) {}
     }
-
-
-
 
 }
