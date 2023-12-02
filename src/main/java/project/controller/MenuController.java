@@ -30,6 +30,9 @@ public class MenuController extends Controller<Menu> {
                 if (getModel().isSelectedExit()) {game.setState(null); exit(0);}
                 if (getModel().isSelectedStart()) game.setState(new RegistrationState(new PlayerRegistrator()));
                 if (getModel().isSelectedRules()) game.setState(new RulesState(new Rule()));
+                break;
+            default:
+
         }
     }
 }

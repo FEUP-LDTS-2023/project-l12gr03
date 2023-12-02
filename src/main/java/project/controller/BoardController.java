@@ -37,6 +37,9 @@ public class BoardController extends Controller<TicTacToe> {
                 break;
             case SELECT:
 
+            default:
+                break;
+
         }
     }
 

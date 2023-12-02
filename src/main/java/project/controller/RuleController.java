@@ -18,6 +18,8 @@ public class RuleController extends Controller<Rule> {
             case QUIT:
                 game.setState(new MenuState(new Menu()));
                 break;
+            default:
+
         }
     }
 }

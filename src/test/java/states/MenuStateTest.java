@@ -24,7 +24,6 @@ public class MenuStateTest {
 
     private Menu mockMenu;
     private MenuState menuState;
-    private Game mockGame;
 
     @BeforeEach
     void setUp() {

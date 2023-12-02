@@ -3,10 +3,12 @@ package project.model.board;
 import project.model.Position;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 
 public abstract class TicTacToe {
     protected String totalTime;
@@ -66,16 +68,16 @@ public abstract class TicTacToe {
         return this.initialBoard.size();
     }
 
-    private void writeTotalTimeToFile(String time) {
+    /*private void writeTotalTimeToFile(String time) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(System.getProperty("user.dir") + "/total_time.txt", true))) {
             writer.println(time);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/// Unused
 
     public String findMinTimeFromFile() {
-        try (Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/total_time.txt"))) {
+        try (Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/total_time.txt"), StandardCharsets.UTF_8)) {
             String minTime = null;
 
             while (scanner.hasNext()) {
@@ -89,6 +91,8 @@ public abstract class TicTacToe {
             return minTime;
         } catch (FileNotFoundException e) {
             return "00:00:00";
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -102,6 +106,8 @@ public abstract class TicTacToe {
     public String getFormattedElapsedTime() {
         return formattedElapsedTime;
     }
+
+
 
     public void updateElapsedTime() {
         long startTime = System.currentTimeMillis();
@@ -120,11 +126,17 @@ public abstract class TicTacToe {
                 // Wait for 1 second before updating again
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt(); // Restore interrupted status
+                logError("Thread interrupted while sleeping", e);
             }
         }
     }
 
+
+    private void logError(String message, Throwable throwable) {
+        System.err.println(message);
+        throwable.printStackTrace();
+    }
 
 
     public abstract void endGame();

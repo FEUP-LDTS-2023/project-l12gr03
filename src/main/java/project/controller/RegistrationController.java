@@ -34,6 +34,9 @@ public class RegistrationController extends Controller<PlayerRegistrator> {
                     Player player2 = new Player(getModel().getPlayerSymbol(2),0);
                     game.setState(new GameState(new Big(player1,player2, 0, 0)));
                 }
+                break;
+            default:
+
         }
     }
 

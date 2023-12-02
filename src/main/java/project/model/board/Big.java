@@ -34,10 +34,13 @@ public class Big extends TicTacToe {
         new Thread(this::updateElapsedTime).start();
 
     }
-
+    @Override
     public void goUp(){this.selected = (((selected-3) % 9) + 9) % 9;}
+    @Override
     public void goDown(){selected = (selected+3) % 9;}
+    @Override
     public void goLeft(){selected = (((selected-1) % 9) + 9) % 9;}
+    @Override
     public void goRight(){selected = (selected+1) % 9;}
 
     @Override
