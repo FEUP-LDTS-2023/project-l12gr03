@@ -14,10 +14,12 @@ public class Game {
     private final LanternaGUI gui;
     private State state;
 
+
     private String message;
     public Game() throws IOException, URISyntaxException, FontFormatException {
         this.gui = new LanternaGUI(100, 50);
         this.state = new MenuState(new Menu());
+
     }
 
 

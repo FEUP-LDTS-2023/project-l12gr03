@@ -66,13 +66,13 @@ public abstract class TicTacToe {
         return this.initialBoard.size();
     }
 
-    private void writeTotalTimeToFile(String time) {
+    /*private void writeTotalTimeToFile(String time) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(System.getProperty("user.dir") + "/total_time.txt", true))) {
             writer.println(time);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/// Unused
 
     public String findMinTimeFromFile() {
         try (Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/total_time.txt"))) {
