@@ -10,7 +10,6 @@ import project.model.Position;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PositionTest {
-    private Position position;
 
     @Property
     void getLeft(@ForAll int x,@ForAll int y) {

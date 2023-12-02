@@ -15,7 +15,6 @@ public class Game {
     private State state;
 
 
-    private String message;
     public Game() throws IOException, URISyntaxException, FontFormatException {
         this.gui = new LanternaGUI(100, 50);
         this.state = new MenuState(new Menu());
@@ -43,6 +42,7 @@ public class Game {
             try {
                 if (sleepTime > 0) Thread.sleep(sleepTime);
             } catch (InterruptedException ignored) {
+                // Dummy text so the compiler knows the catch is not being ignored, poor guy
             }
         }
         gui.close();
