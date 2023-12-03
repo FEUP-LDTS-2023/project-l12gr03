@@ -21,8 +21,8 @@ public class BoardViewer extends Viewer<TicTacToe> {
                     getModel().getLine(i), "#FFFFFF");
         }
 
-        gui.drawText(new Position(71, 10), String.valueOf(getModel().getp1().getScore()), "#FFFFFF");
-        gui.drawText(new Position(71, 11), String.valueOf(getModel().getp2().getScore()), "#FFFFFF");
+        gui.drawText(new Position(77, 10), String.valueOf(getModel().getp1().getScore()), "#FFFFFF");
+        gui.drawText(new Position(77, 11), String.valueOf(getModel().getp2().getScore()), "#FFFFFF");
 
 
         switch (getModel().getSelected()) {
@@ -99,8 +99,8 @@ public class BoardViewer extends Viewer<TicTacToe> {
 
         }
 
-        gui.drawText(new Position(68, 28), "Playtime: " + getModel().findMinTimeFromFile(), "#FFFFFF");
-        gui.drawText(new Position(68, 27), "Record time: " + getModel().getFormattedElapsedTime(), "#FFFFFF");
+        gui.drawText(new Position(68, 28), "Record time: " + getModel().findMinTimeFromFile(), "#FFFFFF");
+        gui.drawText(new Position(68, 27), "Playtime: " + getModel().getFormattedElapsedTime(), "#FFFFFF");
 
         List<Integer> states = getModel().getMiniState();
         int row = 10;
