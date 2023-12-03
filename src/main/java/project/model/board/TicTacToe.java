@@ -34,10 +34,10 @@ public abstract class TicTacToe {
         return states;
     }
 
-    /*
+    /**
     public ArrayList<Mini> getBigSquares(){
         return bigSquares;
-    }*/
+    }**/
 
     public TicTacToe(int x, int y){this.position=new Position(x,y);}
 
@@ -83,13 +83,13 @@ public abstract class TicTacToe {
         return this.initialBoard.size();
     }
 
-    /*private void writeTotalTimeToFile(String time) {
+    /**private void writeTotalTimeToFile(String time) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(System.getProperty("user.dir") + "/total_time.txt", true))) {
             writer.println(time);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/// Unused
+    }**/// Unused
 
     public String findMinTimeFromFile() {
         try (Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/total_time.txt"), StandardCharsets.UTF_8)) {
