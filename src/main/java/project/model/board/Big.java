@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Big extends TicTacToe {
 
 
-    ArrayList<Mini> bigSquares;
+    //ArrayList<Mini> bigSquares;
 
     public Big(Player player1, Player player2, int x, int y) throws IOException {
         super(x, y);
@@ -51,9 +51,8 @@ public class Big extends TicTacToe {
     public void select(Position position){}
 
 
-
     public void ScanBoard() throws IOException {
-        this.file = new File(System.getProperty("user.dir") + "/resources/initialBoard.txt");
+        this.file = new File(System.getProperty("user.dir") + "/resources/initialBoard2.txt");
         Scanner myReader = new Scanner(file,  Charset.defaultCharset().name());
         while (myReader.hasNextLine()) {
             String data = myReader.nextLine();

@@ -88,4 +88,5 @@ public class LanternaGUI implements GUI {
     public void close() throws IOException {
         screen.close();
     }
+
 }

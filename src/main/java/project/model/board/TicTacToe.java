@@ -19,10 +19,25 @@ public abstract class TicTacToe {
     private Position position;
     protected int selected = 4;
 
+    ArrayList<Mini> bigSquares;
+
     public int getSelected() {
         return selected;
     }
 
+    public List<Integer> getMiniState(){
+        List<Integer> states = new ArrayList<>();
+
+        for (int i = 0; i < bigSquares.size(); i++){
+            states.add(bigSquares.get(i).getState());
+        }
+        return states;
+    }
+
+    /*
+    public ArrayList<Mini> getBigSquares(){
+        return bigSquares;
+    }*/
 
     public TicTacToe(int x, int y){this.position=new Position(x,y);}
 
@@ -140,7 +155,6 @@ public abstract class TicTacToe {
 
 
     public abstract void endGame();
-
 
 
     public abstract void select(Position position);
