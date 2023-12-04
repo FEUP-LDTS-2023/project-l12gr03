@@ -1,15 +1,18 @@
 package project.model.board;
 
+import project.model.PedroPair;
 import project.model.Position;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 public class Mini extends TicTacToe {
 
-    ArrayList<Character> smallSquares = new ArrayList<>(Collections.nCopies(9, ' '));
-
+    //ArrayList<Character> smallSquares = new ArrayList<>(Collections.nCopies(9, ' '));
+    List<Character> smallSquares = Arrays.asList('A','B','C','D','E','F','G','H','I');
     protected int state;
     public Mini(Player player1, Player player2, int x, int y) throws IOException {
         super(x, y);
@@ -32,6 +35,17 @@ public class Mini extends TicTacToe {
 
     @Override
     public void endGame() {}
+
+    @Override
+    public List<String> getContents()
+    {
+        List<String> res = new ArrayList<String>();
+        for (Character car : smallSquares)
+        {
+            res.add(String.valueOf(car));
+        }
+        return res;
+    }
 
     @Override
     public void select(Position position){}

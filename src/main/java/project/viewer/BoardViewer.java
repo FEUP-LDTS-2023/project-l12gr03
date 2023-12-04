@@ -1,6 +1,7 @@
 package project.viewer;
 
 import project.gui.GUI;
+import project.model.PedroPair;
 import project.model.Position;
 import project.model.board.Mini;
 import project.model.board.TicTacToe;
@@ -103,6 +104,7 @@ public class BoardViewer extends Viewer<TicTacToe> {
         gui.drawText(new Position(68, 27), "Playtime: " + getModel().getFormattedElapsedTime(), "#FFFFFF");
 
         List<Integer> states = getModel().getMiniState();
+        List<String> contents = getModel().getContents();
         int row = 10;
         int col = 8;
         int index = 0;
@@ -111,7 +113,9 @@ public class BoardViewer extends Viewer<TicTacToe> {
                 switch (states.get(index)) {
                     case 0:  // jogo está a acontecer
                         for (int i = 0; i < 6; i += 2) {
-                            gui.drawText(new Position(row + x * 18, col + y * 8 + i), "   |   |    ", "#FFFFFF");
+                            int ContentsIndex = 27*y + 9*x + 3 * i/2;
+                            String text = " " + contents.get(ContentsIndex) + " | " + contents.get(ContentsIndex + 1) + " | " + contents.get(ContentsIndex + 2) + "  ";
+                            gui.drawText(new Position(row + x * 18, col + y * 8 + i), text, "#FFFFFF");
                         }
                         for (int i = 1; i < 4; i += 2) {
                             gui.drawText(new Position(row + x * 18, col + y * 8 + i), "---+---+--- ", "#FFFFFF");
@@ -132,6 +136,9 @@ public class BoardViewer extends Viewer<TicTacToe> {
                 index++;
             }
         }
+
+
+
 
     }
 }

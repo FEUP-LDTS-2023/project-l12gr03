@@ -1,14 +1,12 @@
 package project.model.board;
 
+import project.model.PedroPair;
 import project.model.Position;
 
 import java.io.*;
 import java.nio.charset.Charset;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Big extends TicTacToe {
@@ -46,6 +44,17 @@ public class Big extends TicTacToe {
     @Override
     public void endGame() {}
 
+    @Override
+    public List<String> getContents()
+    {
+        List<String> res = new ArrayList<String>();
+        for (Mini mini : bigSquares)
+        {
+            res.addAll(mini.getContents());
+        }
+        return res;
+    }
+
 
     @Override
     public void select(Position position){}
@@ -53,7 +62,7 @@ public class Big extends TicTacToe {
 
     public void ScanBoard() throws IOException {
         this.file = new File(System.getProperty("user.dir") + "/resources/initialBoard2.txt");
-        Scanner myReader = new Scanner(file,  Charset.defaultCharset().name());
+        Scanner myReader = new Scanner(file, Charset.defaultCharset());
         while (myReader.hasNextLine()) {
             String data = myReader.nextLine();
             this.initialBoard.add(data);
