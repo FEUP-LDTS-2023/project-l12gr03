@@ -118,15 +118,31 @@ public class BoardViewer extends Viewer<TicTacToe> {
                         }
                         break;
                     case 1: // jogo acabou, o jogador 1 ganhou
-                        //gui.drawText(new Position(), "   \\   /   ", "#FFFFFF");
-                        //gui.drawText(new Position(), "    \\ /    ", "#FFFFFF");
-                        //gui.drawText(new Position(), "      X     ", "#FFFFFF");
+                        gui.drawText(new Position(28, 15), "  \\     /  ", "#FFFFFF");
+                        gui.drawText(new Position(28, 16), "   \\   /   ", "#FFFFFF");
+                        gui.drawText(new Position(28, 17), "    \\ /    ", "#FFFFFF");
+                        gui.drawText(new Position(27, 18), "      X     ", "#FFFFFF");
+                        gui.drawText(new Position(27, 19), "     / \\   ", "#FFFFFF");
+                        gui.drawText(new Position(27, 20), "    /   \\  ", "#FFFFFF");
+                        gui.drawText(new Position(27, 21), "   /     \\ ", "#FFFFFF");
                         break;
                     case 2: // jogo acabou, o jogador 2 ganhou
-
+                        gui.drawText(new Position(27, 15), "   *******  ", "#FFFFFF");
+                        gui.drawText(new Position(27, 16), "  *       * ", "#FFFFFF");
+                        gui.drawText(new Position(27, 17), "  *       * ", "#FFFFFF");
+                        gui.drawText(new Position(27, 18), "  *   0   * ", "#FFFFFF");
+                        gui.drawText(new Position(27, 19), "  *       * ", "#FFFFFF");
+                        gui.drawText(new Position(27, 20), "  *       * ", "#FFFFFF");
+                        gui.drawText(new Position(27, 21), "   *******  ", "#FFFFFF");
                         break;
                     case 3: // jogo acabou, empate
-
+                        gui.drawText(new Position(27, 15), "  \\******/ ", "#FFFFFF");
+                        gui.drawText(new Position(27, 16), "  *\\    /* ", "#FFFFFF");
+                        gui.drawText(new Position(27, 17), "  * \\  / * ", "#FFFFFF");
+                        gui.drawText(new Position(27, 18), "  *  \\/  * ", "#FFFFFF");
+                        gui.drawText(new Position(27, 19), "  *  /\\  * ", "#FFFFFF");
+                        gui.drawText(new Position(27, 20), "  * /  \\ * ", "#FFFFFF");
+                        gui.drawText(new Position(27, 21), "   /****\\ ", "#FFFFFF");
                         break;
                 }
                 index++;
