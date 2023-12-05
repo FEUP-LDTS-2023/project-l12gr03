@@ -137,13 +137,6 @@ public class BoardViewer extends Viewer<TicTacToe> {
                         gui.drawText(new Position(row - 1 + x * 18, col + 5 + y * 8), "   *******  ", "#FFFFFF");
                         break;
                     case 3: // jogo acabou, empate
-                        gui.drawText(new Position(row - 1 + x * 18, col - 1 + y * 8), "  \\******/ ", "#FFFFFF");
-                        gui.drawText(new Position(row - 1 + x * 18, col + y * 8), "  *\\    /* ", "#FFFFFF");
-                        gui.drawText(new Position(row - 1 + x * 18, col + 1 + y * 8), "  * \\  / * ", "#FFFFFF");
-                        gui.drawText(new Position(row - 1 + x * 18, col + 2 + y * 8), "  *  \\/  * ", "#FFFFFF");
-                        gui.drawText(new Position(row - 1 + x * 18, col + 3 + y * 8), "  *  /\\  * ", "#FFFFFF");
-                        gui.drawText(new Position(row - 1 + x * 18, col + 4 + y * 8), "  * /  \\ * ", "#FFFFFF");
-                        gui.drawText(new Position(row - 1 + x * 18, col + 5 + y * 8), "  */****\\* ", "#FFFFFF");
                         break;
                 }
                 index++;
