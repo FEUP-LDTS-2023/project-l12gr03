@@ -1,6 +1,5 @@
 package project.model.board;
 
-import project.model.PedroPair;
 import project.model.Position;
 
 import java.io.*;
@@ -24,7 +23,7 @@ public abstract class TicTacToe {
 
     public int getSelected() {return selected;}
 
-    public abstract List<String> getContents();
+    public abstract List<Character> getContents();
 
     public List<Integer> getMiniState(){
         List<Integer> states = new ArrayList<>();

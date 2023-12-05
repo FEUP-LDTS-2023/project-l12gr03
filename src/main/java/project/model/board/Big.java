@@ -1,6 +1,5 @@
 package project.model.board;
 
-import project.model.PedroPair;
 import project.model.Position;
 
 import java.io.*;
@@ -45,9 +44,9 @@ public class Big extends TicTacToe {
     public void endGame() {}
 
     @Override
-    public List<String> getContents()
+    public List<Character> getContents()
     {
-        List<String> res = new ArrayList<String>();
+        List<Character> res = new ArrayList<Character>();
         for (Mini mini : bigSquares)
         {
             res.addAll(mini.getContents());
