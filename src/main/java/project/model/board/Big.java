@@ -48,35 +48,41 @@ public class Big extends TicTacToe {
     }
     @Override
     public void goUp(){
-        if (isPlayingMini){
+        if (bigSquares.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
             bigSquares.get(selected).goUp();
-        }
+        } else {
         selected = (((selected-3) % 9) + 9) % 9;}
+    }
     @Override
     public void goDown(){
-        if (isPlayingMini){
+        if (bigSquares.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
             bigSquares.get(selected).goDown();
-        }
+        }else{
         selected = (selected+3) % 9;}
+    }
     @Override
     public void goLeft(){
-        if (isPlayingMini){
+        if (bigSquares.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
             bigSquares.get(selected).goLeft();
-        }
+        }else{
         selected = (((selected-1) % 9) + 9) % 9;}
+    }
     @Override
     public void goRight(){
-        if (isPlayingMini){
+        if (bigSquares.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
             bigSquares.get(selected).goRight();
-        }
+        }else{
         selected = (selected+1) % 9;}
+    }
 
     @Override
     public void endGame() {}
 
 
     @Override
-    public void select(){
+    public boolean select(Player player){
+        if(bigSquares.get(selected).select(currentPlayer)){ switchPlayer(); return true;}
+        return false;
 
     }
 

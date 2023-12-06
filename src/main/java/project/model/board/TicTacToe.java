@@ -11,6 +11,9 @@ import java.util.Scanner;
 
 
 public abstract class TicTacToe {
+
+    static final int MINI_NOT_SELECTED = -1;
+    static final int DEFAUL_SQUARE = 4;
     protected String totalTime;
     protected String formattedElapsedTime;
     protected Player currentPlayer;
@@ -153,6 +156,6 @@ public abstract class TicTacToe {
     public abstract void endGame();
 
 
-    public abstract void select();
+    public abstract boolean select(Player player);
 
 }

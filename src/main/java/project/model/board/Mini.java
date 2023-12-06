@@ -8,9 +8,13 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+
 public class Mini extends TicTacToe {
 
+
+
     ArrayList<Character> smallSquares = new ArrayList<>(Collections.nCopies(9, ' '));
+    private boolean isOver = false;
 
     protected int state;
     public Mini(Player player1, Player player2, int x, int y) throws IOException {
@@ -100,5 +104,23 @@ public class Mini extends TicTacToe {
     public void endGame(){}
 
     @Override
-    public void select(){}
+    public boolean select(Player player){
+        if (!isOver) {
+            if (selected == MINI_NOT_SELECTED) {
+                selected = DEFAUL_SQUARE;
+            } else {
+                return drawsymbol(player);
+            }
+        }
+        return false;
+    }
+
+    public boolean drawsymbol(Player player){
+        if (smallSquares.get(selected) == ' '){
+            smallSquares.set(selected, player.getSymbol());
+            selected=MINI_NOT_SELECTED;
+            return true;
+        }
+        return false;
+    }
 }
