@@ -78,6 +78,17 @@ public class Big extends TicTacToe {
     @Override
     public void endGame() {}
 
+    @Override
+    public List<Character> getContents()
+    {
+        List<Character> res = new ArrayList<Character>();
+        for (Mini mini : bigSquares)
+        {
+            res.addAll(mini.getContents());
+        }
+        return res;
+    }
+
 
     @Override
     public boolean select(Player player){
@@ -89,7 +100,7 @@ public class Big extends TicTacToe {
 
     public void ScanBoard() throws IOException {
         this.file = new File(System.getProperty("user.dir") + "/resources/initialBoard2.txt");
-        Scanner myReader = new Scanner(file,  Charset.defaultCharset().name());
+        Scanner myReader = new Scanner(file, Charset.defaultCharset());
         while (myReader.hasNextLine()) {
             String data = myReader.nextLine();
             this.initialBoard.add(data);

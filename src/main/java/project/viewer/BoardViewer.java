@@ -2,13 +2,17 @@ package project.viewer;
 
 import project.gui.GUI;
 import project.model.Position;
-import project.model.board.Mini;
 import project.model.board.TicTacToe;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BoardViewer extends Viewer<TicTacToe> {
+
+    String X_COLOUR = "#0000FF";
+    String O_COLOUR = "#FF0000";
+    String DEFAULT_COLOUR = "#FFFFFF";
+
+
     public BoardViewer(TicTacToe board) {
         super(board);
     }
@@ -102,7 +106,11 @@ public class BoardViewer extends Viewer<TicTacToe> {
         gui.drawText(new Position(68, 28), "Record time: " + getModel().findMinTimeFromFile(), "#FFFFFF");
         gui.drawText(new Position(68, 27), "Playtime: " + getModel().getFormattedElapsedTime(), "#FFFFFF");
 
+
         List<Integer> states = getModel().getPlayState();
+
+        List<Character> contents = getModel().getContents();
+
         int row = 10;
         int col = 8;
         int index = 0;
@@ -111,7 +119,11 @@ public class BoardViewer extends Viewer<TicTacToe> {
                 switch (states.get(index)) {
                     case 0:  // jogo está a acontecer
                         for (int i = 0; i < 6; i += 2) {
-                            gui.drawText(new Position(row + x * 18, col + y * 8 + i), "   |   |    ", "#FFFFFF");
+                            int ContentsIndex = 27*y + 9*x + 3 * i/2;
+                            String text = " " + contents.get(ContentsIndex) + " | " + contents.get(ContentsIndex + 1) + " | " + contents.get(ContentsIndex + 2) + "  ";
+                            //gui.drawText(new Position(row + x * 18, col + y * 8 + i), text, "#FFFFFF");
+                            Position positionDraw = new Position(row + x * 18, col + y * 8 + i);
+                            gui.drawWith2Exceptions(positionDraw, text, DEFAULT_COLOUR, 'X',X_COLOUR,'O',O_COLOUR);
                         }
                         for (int i = 1; i < 4; i += 2) {
                             gui.drawText(new Position(row + x * 18, col + y * 8 + i), "---+---+--- ", "#FFFFFF");

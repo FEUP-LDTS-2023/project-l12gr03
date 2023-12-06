@@ -14,6 +14,7 @@ import project.model.Position;
 import java.io.IOException;
 
 public class LanternaGUI implements GUI {
+
     private final Screen screen;
 
     public LanternaGUI(Screen screen) {
@@ -72,6 +73,29 @@ public class LanternaGUI implements GUI {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(position.getX(), position.getY(), text);
+    }
+
+    @Override
+    public void drawCharacter(Position position, Character character, String color)
+    {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setForegroundColor(TextColor.Factory.fromString(color));
+        tg.putString(position.getX(), position.getY(), "" + character);
+    }
+
+    @Override
+    public void drawWith2Exceptions(Position position, String text, String defaultColour,
+                             Character exception1, String excepColour1,
+                             Character exception2, String excepColour2){
+        int size = text.length();
+        for (int index = 0; index<size ; index++)
+        {
+            if (text.charAt(index)==exception1) drawCharacter(position,exception1,excepColour1);
+            else if (text.charAt(index)==exception2) drawCharacter(position,exception2,excepColour2);
+            else drawCharacter(position,text.charAt(index),defaultColour);
+
+            position = position.getRight();
+        }
     }
 
     @Override

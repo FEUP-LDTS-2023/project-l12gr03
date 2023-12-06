@@ -19,14 +19,16 @@ public abstract class TicTacToe {
     protected Player currentPlayer;
     protected Player p1;
     protected Player p2;
+
     private Position position;
     protected int selected;
 
+
     ArrayList<Mini> bigSquares;
 
-    public int getSelected() {
-        return selected;
-    }
+    public int getSelected() {return selected;}
+
+    public abstract List<Character> getContents();
 
     /**
     public ArrayList<Mini> getBigSquares(){

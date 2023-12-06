@@ -123,4 +123,12 @@ public class Mini extends TicTacToe {
         }
         return false;
     }
+
+    public List<Character> getContents()
+    {
+        return new ArrayList<>(smallSquares);
+    }
+
+
+
 }
