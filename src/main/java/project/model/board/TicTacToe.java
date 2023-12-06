@@ -19,7 +19,7 @@ public abstract class TicTacToe {
     private Position position;
     protected int selected = 4;
 
-    ArrayList<Mini> bigSquares;
+    //ArrayList<Mini> bigSquares;
 
     public int getSelected() {
         return selected;

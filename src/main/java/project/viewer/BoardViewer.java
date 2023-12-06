@@ -102,6 +102,7 @@ public class BoardViewer extends Viewer<TicTacToe> {
         gui.drawText(new Position(68, 28), "Record time: " + getModel().findMinTimeFromFile(), "#FFFFFF");
         gui.drawText(new Position(68, 27), "Playtime: " + getModel().getFormattedElapsedTime(), "#FFFFFF");
 
+
         List<Integer> states = getModel().getPlayState();
         int row = 10;
         int col = 8;
@@ -115,6 +116,52 @@ public class BoardViewer extends Viewer<TicTacToe> {
                         }
                         for (int i = 1; i < 4; i += 2) {
                             gui.drawText(new Position(row + x * 18, col + y * 8 + i), "---+---+--- ", "#FFFFFF");
+                        }
+                        if (index == currentMini && isSelectingMini){
+                            switch(getModel().getSelected()) {
+                                case 0:
+                                    gui.drawText(new Position(row + x * 18, col + y * 8), "   |", "#FFFF00");
+                                    gui.drawText(new Position(row + x * 18, col + 1 + y * 8), "---+", "#FFFF00");
+                                    break;
+                                case 1:
+                                    gui.drawText(new Position(row + 3 + x * 18, col + y * 8), "|   |", "#FFFF00");
+                                    gui.drawText(new Position(row + 3 + x * 18, col + 1 + y * 8), "+---+", "#FFFF00");
+                                    break;
+                                case 2:
+                                    gui.drawText(new Position(row + 7 + x * 18, col + y * 8), "|   ", "#FFFF00");
+                                    gui.drawText(new Position(row + 7 + x * 18, col + 1 + y * 8), "+---", "#FFFF00");
+                                    break;
+                                case 3:
+                                    gui.drawText(new Position(row + x * 18, col + 1 + y * 8), "---+", "#FFFF00");
+                                    gui.drawText(new Position(row + x * 18, col + 2 + y * 8), "   |", "#FFFF00");
+                                    gui.drawText(new Position(row + x * 18, col + 3 + y * 8), "---+", "#FFFF00");
+                                    break;
+                                case 4:
+                                    gui.drawText(new Position(row + 3 + x * 18, col + 1 + y * 8), "+---+", "#FFFF00");
+                                    gui.drawText(new Position(row + 3 + x * 18, col + 2 + y * 8), "|   |", "#FFFF00");
+                                    gui.drawText(new Position(row + 3 + x * 18, col + 3 + y * 8), "+---+", "#FFFF00");
+                                    break;
+                                case 5:
+                                    gui.drawText(new Position(row + 7 + x * 18, col + 1 + y * 8), "+---", "#FFFF00");
+                                    gui.drawText(new Position(row + 7 + x * 18, col + 2 + y * 8), "|   ", "#FFFF00");
+                                    gui.drawText(new Position(row + 7 + x * 18, col + 3 + y * 8), "+---", "#FFFF00");
+                                    break;
+                                case 6:
+                                    gui.drawText(new Position(row + x * 18, col + 4 + y * 8), "   |", "#FFFF00");
+                                    gui.drawText(new Position(row + x * 18, col + 3 + y * 8), "---+", "#FFFF00");
+                                    break;
+                                case 7:
+                                    gui.drawText(new Position(row + 3 + x * 18, col + 4 + y * 8), "|   |", "#FFFF00");
+                                    gui.drawText(new Position(row + 3 + x * 18, col + 3 + y * 8), "+---+", "#FFFF00");
+                                    break;
+                                case 8:
+                                    gui.drawText(new Position(row + 7 + x * 18, col + 4 + y * 8), "|   ", "#FFFF00");
+                                    gui.drawText(new Position(row + 7 + x * 18, col + 3 + y * 8), "+---", "#FFFF00");
+                                    break;
+                                default:
+                                    gui.drawText(new Position(22, 22), String.valueOf(getModel().getSelected()), "#0000FF");
+                                    break;
+                            }
                         }
                         break;
                     case 1: // jogo acabou, o jogador 1
@@ -143,4 +190,20 @@ public class BoardViewer extends Viewer<TicTacToe> {
         }
 
     }
+
+    /*private void higlightMini(GUI gui, Position topCorner, int selected){
+        switch(selected){
+            case 0:
+                gui.drawText(new Position(topCorner.getX()+3, topCorner.getY()));
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            default:
+        }
+    }*/
 }
