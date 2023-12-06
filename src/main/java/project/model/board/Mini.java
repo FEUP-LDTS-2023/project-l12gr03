@@ -4,7 +4,9 @@ import project.model.Position;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 public class Mini extends TicTacToe {
 
@@ -15,7 +17,14 @@ public class Mini extends TicTacToe {
         super(x, y);
         this.p1 = player1;
         this.p2 = player2;
-        this.state = 0; // O estado default é que o jogo está a acontecer
+        this.state = 2; // O estado default é que o jogo está a acontecer
+    }
+
+    public int getMiniX(){
+        return getPosition().getX();
+    }
+    public int getMiniY(){
+        return getPosition().getY();
     }
 
     public Integer getMiniGameState(){
@@ -65,16 +74,21 @@ public class Mini extends TicTacToe {
     }
 
     @Override
-    public void goUp(){}
-    @Override
-    public void goDown(){}
-    @Override
-    public void goLeft(){}
-    @Override
-    public void goRight(){}
+    public List<Integer> getPlayState() {
+        return Arrays.asList(state);
+    }
 
     @Override
-    public void endGame() {}
+    public void goUp(){ selected = (((selected-3) % 9) + 9) % 9;}
+    @Override
+    public void goDown(){selected = (selected+3) % 9;}
+    @Override
+    public void goLeft(){selected = (((selected-1) % 9) + 9) % 9;}
+    @Override
+    public void goRight(){selected = (selected+1) % 9;}
+
+    @Override
+    public void endGame(){}
 
     @Override
     public void select(Position position){}

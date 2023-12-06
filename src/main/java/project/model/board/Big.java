@@ -5,16 +5,14 @@ import project.model.Position;
 import java.io.*;
 import java.nio.charset.Charset;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Big extends TicTacToe {
 
 
-    //ArrayList<Mini> bigSquares;
+    ArrayList<Mini> bigSquares;
+    boolean isPlayingMini = false;
 
     public Big(Player player1, Player player2, int x, int y) throws IOException {
         super(x, y);
@@ -34,14 +32,43 @@ public class Big extends TicTacToe {
         new Thread(this::updateElapsedTime).start();
 
     }
+
+    public List<Integer> getPlayState(){
+        List<Integer> states = new ArrayList<>();
+
+        for (int i = 0; i < bigSquares.size(); i++){
+            states.add(bigSquares.get(i).getMiniGameState());
+        }
+        return states;
+    }
+
+    public boolean getBool(){
+        return isPlayingMini;
+    }
     @Override
-    public void goUp(){this.selected = (((selected-3) % 9) + 9) % 9;}
+    public void goUp(){
+        if (isPlayingMini){
+            bigSquares.get(selected).goUp();
+        }
+        selected = (((selected-3) % 9) + 9) % 9;}
     @Override
-    public void goDown(){selected = (selected+3) % 9;}
+    public void goDown(){
+        if (isPlayingMini){
+            bigSquares.get(selected).goDown();
+        }
+        selected = (selected+3) % 9;}
     @Override
-    public void goLeft(){selected = (((selected-1) % 9) + 9) % 9;}
+    public void goLeft(){
+        if (isPlayingMini){
+            bigSquares.get(selected).goLeft();
+        }
+        selected = (((selected-1) % 9) + 9) % 9;}
     @Override
-    public void goRight(){selected = (selected+1) % 9;}
+    public void goRight(){
+        if (isPlayingMini){
+            bigSquares.get(selected).goRight();
+        }
+        selected = (selected+1) % 9;}
 
     @Override
     public void endGame() {}

@@ -37,6 +37,7 @@ public class BoardController extends Controller<TicTacToe> {
                 game.setState(new MenuState(new Menu()));
                 break;
             case SELECT:
+                //
                 // Primeiro guarda no vetor do miniGame o simbolo jogado na posição certa
                 // getModel().getMini().setMiniGameState(); ---- Atualiza o estado do miniGame
                 // Atualiza o vetor de miniGames do Big com qualquer alteração de estado que o Mini possa ter sofrido

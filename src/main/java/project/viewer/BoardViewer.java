@@ -102,7 +102,7 @@ public class BoardViewer extends Viewer<TicTacToe> {
         gui.drawText(new Position(68, 28), "Record time: " + getModel().findMinTimeFromFile(), "#FFFFFF");
         gui.drawText(new Position(68, 27), "Playtime: " + getModel().getFormattedElapsedTime(), "#FFFFFF");
 
-        List<Integer> states = getModel().getMiniState();
+        List<Integer> states = getModel().getPlayState();
         int row = 10;
         int col = 8;
         int index = 0;
@@ -119,22 +119,22 @@ public class BoardViewer extends Viewer<TicTacToe> {
                         break;
                     case 1: // jogo acabou, o jogador 1
 
-                        gui.drawText(new Position(row + x * 18, col - 1 + y * 8), "  \\     /  ", "#FFFFFF");
-                        gui.drawText(new Position(row + x * 18, col + y * 8), "   \\   /   ", "#FFFFFF");
-                        gui.drawText(new Position(row + x * 18, col + 1 + y * 8), "    \\ /    ", "#FFFFFF");
-                        gui.drawText(new Position(row - 1 + x * 18, col + 2 + y * 8), "      X     ", "#FFFFFF");
-                        gui.drawText(new Position(row - 1 + x * 18, col + 3 + y * 8), "     / \\   ", "#FFFFFF");
-                        gui.drawText(new Position(row - 1 + x * 18, col + 4 + y * 8), "    /   \\  ", "#FFFFFF");
-                        gui.drawText(new Position(row - 1 + x * 18, col + 5 + y * 8), "   /     \\ ", "#FFFFFF");
+                        gui.drawText(new Position(row + x * 18, col - 1 + y * 8), "  \\     /  ", "#29C3F4");
+                        gui.drawText(new Position(row + x * 18, col + y * 8), "   \\   /   ", "#29C3F4");
+                        gui.drawText(new Position(row + x * 18, col + 1 + y * 8), "    \\ /    ", "#29C3F4");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 2 + y * 8), "      X     ", "#29C3F4");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 3 + y * 8), "     / \\   ", "#29C3F4");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 4 + y * 8), "    /   \\  ", "#29C3F4");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 5 + y * 8), "   /     \\ ", "#29C3F4");
                         break;
                     case 2: // jogo acabou, o jogador 2 ganhou
-                        gui.drawText(new Position(row - 1 + x * 18, col - 1 + y * 8), "   *******  ", "#FFFFFF");
-                        gui.drawText(new Position(row - 1+ x * 18, col + y * 8), "  *       * ", "#FFFFFF");
-                        gui.drawText(new Position(row - 1 + x * 18, col + 1 + y * 8), "  *       * ", "#FFFFFF");
-                        gui.drawText(new Position(row - 1 + x * 18, col + 2 + y * 8), "  *   0   * ", "#FFFFFF");
-                        gui.drawText(new Position(row - 1 + x * 18, col + 3 + y * 8), "  *       * ", "#FFFFFF");
-                        gui.drawText(new Position(row - 1 + x * 18, col + 4 + y * 8), "  *       * ", "#FFFFFF");
-                        gui.drawText(new Position(row - 1 + x * 18, col + 5 + y * 8), "   *******  ", "#FFFFFF");
+                        gui.drawText(new Position(row - 1 + x * 18, col - 1 + y * 8), "   *******  ", "#FF0000");
+                        gui.drawText(new Position(row - 1+ x * 18, col + y * 8), "  *       * ", "#FF0000");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 1 + y * 8), "  *       * ", "#FF0000");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 2 + y * 8), "  *   0   * ", "#FF0000");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 3 + y * 8), "  *       * ", "#FF0000");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 4 + y * 8), "  *       * ", "#FF0000");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 5 + y * 8), "   *******  ", "#FF0000");
                         break;
                     case 3: // jogo acabou, empate
                         break;

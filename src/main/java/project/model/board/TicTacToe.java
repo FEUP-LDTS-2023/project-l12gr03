@@ -25,21 +25,13 @@ public abstract class TicTacToe {
         return selected;
     }
 
-    public List<Integer> getMiniState(){
-        List<Integer> states = new ArrayList<>();
-
-        for (int i = 0; i < bigSquares.size(); i++){
-            states.add(bigSquares.get(i).getMiniGameState());
-        }
-        return states;
-    }
-
     /**
     public ArrayList<Mini> getBigSquares(){
         return bigSquares;
     }**/
 
     public TicTacToe(int x, int y){this.position=new Position(x,y);}
+    public abstract List<Integer> getPlayState();
 
     public abstract void goUp();
     public abstract void goDown();
