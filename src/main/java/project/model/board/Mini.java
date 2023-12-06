@@ -15,12 +15,55 @@ public class Mini extends TicTacToe {
         super(x, y);
         this.p1 = player1;
         this.p2 = player2;
-        this.state = 0;
+        this.state = 0; // O estado default é que o jogo está a acontecer
     }
 
-    protected int getState(){ // 0 = jogo está a acontecer
-        return state;
+    public Integer getMiniGameState(){
+        return this.state;
     }
+    public void setMiniGameState(){ //
+        if (!isGameTie(this.smallSquares)) {
+            this.state = 0; // ainda tem espaços
+        } else if (checkWinner(this.smallSquares, p1.getSymbol())) {
+            this.state = 1; // jogador 1 ganha o jogo :)
+        } else if (checkWinner(this.smallSquares, p2.getSymbol())) {
+            this.state = 2; // jogador 2 ganha o jogo :(
+        } else {
+            this.state = 3; // ora bolas empatou
+        }
+    }
+
+    public static boolean isGameTie(ArrayList<Character> squares) {
+        return !squares.contains(' '); //true se nn tem mais espaços para jogar, ou seja, é um empate
+    }
+
+    public static boolean checkWinner(ArrayList<Character> squares, char playerSymbol) {
+        return (checkRows(squares, playerSymbol) || checkColumns(squares, playerSymbol) || checkDiagonals(squares, playerSymbol));
+    }
+
+    public static boolean checkRows(ArrayList<Character> squares, char playerSymbol) {
+        for (int i = 0; i < 7; i += 3) {
+            if (squares.get(i) == playerSymbol && squares.get(i + 1) == playerSymbol && squares.get(i + 2) == playerSymbol) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkColumns(ArrayList<Character> squares, char playerSymbol) {
+        for (int i = 0; i < 3; i++) {
+            if (squares.get(i) == playerSymbol && squares.get(i + 3) == playerSymbol && squares.get(i + 6) == playerSymbol) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkDiagonals(ArrayList<Character> squares, char playerSymbol) {
+        return (squares.get(0) == playerSymbol && squares.get(4) == playerSymbol && squares.get(8) == playerSymbol) ||
+                (squares.get(2) == playerSymbol && squares.get(4) == playerSymbol && squares.get(6) == playerSymbol);
+    }
+
     @Override
     public void goUp(){}
     @Override
