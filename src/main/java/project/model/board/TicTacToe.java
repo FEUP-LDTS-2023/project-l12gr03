@@ -17,7 +17,7 @@ public abstract class TicTacToe {
     protected Player p1;
     protected Player p2;
     private Position position;
-    protected int selected = 4;
+    protected int selected;
 
     ArrayList<Mini> bigSquares;
 
@@ -63,6 +63,8 @@ public abstract class TicTacToe {
         return position;
     }
 
+    public abstract Position getMinPosition();
+
     protected File file;
     protected List<String> initialBoard = new ArrayList<>();
 
@@ -82,6 +84,8 @@ public abstract class TicTacToe {
             e.printStackTrace();
         }
     }**/// Unused
+
+    public abstract int getInnerSelected();
 
     public String findMinTimeFromFile() {
         try (Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/total_time.txt"), StandardCharsets.UTF_8)) {
@@ -149,6 +153,6 @@ public abstract class TicTacToe {
     public abstract void endGame();
 
 
-    public abstract void select(Position position);
+    public abstract void select();
 
 }

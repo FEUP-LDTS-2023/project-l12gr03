@@ -18,6 +18,7 @@ public class Mini extends TicTacToe {
         this.p1 = player1;
         this.p2 = player2;
         this.state = 0; // O estado default é que o jogo está a acontecer
+        selected = -1;
     }
 
     public int getMiniX(){
@@ -78,6 +79,14 @@ public class Mini extends TicTacToe {
         return Arrays.asList(state);
     }
 
+    public Position getMinPosition(){
+        return getPosition();
+    }
+
+    public int getInnerSelected(){
+        return getSelected();
+    }
+
     @Override
     public void goUp(){ selected = (((selected-3) % 9) + 9) % 9;}
     @Override
@@ -91,5 +100,5 @@ public class Mini extends TicTacToe {
     public void endGame(){}
 
     @Override
-    public void select(Position position){}
+    public void select(){}
 }

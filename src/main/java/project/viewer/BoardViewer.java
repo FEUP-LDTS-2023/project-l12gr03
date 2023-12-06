@@ -118,9 +118,9 @@ public class BoardViewer extends Viewer<TicTacToe> {
                         }
                         break;
                     case 1: // jogo acabou, o jogador 1
-                        gui.drawText(new Position(row + x * 18, col - 1 + y * 8), "  \\     /  ", "#29C3F4");
-                        gui.drawText(new Position(row + x * 18, col + y * 8), "   \\   /   ", "#29C3F4");
-                        gui.drawText(new Position(row + x * 18, col + 1 + y * 8), "    \\ /    ", "#29C3F4");
+                        gui.drawText(new Position(row + x * 18, col - 1 + y * 8),     "  \\     /  ", "#29C3F4");
+                        gui.drawText(new Position(row + x * 18, col + y * 8),         "   \\   /   ", "#29C3F4");
+                        gui.drawText(new Position(row + x * 18, col + 1 + y * 8),     "    \\ /    ", "#29C3F4");
                         gui.drawText(new Position(row - 1 + x * 18, col + 2 + y * 8), "      X     ", "#29C3F4");
                         gui.drawText(new Position(row - 1 + x * 18, col + 3 + y * 8), "     / \\   ", "#29C3F4");
                         gui.drawText(new Position(row - 1 + x * 18, col + 4 + y * 8), "    /   \\  ", "#29C3F4");
@@ -128,7 +128,7 @@ public class BoardViewer extends Viewer<TicTacToe> {
                         break;
                     case 2: // jogo acabou, o jogador 2 ganhou
                         gui.drawText(new Position(row - 1 + x * 18, col - 1 + y * 8), "   *******  ", "#FF0000");
-                        gui.drawText(new Position(row - 1+ x * 18, col + y * 8), "  *       * ", "#FF0000");
+                        gui.drawText(new Position(row - 1+ x * 18, col + y * 8),      "  *       * ", "#FF0000");
                         gui.drawText(new Position(row - 1 + x * 18, col + 1 + y * 8), "  *       * ", "#FF0000");
                         gui.drawText(new Position(row - 1 + x * 18, col + 2 + y * 8), "  *   0   * ", "#FF0000");
                         gui.drawText(new Position(row - 1 + x * 18, col + 3 + y * 8), "  *       * ", "#FF0000");
@@ -142,5 +142,54 @@ public class BoardViewer extends Viewer<TicTacToe> {
             }
         }
 
+        highlightMini(gui,getModel().getMinPosition(),getModel().getInnerSelected());
+    }
+
+    private void highlightMini(GUI gui, Position upperCorner, int MiniSelected){
+        switch (MiniSelected){
+            case 0:
+                gui.drawText(new Position(upperCorner.getX()+3,upperCorner.getY()), "|", "#FFFF00");
+                gui.drawText(new Position(upperCorner.getX(),upperCorner.getY() + 1), "---+", "#FFFF00");
+                break;
+            case 1:
+                gui.drawText(new Position(upperCorner.getX() + 7,upperCorner.getY()), "|", "#FFFF00");
+                gui.drawText(new Position(upperCorner.getX() + 3,upperCorner.getY()), "|", "#FFFF00");
+                gui.drawText(new Position(upperCorner.getX() + 3,upperCorner.getY() + 1), "+---+", "#FFFF00");
+                break;
+            case 2:
+                gui.drawText(new Position(upperCorner.getX() + 7,upperCorner.getY()), "|", "#FFFF00");
+                gui.drawText(new Position(upperCorner.getX() + 7,upperCorner.getY() + 1), "+---", "#FFFF00");
+                break;
+            case 3:
+                gui.drawText(new Position(upperCorner.getX(),upperCorner.getY() + 3), "---+", "#FFFF00");
+                gui.drawText(new Position(upperCorner.getX() + 3,upperCorner.getY() + 2), "|", "#FFFF00");
+                gui.drawText(new Position(upperCorner.getX(),upperCorner.getY() + 1), "---+", "#FFFF00");
+                break;
+            case 4:
+                gui.drawText(new Position(upperCorner.getX() + 3,upperCorner.getY() + 2), "|", "#FFFF00");
+                gui.drawText(new Position(upperCorner.getX() + 3,upperCorner.getY() + 1), "+---+", "#FFFF00");
+                gui.drawText(new Position(upperCorner.getX() + 7,upperCorner.getY() + 2 ), "|", "#FFFF00");
+                gui.drawText(new Position(upperCorner.getX() + 3,upperCorner.getY() + 3), "+---+", "#FFFF00");
+                break;
+            case 5:
+                gui.drawText(new Position(upperCorner.getX() + 7,upperCorner.getY() + 2) , "|", "#FFFF00");
+                gui.drawText(new Position(upperCorner.getX() + 7,upperCorner.getY() + 1), "+---", "#FFFF00");
+                gui.drawText(new Position(upperCorner.getX() + 7,upperCorner.getY() + 3), "+---", "#FFFF00");
+                break;
+            case 6:
+                gui.drawText(new Position(upperCorner.getX(),upperCorner.getY() + 3), "---+", "#FFFF00");
+                gui.drawText(new Position(upperCorner.getX() + 3,upperCorner.getY() + 4), "|", "#FFFF00");
+                break;
+            case 7:
+                gui.drawText(new Position(upperCorner.getX() + 3,upperCorner.getY() + 4), "|", "#FFFF00");
+                gui.drawText(new Position(upperCorner.getX() + 3,upperCorner.getY() + 3), "+---+", "#FFFF00");
+                gui.drawText(new Position(upperCorner.getX() + 7,upperCorner.getY() + 4), "|", "#FFFF00");
+                break;
+            case 8:
+                gui.drawText(new Position(upperCorner.getX() + 7,upperCorner.getY() + 4), "|", "#FFFF00");
+                gui.drawText(new Position(upperCorner.getX() + 7,upperCorner.getY() + 3), "+---", "#FFFF00");
+            default:
+                break;
+        }
     }
 }

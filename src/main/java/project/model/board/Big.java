@@ -11,7 +11,7 @@ import java.util.*;
 public class Big extends TicTacToe {
 
 
-    ArrayList<Mini> bigSquares;
+    ArrayList<Mini> bigSquares = new ArrayList<>();
     boolean isPlayingMini = false;
 
     public Big(Player player1, Player player2, int x, int y) throws IOException {
@@ -24,9 +24,10 @@ public class Big extends TicTacToe {
         {
             for (int column=0; column<3; column++)
             {
-                bigSquares = new ArrayList<>(Collections.nCopies(9, new Mini(p1, p2, getPosition().getX()+column, getPosition().getY()+row)));
+                bigSquares.add(new Mini(player1,player2,10+18*column,8+8*row));
             }
         }
+        selected = 4;
 
 
         new Thread(this::updateElapsedTime).start();
@@ -75,7 +76,9 @@ public class Big extends TicTacToe {
 
 
     @Override
-    public void select(Position position){}
+    public void select(){
+
+    }
 
 
     public void ScanBoard() throws IOException {
@@ -85,6 +88,15 @@ public class Big extends TicTacToe {
             String data = myReader.nextLine();
             this.initialBoard.add(data);
         }
+    }
+
+    public Position getMinPosition()
+    {
+        return bigSquares.get(selected).getMinPosition();
+    }
+
+    public int getInnerSelected() {
+        return bigSquares.get(selected).getInnerSelected();
     }
 
     public void CoinToss() {
