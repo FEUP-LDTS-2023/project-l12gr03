@@ -17,7 +17,7 @@ public class Mini extends TicTacToe {
         super(x, y);
         this.p1 = player1;
         this.p2 = player2;
-        this.state = 2; // O estado default é que o jogo está a acontecer
+        this.state = 0; // O estado default é que o jogo está a acontecer
     }
 
     public int getMiniX(){
