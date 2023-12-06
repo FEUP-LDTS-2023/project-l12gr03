@@ -5,16 +5,14 @@ import project.model.Position;
 import java.io.*;
 import java.nio.charset.Charset;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Big extends TicTacToe {
 
 
-    //ArrayList<Mini> bigSquares;
+    ArrayList<Mini> bigSquares = new ArrayList<>();
+    boolean isPlayingMini = false;
 
     public Big(Player player1, Player player2, int x, int y) throws IOException {
         super(x, y);
@@ -26,38 +24,96 @@ public class Big extends TicTacToe {
         {
             for (int column=0; column<3; column++)
             {
-                bigSquares = new ArrayList<>(Collections.nCopies(9, new Mini(p1, p2, getPosition().getX()+column, getPosition().getY()+row)));
+                bigSquares.add(new Mini(player1,player2,10+18*column,8+8*row));
             }
         }
+        selected = 4;
 
 
         new Thread(this::updateElapsedTime).start();
 
     }
+
+    public List<Integer> getPlayState(){
+        List<Integer> states = new ArrayList<>();
+
+        for (int i = 0; i < bigSquares.size(); i++){
+            states.add(bigSquares.get(i).getMiniGameState());
+        }
+        return states;
+    }
+
+    public boolean getBool(){
+        return isPlayingMini;
+    }
     @Override
-    public void goUp(){this.selected = (((selected-3) % 9) + 9) % 9;}
+    public void goUp(){
+        if (bigSquares.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
+            bigSquares.get(selected).goUp();
+        } else {
+        selected = (((selected-3) % 9) + 9) % 9;}
+    }
     @Override
-    public void goDown(){selected = (selected+3) % 9;}
+    public void goDown(){
+        if (bigSquares.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
+            bigSquares.get(selected).goDown();
+        }else{
+        selected = (selected+3) % 9;}
+    }
     @Override
-    public void goLeft(){selected = (((selected-1) % 9) + 9) % 9;}
+    public void goLeft(){
+        if (bigSquares.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
+            bigSquares.get(selected).goLeft();
+        }else{
+        selected = (((selected-1) % 9) + 9) % 9;}
+    }
     @Override
-    public void goRight(){selected = (selected+1) % 9;}
+    public void goRight(){
+        if (bigSquares.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
+            bigSquares.get(selected).goRight();
+        }else{
+        selected = (selected+1) % 9;}
+    }
 
     @Override
     public void endGame() {}
 
+    @Override
+    public List<Character> getContents()
+    {
+        List<Character> res = new ArrayList<Character>();
+        for (Mini mini : bigSquares)
+        {
+            res.addAll(mini.getContents());
+        }
+        return res;
+    }
+
 
     @Override
-    public void select(Position position){}
+    public boolean select(Player player){
+        if(bigSquares.get(selected).select(currentPlayer)){ switchPlayer(); return true;}
+        return false;
+
+    }
 
 
     public void ScanBoard() throws IOException {
         this.file = new File(System.getProperty("user.dir") + "/resources/initialBoard2.txt");
-        Scanner myReader = new Scanner(file,  Charset.defaultCharset().name());
+        Scanner myReader = new Scanner(file, Charset.defaultCharset());
         while (myReader.hasNextLine()) {
             String data = myReader.nextLine();
             this.initialBoard.add(data);
         }
+    }
+
+    public Position getMinPosition()
+    {
+        return bigSquares.get(selected).getMinPosition();
+    }
+
+    public int getInnerSelected() {
+        return bigSquares.get(selected).getInnerSelected();
     }
 
     public void CoinToss() {

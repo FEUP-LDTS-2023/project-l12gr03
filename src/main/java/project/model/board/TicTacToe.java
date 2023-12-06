@@ -11,28 +11,24 @@ import java.util.Scanner;
 
 
 public abstract class TicTacToe {
+
+    static final int MINI_NOT_SELECTED = -1;
+    static final int DEFAUL_SQUARE = 4;
     protected String totalTime;
     protected String formattedElapsedTime;
     protected Player currentPlayer;
     protected Player p1;
     protected Player p2;
+
     private Position position;
-    protected int selected = 4;
+    protected int selected;
+
 
     ArrayList<Mini> bigSquares;
 
-    public int getSelected() {
-        return selected;
-    }
+    public int getSelected() {return selected;}
 
-    public List<Integer> getMiniState(){
-        List<Integer> states = new ArrayList<>();
-
-        for (int i = 0; i < bigSquares.size(); i++){
-            states.add(bigSquares.get(i).getMiniGameState());
-        }
-        return states;
-    }
+    public abstract List<Character> getContents();
 
     /**
     public ArrayList<Mini> getBigSquares(){
@@ -40,6 +36,7 @@ public abstract class TicTacToe {
     }**/
 
     public TicTacToe(int x, int y){this.position=new Position(x,y);}
+    public abstract List<Integer> getPlayState();
 
     public abstract void goUp();
     public abstract void goDown();
@@ -71,6 +68,8 @@ public abstract class TicTacToe {
         return position;
     }
 
+    public abstract Position getMinPosition();
+
     protected File file;
     protected List<String> initialBoard = new ArrayList<>();
 
@@ -90,6 +89,8 @@ public abstract class TicTacToe {
             e.printStackTrace();
         }
     }**/// Unused
+
+    public abstract int getInnerSelected();
 
     public String findMinTimeFromFile() {
         try (Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/total_time.txt"), StandardCharsets.UTF_8)) {
@@ -157,6 +158,6 @@ public abstract class TicTacToe {
     public abstract void endGame();
 
 
-    public abstract void select(Position position);
+    public abstract boolean select(Player player);
 
 }
