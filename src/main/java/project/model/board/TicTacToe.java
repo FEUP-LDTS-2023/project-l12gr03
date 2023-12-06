@@ -29,7 +29,7 @@ public abstract class TicTacToe {
         List<Integer> states = new ArrayList<>();
 
         for (int i = 0; i < bigSquares.size(); i++){
-            states.add(bigSquares.get(i).getState());
+            states.add(bigSquares.get(i).getMiniGameState());
         }
         return states;
     }

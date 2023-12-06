@@ -117,16 +117,26 @@ public class BoardViewer extends Viewer<TicTacToe> {
                             gui.drawText(new Position(row + x * 18, col + y * 8 + i), "---+---+--- ", "#FFFFFF");
                         }
                         break;
-                    case 1: // jogo acabou, o jogador 1 ganhou
-                        //gui.drawText(new Position(), "   \\   /   ", "#FFFFFF");
-                        //gui.drawText(new Position(), "    \\ /    ", "#FFFFFF");
-                        //gui.drawText(new Position(), "      X     ", "#FFFFFF");
+                    case 1: // jogo acabou, o jogador 1
+
+                        gui.drawText(new Position(row + x * 18, col - 1 + y * 8), "  \\     /  ", "#FFFFFF");
+                        gui.drawText(new Position(row + x * 18, col + y * 8), "   \\   /   ", "#FFFFFF");
+                        gui.drawText(new Position(row + x * 18, col + 1 + y * 8), "    \\ /    ", "#FFFFFF");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 2 + y * 8), "      X     ", "#FFFFFF");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 3 + y * 8), "     / \\   ", "#FFFFFF");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 4 + y * 8), "    /   \\  ", "#FFFFFF");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 5 + y * 8), "   /     \\ ", "#FFFFFF");
                         break;
                     case 2: // jogo acabou, o jogador 2 ganhou
-
+                        gui.drawText(new Position(row - 1 + x * 18, col - 1 + y * 8), "   *******  ", "#FFFFFF");
+                        gui.drawText(new Position(row - 1+ x * 18, col + y * 8), "  *       * ", "#FFFFFF");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 1 + y * 8), "  *       * ", "#FFFFFF");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 2 + y * 8), "  *   0   * ", "#FFFFFF");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 3 + y * 8), "  *       * ", "#FFFFFF");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 4 + y * 8), "  *       * ", "#FFFFFF");
+                        gui.drawText(new Position(row - 1 + x * 18, col + 5 + y * 8), "   *******  ", "#FFFFFF");
                         break;
                     case 3: // jogo acabou, empate
-
                         break;
                 }
                 index++;
