@@ -126,6 +126,7 @@ public class Mini extends TicTacToe {
         return false;
     }
 
+    @Override
     public List<Character> getContents()
     {
         return new ArrayList<>(smallSquares);
