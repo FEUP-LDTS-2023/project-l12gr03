@@ -34,6 +34,7 @@ public class Big extends TicTacToe {
 
     }
 
+    @Override
     public List<Integer> getPlayState(){
         List<Integer> states = new ArrayList<>();
 
