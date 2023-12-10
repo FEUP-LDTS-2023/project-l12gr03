@@ -101,6 +101,7 @@ public class BoardViewer extends Viewer<TicTacToe> {
             default:
                 gui.drawText(new Position(22, 22), String.valueOf(getModel().getSelected()), "#0000FF");
 
+
         }
 
         gui.drawText(new Position(68, 28), "Record time: " + getModel().findMinTimeFromFile(), "#FFFFFF");
@@ -200,6 +201,9 @@ public class BoardViewer extends Viewer<TicTacToe> {
             case 8:
                 gui.drawText(new Position(upperCorner.getX() + 7,upperCorner.getY() + 4), "|", "#FFFF00");
                 gui.drawText(new Position(upperCorner.getX() + 7,upperCorner.getY() + 3), "+---", "#FFFF00");
+
+            // fall through
+
             default:
                 break;
         }
