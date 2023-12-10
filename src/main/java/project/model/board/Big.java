@@ -11,7 +11,7 @@ import java.util.*;
 public class Big extends TicTacToe {
 
 
-    ArrayList<Mini> bigSquares = new ArrayList<>();
+    ArrayList<Mini>  bigSquaresL= new ArrayList<>();
     boolean isPlayingMini = false;
 
     public Big(Player player1, Player player2, int x, int y) throws IOException {
@@ -24,7 +24,7 @@ public class Big extends TicTacToe {
         {
             for (int column=0; column<3; column++)
             {
-                bigSquares.add(new Mini(player1,player2,10+18*column,8+8*row));
+                bigSquaresL.add(new Mini(player1,player2,10+18*column,8+8*row));
             }
         }
         selected = 4;
@@ -38,8 +38,8 @@ public class Big extends TicTacToe {
     public List<Integer> getPlayState(){
         List<Integer> states = new ArrayList<>();
 
-        for (int i = 0; i < bigSquares.size(); i++){
-            states.add(bigSquares.get(i).getMiniGameState());
+        for (int i = 0; i < bigSquaresL.size(); i++){
+            states.add(bigSquaresL.get(i).getMiniGameState());
         }
         return states;
     }
@@ -49,29 +49,29 @@ public class Big extends TicTacToe {
     }
     @Override
     public void goUp(){
-        if (bigSquares.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
-            bigSquares.get(selected).goUp();
+        if (bigSquaresL.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
+            bigSquaresL.get(selected).goUp();
         } else {
         selected = (((selected-3) % 9) + 9) % 9;}
     }
     @Override
     public void goDown(){
-        if (bigSquares.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
-            bigSquares.get(selected).goDown();
+        if (bigSquaresL.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
+            bigSquaresL.get(selected).goDown();
         }else{
         selected = (selected+3) % 9;}
     }
     @Override
     public void goLeft(){
-        if (bigSquares.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
-            bigSquares.get(selected).goLeft();
+        if (bigSquaresL.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
+            bigSquaresL.get(selected).goLeft();
         }else{
         selected = (((selected-1) % 9) + 9) % 9;}
     }
     @Override
     public void goRight(){
-        if (bigSquares.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
-            bigSquares.get(selected).goRight();
+        if (bigSquaresL.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
+            bigSquaresL.get(selected).goRight();
         }else{
         selected = (selected+1) % 9;}
     }
@@ -83,7 +83,7 @@ public class Big extends TicTacToe {
     public List<Character> getContents()
     {
         List<Character> res = new ArrayList<Character>();
-        for (Mini mini : bigSquares)
+        for (Mini mini : bigSquaresL)
         {
             res.addAll(mini.getContents());
         }
@@ -93,7 +93,7 @@ public class Big extends TicTacToe {
 
     @Override
     public boolean select(Player player){
-        if(bigSquares.get(selected).select(currentPlayer)){ switchPlayer(); return true;}
+        if(bigSquaresL.get(selected).select(currentPlayer)){ switchPlayer(); return true;}
         return false;
 
     }
@@ -111,12 +111,12 @@ public class Big extends TicTacToe {
     @Override
     public Position getMinPosition()
     {
-        return bigSquares.get(selected).getMinPosition();
+        return bigSquaresL.get(selected).getMinPosition();
     }
 
     @Override
     public int getInnerSelected() {
-        return bigSquares.get(selected).getInnerSelected();
+        return bigSquaresL.get(selected).getInnerSelected();
     }
 
     public void CoinToss() {
