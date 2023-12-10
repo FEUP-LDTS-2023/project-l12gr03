@@ -107,11 +107,13 @@ public class Big extends TicTacToe {
         }
     }
 
+    @Override
     public Position getMinPosition()
     {
         return bigSquares.get(selected).getMinPosition();
     }
 
+    @Override
     public int getInnerSelected() {
         return bigSquares.get(selected).getInnerSelected();
     }
