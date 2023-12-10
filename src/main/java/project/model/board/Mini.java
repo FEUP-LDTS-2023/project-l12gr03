@@ -83,10 +83,12 @@ public class Mini extends TicTacToe {
         return Arrays.asList(state);
     }
 
+    @Override
     public Position getMinPosition(){
         return getPosition();
     }
 
+    @Override
     public int getInnerSelected(){
         return getSelected();
     }
