@@ -47,15 +47,15 @@ public class Mini extends TicTacToe {
         }
     }
 
-    public static boolean isGameTie(ArrayList<Character> squares) {
+    public static boolean isGameTie(List<Character> squares) {
         return !squares.contains(' '); //true se nn tem mais espaços para jogar, ou seja, é um empate
     }
 
-    public static boolean checkWinner(ArrayList<Character> squares, char playerSymbol) {
+    public static boolean checkWinner(List<Character> squares, char playerSymbol) {
         return (checkRows(squares, playerSymbol) || checkColumns(squares, playerSymbol) || checkDiagonals(squares, playerSymbol));
     }
 
-    public static boolean checkRows(ArrayList<Character> squares, char playerSymbol) {
+    public static boolean checkRows(List<Character> squares, char playerSymbol) {
         for (int i = 0; i < 7; i += 3) {
             if (squares.get(i) == playerSymbol && squares.get(i + 1) == playerSymbol && squares.get(i + 2) == playerSymbol) {
                 return true;
@@ -64,7 +64,7 @@ public class Mini extends TicTacToe {
         return false;
     }
 
-    public static boolean checkColumns(ArrayList<Character> squares, char playerSymbol) {
+    public static boolean checkColumns(List<Character> squares, char playerSymbol) {
         for (int i = 0; i < 3; i++) {
             if (squares.get(i) == playerSymbol && squares.get(i + 3) == playerSymbol && squares.get(i + 6) == playerSymbol) {
                 return true;
@@ -73,7 +73,7 @@ public class Mini extends TicTacToe {
         return false;
     }
 
-    public static boolean checkDiagonals(ArrayList<Character> squares, char playerSymbol) {
+    public static boolean checkDiagonals(List<Character> squares, char playerSymbol) {
         return (squares.get(0) == playerSymbol && squares.get(4) == playerSymbol && squares.get(8) == playerSymbol) ||
                 (squares.get(2) == playerSymbol && squares.get(4) == playerSymbol && squares.get(6) == playerSymbol);
     }
