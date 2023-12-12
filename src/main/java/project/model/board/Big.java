@@ -10,7 +10,6 @@ import java.util.*;
 
 public class Big extends TicTacToe {
 
-
     ArrayList<Mini>  bigSquaresL= new ArrayList<>();
     boolean isPlayingMini = false;
 
@@ -44,7 +43,7 @@ public class Big extends TicTacToe {
         return states;
     }
 
-    public boolean getBool(){
+    public boolean isPlayingMini(){
         return isPlayingMini;
     }
     @Override

@@ -9,6 +9,8 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import static java.lang.System.exit;
+
 public class Game {
 
     private final LanternaGUI gui;
@@ -46,5 +48,6 @@ public class Game {
             }
         }
         gui.close();
+        exit(0);
     }
 }

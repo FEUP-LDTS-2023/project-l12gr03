@@ -1,4 +1,5 @@
 package controller;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import project.Game;
 import project.controller.MenuController;
@@ -7,6 +8,7 @@ import project.model.Menu.Menu;
 import project.states.RegistrationState;
 import project.states.RulesState;
 
+import static java.lang.System.exit;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -50,6 +52,8 @@ public class MenuControllerTest {
     void testStepSelectExit() {
         Menu mockMenu = mock(Menu.class);
         when(mockMenu.isSelectedExit()).thenReturn(true);
+        when(mockMenu.isSelectedRules()).thenReturn(false);
+        when(mockMenu.isSelectedStart()).thenReturn(false);
 
         MenuController menuController = new MenuController(mockMenu);
         Game mockGame = mock(Game.class);
@@ -59,7 +63,6 @@ public class MenuControllerTest {
         } catch (Exception e) {
             fail("Exception not expected: " + e.getMessage());
         }
-
         verify(mockGame, times(1)).setState(null);
 
     }
