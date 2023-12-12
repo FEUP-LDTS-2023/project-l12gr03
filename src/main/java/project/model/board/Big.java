@@ -19,6 +19,7 @@ public class Big extends TicTacToe {
         this.p2 = player2;
         ScanBoard();
         CoinToss();
+        this.bigSquares = new ArrayList<>();
         for (int row=0;row<3;row++)
         {
             for (int column=0; column<3; column++)
@@ -27,7 +28,6 @@ public class Big extends TicTacToe {
             }
         }
         selected = 4;
-
 
         new Thread(this::updateElapsedTime).start();
 
@@ -46,6 +46,7 @@ public class Big extends TicTacToe {
     public boolean isPlayingMini(){
         return isPlayingMini;
     }
+
     @Override
     public void goUp(){
         if (bigSquaresL.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
@@ -89,10 +90,14 @@ public class Big extends TicTacToe {
         return res;
     }
 
-
     @Override
     public boolean select(Player player){
-        if(bigSquaresL.get(selected).select(currentPlayer)){ switchPlayer(); return true;}
+        if(bigSquaresL.get(selected).select(currentPlayer)){
+            System.out.println("nextGame no Big: " + nextgame);
+            selected = getNextgame();
+            switchPlayer();
+            return true;
+        }
         return false;
 
     }
@@ -116,6 +121,15 @@ public class Big extends TicTacToe {
     @Override
     public int getInnerSelected() {
         return bigSquaresL.get(selected).getInnerSelected();
+    }
+
+    @Override
+    public void setMiniGameState() {
+        for (Mini mini : bigSquares) {
+            System.out.println("Antes de atualizar MiniGameState no Mini: " + mini.getMiniGameState());
+            mini.setMiniGameState();
+            System.out.println("Depois de atualizar MiniGameState no Mini: " + mini.getMiniGameState());
+        }
     }
 
     public void CoinToss() {

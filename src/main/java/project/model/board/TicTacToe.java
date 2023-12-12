@@ -13,7 +13,7 @@ import java.util.Scanner;
 public abstract class TicTacToe {
 
     static final int MINI_NOT_SELECTED = -1;
-    static final int DEFAUL_SQUARE = 4;
+    final int DEFAUL_SQUARE = 4;
     protected String totalTime;
     protected String formattedElapsedTime;
     protected Player currentPlayer;
@@ -22,11 +22,13 @@ public abstract class TicTacToe {
 
     private Position position;
     protected int selected;
+    protected int nextgame;
 
 
     ArrayList<Mini> bigSquares;
 
     public int getSelected() {return selected;}
+    public int getNextgame() {return nextgame;}
 
     public abstract List<Character> getContents();
 
@@ -91,6 +93,7 @@ public abstract class TicTacToe {
     }**/// Unused
 
     public abstract int getInnerSelected();
+    public abstract void setMiniGameState();
 
     public String findMinTimeFromFile() {
         try (Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/total_time.txt"), StandardCharsets.UTF_8)) {
