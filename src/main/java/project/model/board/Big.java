@@ -12,7 +12,8 @@ public class Big extends TicTacToe {
 
 
     ArrayList<Mini>  bigSquaresL= new ArrayList<>();
-    boolean isPlayingMini = false;
+    //boolean isPlayingMini = false;
+    boolean isLocked = false;
 
     public Big(Player player1, Player player2, int x, int y) throws IOException {
         super(x, y);
@@ -28,7 +29,6 @@ public class Big extends TicTacToe {
             }
         }
         selected = 4;
-
         new Thread(this::updateElapsedTime).start();
 
     }
@@ -45,31 +45,32 @@ public class Big extends TicTacToe {
 
     @Override
     public void goUp(){
+
         if (bigSquaresL.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
             bigSquaresL.get(selected).goUp();
-        } else {
+        }else if(!isLocked){
         selected = (((selected-3) % 9) + 9) % 9;}
     }
     @Override
     public void goDown(){
         if (bigSquaresL.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
             bigSquaresL.get(selected).goDown();
-        }else{
+        }else if(!isLocked){
         selected = (selected+3) % 9;}
     }
     @Override
     public void goLeft(){
         if (bigSquaresL.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
             bigSquaresL.get(selected).goLeft();
-        }else{
+        }else if(!isLocked){
         selected = (((selected-1) % 9) + 9) % 9;}
     }
     @Override
     public void goRight(){
         if (bigSquaresL.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
             bigSquaresL.get(selected).goRight();
-        }else{
-        selected = (selected+1) % 9;}
+        }else if(!isLocked){
+            selected = (selected+1) % 9;}
     }
 
     @Override
@@ -91,6 +92,7 @@ public class Big extends TicTacToe {
         if(bigSquaresL.get(selected).select(currentPlayer)){
             selected = nextgame;
             switchPlayer();
+            isLocked = (bigSquaresL.get(selected).getMiniGameState() == 0);
             return true;
         }
         return false;
