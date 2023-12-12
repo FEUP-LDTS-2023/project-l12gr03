@@ -3,6 +3,7 @@ package project.controller;
 
 import project.gui.GUI;
 import project.model.Menu.Menu;
+import project.model.board.Big;
 import project.model.board.TicTacToe;
 import project.Game;
 import project.states.MenuState;
@@ -38,12 +39,13 @@ public class BoardController extends Controller<TicTacToe> {
                 break;
             case SELECT:
                 getModel().select(getModel().getPlayer());
-                break;
-                // Primeiro guarda no vetor do miniGame o simbolo jogado na posição certa
                 // getModel().getMini().setMiniGameState(); ---- Atualiza o estado do miniGame
                 // Atualiza o vetor de miniGames do Big com qualquer alteração de estado que o Mini possa ter sofrido
-                // Troca o current player de jogador
+                getModel().setMiniGameState();
+                System.out.println("MiniGameState após setMiniGameState: " + getModel().getPlayState());
                 // Chama a grelha menor com base no select
+                break;
+
             default:
                 break;
 
