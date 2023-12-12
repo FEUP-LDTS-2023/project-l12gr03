@@ -38,17 +38,16 @@ public class Mini extends TicTacToe {
 
     @Override
     public void setMiniGameState(){
-        System.out.println("Antes de atualizar MiniGameState: " + this.state);
-        if (!isGameTie(this.smallSquares)) {
-            this.state = 0; // ainda tem espaços
-        } else if (checkWinner(this.smallSquares, p1.getSymbol())) {
+        if (checkWinner(this.smallSquares, 'X')) {
             this.state = 1; // jogador 1 ganha o jogo :)
-        } else if (checkWinner(this.smallSquares, p2.getSymbol())) {
+            isOver = true;
+        } else if (checkWinner(this.smallSquares, 'O')) {
             this.state = 2; // jogador 2 ganha o jogo :(
-        } else {
+            isOver = true;
+        } else if (isGameTie(this.smallSquares)){
             this.state = 3; // ora bolas empatou
+            isOver = true;
         }
-        System.out.println("Depois de atualizar MiniGameState: " + this.state);
     }
 
     public static boolean isGameTie(List<Character> squares) {
@@ -124,7 +123,6 @@ public class Mini extends TicTacToe {
     public boolean drawsymbol(Player player){
         if (smallSquares.get(selected) == ' '){
             nextgame = selected;
-            System.out.println("nextgame no Mini: " + nextgame);
             smallSquares.set(selected, player.getSymbol());
             selected = MINI_NOT_SELECTED;
             return true;

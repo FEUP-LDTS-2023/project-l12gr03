@@ -39,11 +39,7 @@ public class BoardController extends Controller<TicTacToe> {
                 break;
             case SELECT:
                 getModel().select(getModel().getPlayer());
-                // getModel().getMini().setMiniGameState(); ---- Atualiza o estado do miniGame
-                // Atualiza o vetor de miniGames do Big com qualquer alteração de estado que o Mini possa ter sofrido
                 getModel().setMiniGameState();
-                System.out.println("MiniGameState após setMiniGameState: " + getModel().getPlayState());
-                // Chama a grelha menor com base no select
                 break;
 
             default:

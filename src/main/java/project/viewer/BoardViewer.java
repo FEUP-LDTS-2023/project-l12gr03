@@ -8,7 +8,7 @@ import java.util.List;
 
 public class BoardViewer extends Viewer<TicTacToe> {
 
-    String X_COLOUR = "#0000FF";
+    String X_COLOUR = "#29C3F4";
     String O_COLOUR = "#FF0000";
     String DEFAULT_COLOUR = "#FFFFFF";
 
