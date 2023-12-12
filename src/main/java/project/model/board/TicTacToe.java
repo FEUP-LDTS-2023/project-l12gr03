@@ -22,13 +22,12 @@ public abstract class TicTacToe {
 
     private Position position;
     protected int selected;
-    protected int nextgame;
+    protected static int nextgame;
 
 
     ArrayList<Mini> bigSquares;
 
     public int getSelected() {return selected;}
-    public int getNextgame() {return nextgame;}
 
     public abstract List<Character> getContents();
 

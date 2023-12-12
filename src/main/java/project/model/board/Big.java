@@ -19,7 +19,6 @@ public class Big extends TicTacToe {
         this.p2 = player2;
         ScanBoard();
         CoinToss();
-        this.bigSquares = new ArrayList<>();
         for (int row=0;row<3;row++)
         {
             for (int column=0; column<3; column++)
@@ -93,8 +92,7 @@ public class Big extends TicTacToe {
     @Override
     public boolean select(Player player){
         if(bigSquaresL.get(selected).select(currentPlayer)){
-            System.out.println("nextGame no Big: " + nextgame);
-            selected = getNextgame();
+            selected = nextgame;
             switchPlayer();
             return true;
         }
@@ -125,10 +123,8 @@ public class Big extends TicTacToe {
 
     @Override
     public void setMiniGameState() {
-        for (Mini mini : bigSquares) {
-            System.out.println("Antes de atualizar MiniGameState no Mini: " + mini.getMiniGameState());
+        for (Mini mini : bigSquaresL) {
             mini.setMiniGameState();
-            System.out.println("Depois de atualizar MiniGameState no Mini: " + mini.getMiniGameState());
         }
     }
 
