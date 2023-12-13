@@ -10,6 +10,7 @@ import java.nio.file.StandardOpenOption;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 
@@ -35,6 +36,11 @@ public abstract class TicTacToe {
     public int getGameIsOver() {return gameIsOver;}
 
     public int getSelected() {return selected;}
+
+    public void setInialGame() {
+        countingTime = true;
+        gameIsOver = 0;
+    }
 
     public abstract List<Character> getContents();
 
@@ -103,7 +109,7 @@ public abstract class TicTacToe {
     public abstract void setGameState();
 
     public String findMinTimeFromFile() {
-        try (Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/total_time.txt"), StandardCharsets.UTF_8)) {
+        try (Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "resources/total_time.txt"), StandardCharsets.UTF_8)) {
             String minTime = null;
 
             while (scanner.hasNext()) {
@@ -123,6 +129,8 @@ public abstract class TicTacToe {
     }
 
     private int compareTimes(String time1, String time2) {
+        if (Objects.equals(time1, "null")) System.out.println("error in 1");
+        if (Objects.equals(time2, "null")) System.out.println("error in 2");
         LocalTime localTime1 = LocalTime.parse(time1);
         LocalTime localTime2 = LocalTime.parse(time2);
 

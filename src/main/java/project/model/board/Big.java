@@ -29,8 +29,7 @@ public class Big extends TicTacToe {
             }
         }
         selected = 4;
-        countingTime = true;
-        gameIsOver = 0;
+        setInialGame();
         new Thread(this::updateElapsedTime).start();
 
     }
@@ -163,7 +162,7 @@ public class Big extends TicTacToe {
                 return false;
             }
         }
-        return false;
+        return true;
     }
 
     public static boolean checkWinner(List<Integer> states, int playerState) {

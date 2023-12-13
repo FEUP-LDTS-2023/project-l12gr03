@@ -46,7 +46,20 @@ public class BoardController extends Controller<TicTacToe> {
                 break;
             case PRESS_Y:
                 if (getModel().getGameIsOver() != 0){
-                    getModel().getPlayer().addScore();
+                    switch (getModel().getGameIsOver()){
+                        case 1:
+                            if (getModel().getp1().getSymbol() == 'X' ) { getModel().getp1().addScore();}
+                            else {getModel().getp2().addScore();}
+                            break;
+                        case 2:
+                            if (getModel().getp1().getSymbol() == 'O' ) { getModel().getp1().addScore();}
+                            else {getModel().getp2().addScore();}
+                            break;
+                        case 3:
+                            getModel().getp1().addScoreTie();
+                            getModel().getp2().addScoreTie();
+                            break;
+                    }
                     game.setState(new GameState(new Big(getModel().getp1(),getModel().getp2(), 0, 0)));
                     getModel().resetElapsedTime();
                 }

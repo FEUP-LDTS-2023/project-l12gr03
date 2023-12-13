@@ -18,6 +18,10 @@
   -> A Mini Tic Tac Toe may end in a tie, serving as a wild
   card for both players in forming the Main Tic Tac Toe row.
 
+  A player cannot chance their mind after choosing an available
+  place to play. At the end, if the game concludes in a tie,
+  both players receive 0.5 points each as their score.
+
 
                     How to Play:
 
