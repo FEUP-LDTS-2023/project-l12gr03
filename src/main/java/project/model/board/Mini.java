@@ -35,15 +35,18 @@ public class Mini extends TicTacToe {
     public Integer getMiniGameState(){
         return this.state;
     }
-    public void setMiniGameState(){ //
-        if (!isGameTie(this.smallSquares)) {
-            this.state = 0; // ainda tem espaços
-        } else if (checkWinner(this.smallSquares, p1.getSymbol())) {
+
+    @Override
+    public void setGameState(){
+        if (checkWinner(this.smallSquares, 'X')) {
             this.state = 1; // jogador 1 ganha o jogo :)
-        } else if (checkWinner(this.smallSquares, p2.getSymbol())) {
+            isOver = true;
+        } else if (checkWinner(this.smallSquares, 'O')) {
             this.state = 2; // jogador 2 ganha o jogo :(
-        } else {
+            isOver = true;
+        } else if (isGameTie(this.smallSquares)){
             this.state = 3; // ora bolas empatou
+            isOver = true;
         }
     }
 
@@ -119,8 +122,9 @@ public class Mini extends TicTacToe {
 
     public boolean drawsymbol(Player player){
         if (smallSquares.get(selected) == ' '){
+            nextgame = selected;
             smallSquares.set(selected, player.getSymbol());
-            selected=MINI_NOT_SELECTED;
+            selected = MINI_NOT_SELECTED;
             return true;
         }
         return false;
@@ -131,7 +135,6 @@ public class Mini extends TicTacToe {
     {
         return new ArrayList<>(smallSquares);
     }
-
 
 
 }

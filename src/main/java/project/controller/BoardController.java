@@ -3,8 +3,10 @@ package project.controller;
 
 import project.gui.GUI;
 import project.model.Menu.Menu;
+import project.model.board.Big;
 import project.model.board.TicTacToe;
 import project.Game;
+import project.states.GameState;
 import project.states.MenuState;
 import project.model.board.Mini;
 
@@ -39,11 +41,29 @@ public class BoardController extends Controller<TicTacToe> {
             case SELECT:
                 getModel().select(getModel().getPlayer());
                 break;
-                // Primeiro guarda no vetor do miniGame o simbolo jogado na posição certa
-                // getModel().getMini().setMiniGameState(); ---- Atualiza o estado do miniGame
-                // Atualiza o vetor de miniGames do Big com qualquer alteração de estado que o Mini possa ter sofrido
-                // Troca o current player de jogador
-                // Chama a grelha menor com base no select
+            case PRESS_N:
+                if (getModel().getGameIsOver() != 0){game.setState(new MenuState(new Menu()));}
+                break;
+            case PRESS_Y:
+                if (getModel().getGameIsOver() != 0){
+                    switch (getModel().getGameIsOver()){
+                        case 1:
+                            if (getModel().getp1().getSymbol() == 'X' ) { getModel().getp1().addScore();}
+                            else {getModel().getp2().addScore();}
+                            break;
+                        case 2:
+                            if (getModel().getp1().getSymbol() == 'O' ) { getModel().getp1().addScore();}
+                            else {getModel().getp2().addScore();}
+                            break;
+                        case 3:
+                            getModel().getp1().addScoreTie();
+                            getModel().getp2().addScoreTie();
+                            break;
+                    }
+                    game.setState(new GameState(new Big(getModel().getp1(),getModel().getp2(), 0, 0)));
+                    getModel().resetElapsedTime();
+                }
+                break;
             default:
                 break;
 
