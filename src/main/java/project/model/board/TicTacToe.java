@@ -6,6 +6,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,19 +14,17 @@ import java.util.Scanner;
 public abstract class TicTacToe {
 
     static final int MINI_NOT_SELECTED = -1;
-    final int DEFAUL_SQUARE = 4;
+    final int DEFAULT_SQUARE = 4;
+    final ArrayList<Character> DEFAULT_MINI_CONTENT =  new ArrayList<>(Collections.nCopies(9, ' '));
     protected String totalTime;
     protected String formattedElapsedTime;
     protected Player currentPlayer;
     protected Player p1;
     protected Player p2;
 
-    private Position position;
+    protected Position position;
     protected int selected;
     protected static int nextgame;
-
-
-    ArrayList<Mini> bigSquares;
 
     public int getSelected() {return selected;}
 
@@ -36,9 +35,8 @@ public abstract class TicTacToe {
         return bigSquares;
     }**/
 
-    public TicTacToe(int x, int y){this.position=new Position(x,y);}
-    public abstract List<Integer> getPlayState();
 
+    public abstract List<Integer> getPlayState();
     public abstract void goUp();
     public abstract void goDown();
     public abstract void goLeft();

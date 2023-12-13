@@ -10,20 +10,23 @@ import java.util.*;
 
 public class Big extends TicTacToe {
 
-    ArrayList<Mini>  bigSquaresL= new ArrayList<>();
+    List<Mini>  bigSquaresL;
     boolean isPlayingMini = false;
 
-    public Big(Player player1, Player player2, int x, int y) throws IOException {
-        super(x, y);
+    public Big(Player player1, Player player2, int x, int y,List<Mini> squares) throws IOException {
+        this.position = new Position(x,y);
         this.p1 = player1;
         this.p2 = player2;
+        this.bigSquaresL= squares;
+
         ScanBoard();
         CoinToss();
+
         for (int row=0;row<3;row++)
         {
             for (int column=0; column<3; column++)
             {
-                bigSquaresL.add(new Mini(player1,player2,10+18*column,8+8*row));
+                bigSquaresL.add(new Mini(player1,player2,10+18*column,8+8*row,DEFAULT_MINI_CONTENT));
             }
         }
         selected = 4;

@@ -16,6 +16,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static org.mockito.Mockito.when;
+
 public class BigTest {
 
 //Todo Change constructor
@@ -23,8 +25,19 @@ public class BigTest {
     void goUpTest(@ForAll int x, @ForAll int y) throws IOException {
         Player p1 = Mockito.mock(Player.class);
         Player p2 = Mockito.mock(Player.class);
-        Big big = new Big(p1,p2,x,y);
-        for (int it = 0; it < 4; it++) {
+        Mini mockmini = Mockito.mock(Mini.class);
+        ArrayList<Mini> bigSquaresL = new ArrayList<>();
+        when(mockmini.getInnerSelected()).thenReturn(-1);
+        
+        for (int row=0;row<3;row++)
+        {
+            for (int column=0; column<3; column++)
+            {
+                bigSquaresL.add(mockmini);
+            }
+        }
+        Big big = new Big(p1,p2,x,y,bigSquaresL);
+        for (int it = 0; it < 4; it++){
             if (it % 3 == 0) Assertions.assertEquals(4, big.getSelected());
             if (it % 3 == 1) Assertions.assertEquals(1, big.getSelected());
             if (it % 3 == 2) Assertions.assertEquals(7, big.getSelected());
@@ -36,7 +49,17 @@ public class BigTest {
     void goDownTest(@ForAll int x, @ForAll int y) throws IOException {
         Player p1 = Mockito.mock(Player.class);
         Player p2 = Mockito.mock(Player.class);
-        Big big = new Big(p1,p2,x,y);
+        Mini mockmini = Mockito.mock(Mini.class);
+        ArrayList<Mini> bigSquaresL = new ArrayList<>();
+        when(mockmini.getInnerSelected()).thenReturn(-1);
+        for (int row=0;row<3;row++)
+        {
+            for (int column=0; column<3; column++)
+            {
+                bigSquaresL.add(mockmini);
+            }
+        }
+        Big big = new Big(p1,p2,x,y,bigSquaresL);
         for (int it = 0; it < 4; it++) {
             if (it % 3 == 0) Assertions.assertEquals(4, big.getSelected());
             if (it % 3 == 1) Assertions.assertEquals(7, big.getSelected());
@@ -49,7 +72,18 @@ public class BigTest {
     void goLeftTest(@ForAll int x, @ForAll int y) throws IOException{
         Player p1 = Mockito.mock(Player.class);
         Player p2 = Mockito.mock(Player.class);
-        Big big = new Big(p1,p2,x,y);
+        Mini mockmini = Mockito.mock(Mini.class);
+        when(mockmini.getInnerSelected()).thenReturn(-1);
+        ArrayList<Mini> bigSquaresL = new ArrayList<>();
+        for (int row=0;row<3;row++)
+        {
+            for (int column=0; column<3; column++)
+            {
+                bigSquaresL.add(mockmini);
+            }
+        }
+        Big big = new Big(p1,p2,x,y,bigSquaresL);
+
         for (int it = 0; it < 9 ;it++)
         {
             switch (it%9){
@@ -89,7 +123,17 @@ public class BigTest {
     void goRightTest(@ForAll int x, @ForAll int y) throws IOException{
         Player p1 = Mockito.mock(Player.class);
         Player p2 = Mockito.mock(Player.class);
-        Big big = new Big(p1,p2,x,y);
+        Mini mockmini = Mockito.mock(Mini.class);
+        when(mockmini.getInnerSelected()).thenReturn(-1);
+        ArrayList<Mini> bigSquaresL = new ArrayList<>();
+        for (int row=0;row<3;row++)
+        {
+            for (int column=0; column<3; column++)
+            {
+                bigSquaresL.add(mockmini);
+            }
+        }
+        Big big = new Big(p1,p2,x,y,bigSquaresL);
         for (int it = 0; it < 9 ;it++)
         {
             switch (it%9){
@@ -129,8 +173,17 @@ public class BigTest {
     void MixedMovementTest(@ForAll int x, @ForAll int y) throws IOException {
         Player p1 = Mockito.mock(Player.class);
         Player p2 = Mockito.mock(Player.class);
-        Big big = new Big(p1,p2,x,y);
-
+        Mini mockmini = Mockito.mock(Mini.class);
+        when(mockmini.getInnerSelected()).thenReturn(-1);
+        ArrayList<Mini> bigSquaresL = new ArrayList<>();
+        for (int row=0;row<3;row++)
+        {
+            for (int column=0; column<3; column++)
+            {
+                bigSquaresL.add(mockmini);
+            }
+        }
+        Big big = new Big(p1,p2,x,y,bigSquaresL);
         big.goRight();
         for (int it = 0; it < 3; it++) {
             if (it % 3 == 0) Assertions.assertEquals(5, big.getSelected());

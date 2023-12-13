@@ -4,8 +4,6 @@ import project.model.Position;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -13,16 +11,17 @@ public class Mini extends TicTacToe {
 
 
 
-    ArrayList<Character> smallSquares = new ArrayList<>(Collections.nCopies(9, ' '));
+    List<Character> smallSquares;
     private boolean isOver = false;
 
     protected int state;
-    public Mini(Player player1, Player player2, int x, int y) throws IOException {
-        super(x, y);
+    public Mini(Player player1, Player player2, int x, int y, List<Character> squares) throws IOException {
         this.p1 = player1;
         this.p2 = player2;
         this.state = 0; // O estado default é que o jogo está a acontecer
         selected = -1;
+        smallSquares = squares;
+        position= new Position(x,y);
     }
 
     public int getMiniX(){
@@ -60,7 +59,7 @@ public class Mini extends TicTacToe {
 
     public static boolean checkRows(List<Character> squares, char playerSymbol) {
         for (int i = 0; i < 7; i += 3) {
-            if (squares.get(i) == playerSymbol && squares.get(i + 1) == playerSymbol && squares.get(i + 2) == playerSymbol) {
+                if (squares.get(i) == playerSymbol && squares.get(i + 1) == playerSymbol && squares.get(i + 2) == playerSymbol) {
                 return true;
             }
         }
@@ -83,7 +82,7 @@ public class Mini extends TicTacToe {
 
     @Override
     public List<Integer> getPlayState() {
-        return Arrays.asList(state);
+        return List.of(state);
     }
 
     @Override
@@ -112,7 +111,7 @@ public class Mini extends TicTacToe {
     public boolean select(Player player){
         if (!isOver) {
             if (selected == MINI_NOT_SELECTED) {
-                selected = DEFAUL_SQUARE;
+                selected = DEFAULT_SQUARE;
             } else {
                 return drawsymbol(player);
             }
