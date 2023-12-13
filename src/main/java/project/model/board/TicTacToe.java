@@ -4,6 +4,9 @@ import project.model.Position;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +27,7 @@ public abstract class TicTacToe {
     protected int selected;
     protected static int nextgame;
     public static int gameIsOver;
+    protected static boolean countingTime;
 
 
     ArrayList<Mini> bigSquares;
@@ -87,12 +91,13 @@ public abstract class TicTacToe {
     }
 
     protected void writeTotalTimeToFile(String time) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(System.getProperty("user.dir") + "/total_time.txt", true))) {
+        try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(Paths.get(System.getProperty("user.dir") + "/total_time.txt"), StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND))) {
             writer.println(time);
         } catch (IOException e) {
-            e.printStackTrace();
-        }
+        throw new RuntimeException("Erro ao escrever no arquivo", e);
     }
+
+}
 
     public abstract int getInnerSelected();
     public abstract void setGameState();
@@ -128,13 +133,16 @@ public abstract class TicTacToe {
         return formattedElapsedTime;
     }
 
+    public void resetElapsedTime() {
+        formattedElapsedTime = "00:00:00";
+    }
+
 
 
     public void updateElapsedTime() {
         long startTime = System.currentTimeMillis();
 
-        while (true) {
-            if (gameIsOver == 0) {
+        while (countingTime) {
                 long currentTime = System.currentTimeMillis();
                 long elapsedTime = (currentTime - startTime) / 1000; // Convert to seconds
 
@@ -150,9 +158,9 @@ public abstract class TicTacToe {
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt(); // Restore interrupted status
                     logError("Thread interrupted while sleeping", e);
-                }
             }
         }
+
     }
 
 

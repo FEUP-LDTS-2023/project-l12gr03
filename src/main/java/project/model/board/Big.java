@@ -29,6 +29,8 @@ public class Big extends TicTacToe {
             }
         }
         selected = 4;
+        countingTime = true;
+        gameIsOver = 0;
         new Thread(this::updateElapsedTime).start();
 
     }
@@ -75,20 +77,20 @@ public class Big extends TicTacToe {
 
     @Override
     public void endGame() {
+        writeTotalTimeToFile(getFormattedElapsedTime());
+        countingTime = false;
     }
 
     public void setBigGameState(){
         if (checkWinner(getPlayState(), 1)) {
             gameIsOver = 1; // X ganhou!!
-            writeTotalTimeToFile(getFormattedElapsedTime());
+            endGame();
         } else if (checkWinner(getPlayState(), 2)) {
             gameIsOver = 2; // O ganhou.. que azar!
-            writeTotalTimeToFile(getFormattedElapsedTime());
+            endGame();
         } else if (isBigGameTie()){
             gameIsOver = 3; // ora bolas empatou
-            writeTotalTimeToFile(getFormattedElapsedTime());
-        } else {
-            gameIsOver = 0;
+            endGame();
         }
     }
 

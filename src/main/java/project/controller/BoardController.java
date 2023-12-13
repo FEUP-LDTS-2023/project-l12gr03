@@ -6,6 +6,7 @@ import project.model.Menu.Menu;
 import project.model.board.Big;
 import project.model.board.TicTacToe;
 import project.Game;
+import project.states.GameState;
 import project.states.MenuState;
 import project.model.board.Mini;
 
@@ -42,6 +43,13 @@ public class BoardController extends Controller<TicTacToe> {
                 break;
             case PRESS_N:
                 if (getModel().getGameIsOver() != 0){game.setState(new MenuState(new Menu()));}
+                break;
+            case PRESS_Y:
+                if (getModel().getGameIsOver() != 0){
+                    getModel().getPlayer().addScore();
+                    game.setState(new GameState(new Big(getModel().getp1(),getModel().getp2(), 0, 0)));
+                    getModel().resetElapsedTime();
+                }
                 break;
             default:
                 break;
