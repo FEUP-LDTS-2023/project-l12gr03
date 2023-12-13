@@ -39,9 +39,10 @@ public class BoardController extends Controller<TicTacToe> {
                 break;
             case SELECT:
                 getModel().select(getModel().getPlayer());
-                getModel().setGameState();
                 break;
-
+            case PRESS_N:
+                if (getModel().getGameIsOver() != 0){game.setState(new MenuState(new Menu()));}
+                break;
             default:
                 break;
 
