@@ -19,7 +19,6 @@ public class Big extends TicTacToe {
         super(x, y);
         this.p1 = player1;
         this.p2 = player2;
-        gameIsOver = 0;
         ScanBoard();
         CoinToss();
         for (int row=0;row<3;row++)
@@ -81,10 +80,15 @@ public class Big extends TicTacToe {
     public void setBigGameState(){
         if (checkWinner(getPlayState(), 1)) {
             gameIsOver = 1; // X ganhou!!
+            writeTotalTimeToFile(getFormattedElapsedTime());
         } else if (checkWinner(getPlayState(), 2)) {
             gameIsOver = 2; // O ganhou.. que azar!
+            writeTotalTimeToFile(getFormattedElapsedTime());
         } else if (isBigGameTie()){
             gameIsOver = 3; // ora bolas empatou
+            writeTotalTimeToFile(getFormattedElapsedTime());
+        } else {
+            gameIsOver = 0;
         }
     }
 
