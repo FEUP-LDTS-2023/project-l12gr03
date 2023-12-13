@@ -19,6 +19,7 @@ public class Big extends TicTacToe {
         super(x, y);
         this.p1 = player1;
         this.p2 = player2;
+        gameIsOver = 0;
         ScanBoard();
         CoinToss();
         for (int row=0;row<3;row++)
@@ -74,7 +75,18 @@ public class Big extends TicTacToe {
     }
 
     @Override
-    public void endGame() {}
+    public void endGame() {
+    }
+
+    public void setBigGameState(){
+        if (checkWinner(getPlayState(), 1)) {
+            gameIsOver = 1; // X ganhou!!
+        } else if (checkWinner(getPlayState(), 2)) {
+            gameIsOver = 2; // O ganhou.. que azar!
+        } else if (isBigGameTie()){
+            gameIsOver = 3; // ora bolas empatou
+        }
+    }
 
     @Override
     public List<Character> getContents()
@@ -121,10 +133,12 @@ public class Big extends TicTacToe {
     }
 
     @Override
-    public void setMiniGameState() {
+    public void setGameState() {
         for (Mini mini : bigSquaresL) {
-            mini.setMiniGameState();
+            mini.setGameState();
         }
+
+        setBigGameState();
     }
 
     public void CoinToss() {
@@ -134,5 +148,46 @@ public class Big extends TicTacToe {
         if (resultado == 0) {currentPlayer = p1;}
         else {currentPlayer = p2;}
     }
+
+
+    protected boolean isBigGameTie() {
+        for (int element : getPlayState()){
+            if (element == 0){ // ainda tem algum jogo a acontecer
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkWinner(List<Integer> states, int playerState) {
+        return (checkRows(states, playerState) || checkColumns(states, playerState) || checkDiagonals(states, playerState));
+    }
+
+    public static boolean checkRows(List<Integer> states, int playerState) {
+        for (int i = 0; i < 7; i += 3) {
+            if (((states.get(i) == playerState) || (states.get(i) == 3)) && ((states.get(i + 1) == playerState) || (states.get(i) == 3)) && ((states.get(i + 2) == playerState) || (states.get(i + 2) == 3)))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkColumns(List<Integer> states, int playerState) {
+        for (int i = 0; i < 3; i++) {
+            if ((states.get(i) == playerState || states.get(i) == 3 ) && (states.get(i + 3) == playerState ||states.get(i + 3) == 3 ) && (states.get(i + 6) == playerState || states.get(i + 6) == 3)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkDiagonals(List<Integer> states, int playerState) {
+        return (((states.get(0) == playerState || states.get(0) == 3) && (states.get(4) == playerState || states.get(4) == 3) && (states.get(8) == playerState|| states.get(8) == 3)) ||
+                ((states.get(2) == playerState || states.get(2) == 3) && (states.get(4) == playerState || states.get(4) == 3)  && (states.get(6) == playerState || states.get(6) == 3)));
+    }
+
+
+
 
 }

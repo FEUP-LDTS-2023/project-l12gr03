@@ -4,6 +4,7 @@ import project.gui.GUI;
 import project.model.Position;
 import project.model.board.TicTacToe;
 
+import java.io.BufferedReader;
 import java.util.List;
 
 public class BoardViewer extends Viewer<TicTacToe> {
@@ -156,6 +157,23 @@ public class BoardViewer extends Viewer<TicTacToe> {
         }
 
         highlightMini(gui,getModel().getMinPosition(),getModel().getInnerSelected());
+
+        switch (getModel().getGameIsOver()){
+            case 0:
+                break;
+            case 1:
+                gui.drawText(new Position(10, 31), "Congrats Player X, you WON!", DEFAULT_COLOUR);
+                gui.drawText(new Position(10, 32), "Do you want to keep playing? [Y/N]", DEFAULT_COLOUR);
+                break;
+            case 2:
+                gui.drawText(new Position(10, 31), "Congrats Player 0, you WON!", DEFAULT_COLOUR);
+                gui.drawText(new Position(10, 32), "Do you want to keep playing? [Y/N]", DEFAULT_COLOUR);
+                break;
+            case 3:
+                gui.drawText(new Position(10, 31), "Oh no, it is a TIE GAME! ", DEFAULT_COLOUR);
+                gui.drawText(new Position(10, 32), "Do you want to keep playing? [Y/N]", DEFAULT_COLOUR);
+                break;
+        }
     }
 
     private void highlightMini(GUI gui, Position upperCorner, int MiniSelected){

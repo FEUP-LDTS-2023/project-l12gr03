@@ -37,7 +37,7 @@ public class Mini extends TicTacToe {
     }
 
     @Override
-    public void setMiniGameState(){
+    public void setGameState(){
         if (checkWinner(this.smallSquares, 'X')) {
             this.state = 1; // jogador 1 ganha o jogo :)
             isOver = true;

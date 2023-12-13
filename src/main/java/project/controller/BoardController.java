@@ -39,7 +39,7 @@ public class BoardController extends Controller<TicTacToe> {
                 break;
             case SELECT:
                 getModel().select(getModel().getPlayer());
-                getModel().setMiniGameState();
+                getModel().setGameState();
                 break;
 
             default:
