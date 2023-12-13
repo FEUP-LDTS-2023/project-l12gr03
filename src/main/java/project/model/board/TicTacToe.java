@@ -134,21 +134,23 @@ public abstract class TicTacToe {
         long startTime = System.currentTimeMillis();
 
         while (true) {
-            long currentTime = System.currentTimeMillis();
-            long elapsedTime = (currentTime - startTime) / 1000; // Convert to seconds
+            if (gameIsOver == 0) {
+                long currentTime = System.currentTimeMillis();
+                long elapsedTime = (currentTime - startTime) / 1000; // Convert to seconds
 
-            long hours = elapsedTime / 3600;
-            long minutes = (elapsedTime % 3600) / 60;
-            long seconds = elapsedTime % 60;
+                long hours = elapsedTime / 3600;
+                long minutes = (elapsedTime % 3600) / 60;
+                long seconds = elapsedTime % 60;
 
-            formattedElapsedTime = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+                formattedElapsedTime = String.format("%02d:%02d:%02d", hours, minutes, seconds);
 
-            try {
-                // Wait for 1 second before updating again
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt(); // Restore interrupted status
-                logError("Thread interrupted while sleeping", e);
+                try {
+                    // Wait for 1 second before updating again
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt(); // Restore interrupted status
+                    logError("Thread interrupted while sleeping", e);
+                }
             }
         }
     }

@@ -187,7 +187,4 @@ public class Big extends TicTacToe {
                 ((states.get(2) == playerState || states.get(2) == 3) && (states.get(4) == playerState || states.get(4) == 3)  && (states.get(6) == playerState || states.get(6) == 3)));
     }
 
-
-
-
 }
