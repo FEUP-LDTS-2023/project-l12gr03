@@ -26,8 +26,8 @@ public class BoardViewer extends Viewer<TicTacToe> {
                     getModel().getLine(i), "#FFFFFF");
         }
 
-        gui.drawText(new Position(77, 10), String.valueOf(getModel().getp1().getScore()), "#FFFFFF");
-        gui.drawText(new Position(77, 11), String.valueOf(getModel().getp2().getScore()), "#FFFFFF");
+        gui.drawText(new Position(77, 11), String.valueOf(getModel().getp1().getScore()), "#FFFFFF");
+        gui.drawText(new Position(77, 10), String.valueOf(getModel().getp2().getScore()), "#FFFFFF");
 
 
         switch (getModel().getSelected()) {
