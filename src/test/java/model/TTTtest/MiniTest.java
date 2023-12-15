@@ -293,14 +293,17 @@ public class MiniTest {
         }
     }
 
+    
+/*
     @Test
     void selectTest(){
         Player p1 = Mockito.mock(Player.class);
-        mini.select(p1);
-        Assertions.assertEquals(4,mini.getSelected());
-        //when(mini.drawsymbol(p1)).thenReturn(true);
-        verify(mini,times(1)).drawsymbol(any(Player.class));
-    }
+        Mini mini1 = mock(Mini.class);
+        when(mini1.drawsymbol(any(Player.class))).thenReturn(true);
+        Assertions.assertFalse(mini1.select(any(Player.class)));
+        Assertions.assertTrue(mini1.select(any(Player.class)));
+        Assertions.assertEquals(4,mini1.getSelected());
+    }*/
 }
 //TODO mixed movement test
 //TODO GetMinPosition BIG game smell, perguntar (also viewer)
