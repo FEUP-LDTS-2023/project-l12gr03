@@ -18,7 +18,6 @@ public class Game {
     public Game() throws IOException, URISyntaxException, FontFormatException {
         this.gui = new LanternaGUI(100, 50);
         this.state = new MenuState(new Menu());
-
     }
 
 
@@ -27,7 +26,6 @@ public class Game {
     }
 
     public void start() throws IOException {
-
         int FPS = 25;
         int frameTime = 1000 / FPS;
 

@@ -26,8 +26,12 @@ public class BoardViewer extends Viewer<TicTacToe> {
                     getModel().getLine(i), "#FFFFFF");
         }
 
-        gui.drawText(new Position(77, 10), String.valueOf(getModel().getp1().getScore()), "#FFFFFF");
-        gui.drawText(new Position(77, 11), String.valueOf(getModel().getp2().getScore()), "#FFFFFF");
+        gui.drawText(new Position(80, 8), String.valueOf(getModel().getp2().getScore() + getModel().getp1().getScore()), "#FFFFFF");
+
+        int posP1Y = 10; int posP2Y = 11;
+        if(getModel().getp1().getSymbol() == 'X' ){posP1Y = 11; posP2Y = 10;}
+        gui.drawText(new Position(77, posP1Y), String.valueOf(getModel().getp1().getScore()), "#FFFFFF");
+        gui.drawText(new Position(77, posP2Y), String.valueOf(getModel().getp2().getScore()), "#FFFFFF");
 
 
         switch (getModel().getSelected()) {
@@ -157,6 +161,10 @@ public class BoardViewer extends Viewer<TicTacToe> {
         }
 
         highlightMini(gui,getModel().getMinPosition(),getModel().getInnerSelected());
+
+        if (getModel().getIsPaused()){
+            gui.drawText(new Position(10, 31), "The game is paused! Press P to resume the game.", DEFAULT_COLOUR);
+        }
 
         switch (getModel().getGameIsOver()){
             case 0:

@@ -21,25 +21,25 @@ public class BoardController extends Controller<TicTacToe> {
         switch (action) {
             case UP:
 
-                getModel().goUp();
+                if (!getModel().getIsPaused()){getModel().goUp();}
                 break;
             case DOWN:
 
-                getModel().goDown();
+                if (!getModel().getIsPaused()){getModel().goDown();}
                 break;
             case LEFT:
 
-                getModel().goLeft();
+                if (!getModel().getIsPaused()){getModel().goLeft();}
                 break;
             case RIGHT:
 
-                getModel().goRight();
+                if (!getModel().getIsPaused()){getModel().goRight();}
                 break;
             case QUIT:
                 game.setState(new MenuState(new Menu()));
                 break;
             case SELECT:
-                getModel().select(getModel().getPlayer());
+                if (!getModel().getIsPaused()){getModel().select(getModel().getPlayer());}
                 break;
             case PRESS_N:
                 if (getModel().getGameIsOver() != 0){game.setState(new MenuState(new Menu()));}
@@ -63,6 +63,9 @@ public class BoardController extends Controller<TicTacToe> {
                     game.setState(new GameState(new Big(getModel().getp1(),getModel().getp2(), 0, 0)));
                     getModel().resetElapsedTime();
                 }
+                break;
+            case PRESS_P:
+                getModel().toggleTimePaused();
                 break;
             default:
                 break;
