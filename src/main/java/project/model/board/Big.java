@@ -110,7 +110,7 @@ public class Big extends TicTacToe {
             selected = nextgame;
             switchPlayer();
             setGameState();
-            isLocked = ((bigSquaresL.get(selected).getMiniGameState() == 0));
+            isLocked = (bigSquaresL.get(selected).getMiniGameState() == 0);
             return true;
         }
         return false;

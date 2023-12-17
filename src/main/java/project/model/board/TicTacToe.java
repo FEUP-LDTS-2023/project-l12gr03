@@ -151,19 +151,12 @@ public abstract class TicTacToe {
     public void updateElapsedTime() {
         long startTime = System.currentTimeMillis();
         long pausedTime = 0;
-        long pause = 0;
 
         while (countingTime) {
 
-            if (!isTimePaused) {
-                pause = System.currentTimeMillis();
-            }
-
             long currentTime = System.currentTimeMillis();
 
-            if (isTimePaused) {
-                pausedTime = (currentTime - pause)/1000;
-            }
+            if (isTimePaused) {pausedTime++;}
 
             long elapsedTime = ((currentTime - startTime) / 1000 - pausedTime); // Convert to seconds
 
