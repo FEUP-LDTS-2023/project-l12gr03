@@ -106,6 +106,5 @@ public class BoardControllerTest {
         verify(mockBoard, times(1)).select(any(Player.class));
         verify(mockBoard, times(1)).setMiniGameState();
         //TODO beware pit tests
-        //TODO BIG CODE SMELL
     }
 }

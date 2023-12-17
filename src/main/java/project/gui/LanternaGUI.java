@@ -26,7 +26,7 @@ public class LanternaGUI implements GUI {
         this.screen = createScreen(terminal);
     }
 
-    private Screen createScreen(Terminal terminal) throws IOException {
+    public Screen createScreen(Terminal terminal) throws IOException {
         final Screen screen;
         screen = new TerminalScreen(terminal);
 
@@ -36,7 +36,7 @@ public class LanternaGUI implements GUI {
         return screen;
     }
 
-    private Terminal createTerminal(int width, int height) throws IOException {
+    public Terminal createTerminal(int width, int height) throws IOException {
         TerminalSize terminalSize = new TerminalSize(width, height);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
                 .setInitialTerminalSize(terminalSize);
