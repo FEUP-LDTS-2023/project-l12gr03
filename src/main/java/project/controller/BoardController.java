@@ -11,6 +11,9 @@ import project.states.MenuState;
 import project.model.board.Mini;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class BoardController extends Controller<TicTacToe> {
 
@@ -60,7 +63,19 @@ public class BoardController extends Controller<TicTacToe> {
                             getModel().getp2().addScoreTie();
                             break;
                     }
-                    game.setState(new GameState(new Big(getModel().getp1(),getModel().getp2(), 0, 0)));
+
+                    ArrayList<Mini> bigSquaresL = new ArrayList<>();
+
+                    for (int row=0;row<3;row++)
+                    {
+                        for (int column=0; column<3; column++)
+                        {
+                            //Since objects are passed by reference the next line CAN NOT be moved to outside the cycle
+                            ArrayList<Character> squares = new ArrayList<>(Collections.nCopies(9, ' '));
+                            bigSquaresL.add(new Mini(getModel().getp1(),getModel().getp2(),10+18*column,8+8*row, squares));
+                        }
+                    }
+                    game.setState(new GameState(new Big(getModel().getp1(),getModel().getp2(), 0, 0,bigSquaresL)));
                     getModel().resetElapsedTime();
                 }
                 break;

@@ -132,7 +132,7 @@ public class Mini extends TicTacToe {
     @Override
     public List<Character> getContents()
     {
-        return new ArrayList<>(smallSquares);
+        return smallSquares;
     }
 
 
