@@ -4,6 +4,7 @@ import project.gui.GUI;
 import project.model.Position;
 import project.model.board.TicTacToe;
 
+import java.io.BufferedReader;
 import java.util.List;
 
 public class BoardViewer extends Viewer<TicTacToe> {
@@ -25,8 +26,12 @@ public class BoardViewer extends Viewer<TicTacToe> {
                     getModel().getLine(i), "#FFFFFF");
         }
 
-        gui.drawText(new Position(77, 10), String.valueOf(getModel().getp1().getScore()), "#FFFFFF");
-        gui.drawText(new Position(77, 11), String.valueOf(getModel().getp2().getScore()), "#FFFFFF");
+        gui.drawText(new Position(80, 8), String.valueOf(getModel().getp2().getScore() + getModel().getp1().getScore()), "#FFFFFF");
+
+        int posP1Y = 10; int posP2Y = 11;
+        if(getModel().getp1().getSymbol() == 'X' ){posP1Y = 11; posP2Y = 10;}
+        gui.drawText(new Position(77, posP1Y), String.valueOf(getModel().getp1().getScore()), "#FFFFFF");
+        gui.drawText(new Position(77, posP2Y), String.valueOf(getModel().getp2().getScore()), "#FFFFFF");
 
 
         switch (getModel().getSelected()) {
@@ -156,6 +161,27 @@ public class BoardViewer extends Viewer<TicTacToe> {
         }
 
         highlightMini(gui,getModel().getMinPosition(),getModel().getInnerSelected());
+
+        if (getModel().getIsPaused()){
+            gui.drawText(new Position(10, 31), "The game is paused! Press P to resume the game.", DEFAULT_COLOUR);
+        }
+
+        switch (getModel().getGameIsOver()){
+            case 0:
+                break;
+            case 1:
+                gui.drawText(new Position(10, 31), "Congrats Player X, you WON!", DEFAULT_COLOUR);
+                gui.drawText(new Position(10, 32), "Do you want to keep playing? [Y/N]", DEFAULT_COLOUR);
+                break;
+            case 2:
+                gui.drawText(new Position(10, 31), "Congrats Player 0, you WON!", DEFAULT_COLOUR);
+                gui.drawText(new Position(10, 32), "Do you want to keep playing? [Y/N]", DEFAULT_COLOUR);
+                break;
+            case 3:
+                gui.drawText(new Position(10, 31), "Oh no, it is a TIE GAME! ", DEFAULT_COLOUR);
+                gui.drawText(new Position(10, 32), "Do you want to keep playing? [Y/N]", DEFAULT_COLOUR);
+                break;
+        }
     }
 
     private void highlightMini(GUI gui, Position upperCorner, int MiniSelected){

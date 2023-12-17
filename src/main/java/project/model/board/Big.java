@@ -10,8 +10,9 @@ import java.util.*;
 
 public class Big extends TicTacToe {
 
-    List<Mini>  bigSquaresL;
     boolean isPlayingMini = false;
+    List<Mini>  bigSquaresL= new ArrayList<>();
+    boolean isLocked = false;
 
     public Big(Player player1, Player player2, int x, int y,List<Mini> squares) throws IOException {
         this.position = new Position(x,y);
@@ -30,7 +31,7 @@ public class Big extends TicTacToe {
             }
         }
         selected = 4;
-
+        setInialGame();
         new Thread(this::updateElapsedTime).start();
 
     }
@@ -51,35 +52,52 @@ public class Big extends TicTacToe {
 
     @Override
     public void goUp(){
+
         if (bigSquaresL.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
             bigSquaresL.get(selected).goUp();
-        } else {
+        }else if(!isLocked){
         selected = (((selected-3) % 9) + 9) % 9;}
     }
     @Override
     public void goDown(){
         if (bigSquaresL.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
             bigSquaresL.get(selected).goDown();
-        }else{
+        }else if(!isLocked){
         selected = (selected+3) % 9;}
     }
     @Override
     public void goLeft(){
         if (bigSquaresL.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
             bigSquaresL.get(selected).goLeft();
-        }else{
+        }else if(!isLocked){
         selected = (((selected-1) % 9) + 9) % 9;}
     }
     @Override
     public void goRight(){
         if (bigSquaresL.get(selected).getInnerSelected() != MINI_NOT_SELECTED){
             bigSquaresL.get(selected).goRight();
-        }else{
-        selected = (selected+1) % 9;}
+        }else if(!isLocked){
+            selected = (selected+1) % 9;}
     }
 
     @Override
-    public void endGame() {}
+    public void endGame() {
+        writeTotalTimeToFile(getFormattedElapsedTime());
+        countingTime = false;
+    }
+
+    public void setBigGameState(){
+        if (checkWinner(getPlayState(), 1)) {
+            gameIsOver = 1; // X ganhou!!
+            endGame();
+        } else if (checkWinner(getPlayState(), 2)) {
+            gameIsOver = 2; // O ganhou.. que azar!
+            endGame();
+        } else if (isBigGameTie()){
+            gameIsOver = 3; // ora bolas empatou
+            endGame();
+        }
+    }
 
     @Override
     public List<Character> getContents()
@@ -97,6 +115,8 @@ public class Big extends TicTacToe {
         if(bigSquaresL.get(selected).select(currentPlayer)){
             selected = nextgame;
             switchPlayer();
+            setGameState();
+            isLocked = (bigSquaresL.get(selected).getMiniGameState() == 0);
             return true;
         }
         return false;
@@ -125,10 +145,12 @@ public class Big extends TicTacToe {
     }
 
     @Override
-    public void setMiniGameState() {
+    public void setGameState() {
         for (Mini mini : bigSquaresL) {
-            mini.setMiniGameState();
+            mini.setGameState();
         }
+
+        setBigGameState();
     }
 
     public void CoinToss() {
@@ -137,6 +159,44 @@ public class Big extends TicTacToe {
 
         if (resultado == 0) {currentPlayer = p1;}
         else {currentPlayer = p2;}
+    }
+
+
+    protected boolean isBigGameTie() {
+        for (int element : getPlayState()){
+            if (element == 0){ // ainda tem algum jogo a acontecer
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean checkWinner(List<Integer> states, int playerState) {
+        return (checkRows(states, playerState) || checkColumns(states, playerState) || checkDiagonals(states, playerState));
+    }
+
+    public static boolean checkRows(List<Integer> states, int playerState) {
+        for (int i = 0; i < 7; i += 3) {
+            if (((states.get(i) == playerState) || (states.get(i) == 3)) && ((states.get(i + 1) == playerState) || (states.get(i) == 3)) && ((states.get(i + 2) == playerState) || (states.get(i + 2) == 3)))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkColumns(List<Integer> states, int playerState) {
+        for (int i = 0; i < 3; i++) {
+            if ((states.get(i) == playerState || states.get(i) == 3 ) && (states.get(i + 3) == playerState ||states.get(i + 3) == 3 ) && (states.get(i + 6) == playerState || states.get(i + 6) == 3)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkDiagonals(List<Integer> states, int playerState) {
+        return (((states.get(0) == playerState || states.get(0) == 3) && (states.get(4) == playerState || states.get(4) == 3) && (states.get(8) == playerState|| states.get(8) == 3)) ||
+                ((states.get(2) == playerState || states.get(2) == 3) && (states.get(4) == playerState || states.get(4) == 3)  && (states.get(6) == playerState || states.get(6) == 3)));
     }
 
 }
