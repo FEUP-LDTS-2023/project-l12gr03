@@ -95,6 +95,7 @@ public class BoardControllerTest {
         BoardController boardController = new BoardController(mockBoard);
         Game mockGame = mock(Game.class);
         when(mockBoard.getPlayer()).thenReturn(mock(Player.class));
+        when(mockBoard.getIsPaused()).thenReturn(false);
 
         try {
             boardController.step(mockGame, GUI.ACTION.SELECT, 100);
@@ -104,7 +105,6 @@ public class BoardControllerTest {
 
         verify(mockBoard, times(1)).getPlayer();
         verify(mockBoard, times(1)).select(any(Player.class));
-        //verify(mockBoard, times(1)).setMiniGameState();
         //TODO beware pit tests
     }
 }

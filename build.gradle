@@ -1,11 +1,11 @@
 plugins {
     id 'java'
-    //id 'info.solidsoft.pitest' version '1.7.0'
+    //id 'info.solidsoft.pitest' version '1.6.0'
     id "org.kordamp.gradle.errorprone" version "0.53.0"
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group 'project'
+version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -21,9 +21,7 @@ dependencies {
 }
 /*
 pitest {
-    junit5PluginVersion = '0.9.1'
-    excludedClasses = ["project.Application", "project.Game"]
-    targetClasses = ['project.*']
+    junit5PluginVersion = '0.12'
 }
 */
 

@@ -103,6 +103,8 @@ public class LanternaGUI implements GUI {
         }
     }
 
+    public Screen getScreen(){return screen;}
+
     @Override
     public void clear() {
         screen.clear();

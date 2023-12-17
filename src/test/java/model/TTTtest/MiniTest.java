@@ -146,7 +146,7 @@ public class MiniTest {
         Player p1 = Mockito.mock(Player.class);
         Player p2 = Mockito.mock(Player.class);
         mini = new Mini(p1,p2,0,0,Arrays.asList('X','X','X','X','X','X','X','X','X'));
-        mini.setMiniGameState();
+        mini.setGameState();
         Assertions.assertEquals(1,mini.getMiniGameState());
         Assertions.assertEquals(1,mini.getPlayState().get(0));
 
@@ -164,7 +164,7 @@ public class MiniTest {
         Player p1 = Mockito.mock(Player.class);
         Player p2 = Mockito.mock(Player.class);
         mini = new Mini(p1,p2,0,0,Arrays.asList('O','O','O','O','O','O','O','O','O'));
-        mini.setMiniGameState();
+        mini.setGameState();
         Assertions.assertEquals(2,mini.getMiniGameState());
         Assertions.assertEquals(2,mini.getPlayState().get(0));
 
@@ -174,7 +174,7 @@ public class MiniTest {
         Player p1 = Mockito.mock(Player.class);
         Player p2 = Mockito.mock(Player.class);
         mini = new Mini(p1,p2,0,0,Arrays.asList('O','O','X','X','X','O','O','X','X'));
-        mini.setMiniGameState();
+        mini.setGameState();
         Assertions.assertEquals(3,mini.getMiniGameState());
         Assertions.assertEquals(3,mini.getPlayState().get(0));
 
@@ -184,7 +184,7 @@ public class MiniTest {
         Player p1 = Mockito.mock(Player.class);
         Player p2 = Mockito.mock(Player.class);
         mini = new Mini(p1,p2,0,0,Arrays.asList('O',' ','X','X','X','O','O','X','X'));
-        mini.setMiniGameState();
+        mini.setGameState();
         Assertions.assertEquals(0,mini.getMiniGameState());
     }
  //TODO check setGameState perguntar ao professor problema com mocks
