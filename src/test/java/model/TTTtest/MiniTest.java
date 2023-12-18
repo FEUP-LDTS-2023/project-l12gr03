@@ -31,7 +31,7 @@ public class MiniTest {
     void setUp() throws IOException {
         Player p1 = Mockito.mock(Player.class);
         Player p2 = Mockito.mock(Player.class);
-        mini = new Mini(p1,p2,0,0,DEFAULT_MINI_CONTENT);
+        mini = Mockito.spy(new Mini(p1,p2,0,0,DEFAULT_MINI_CONTENT));
     }
     @Property
     void getPositionTest(@ForAll int x, @ForAll int y) throws IOException {
@@ -294,16 +294,33 @@ public class MiniTest {
     }
 
     
-/*
+
     @Test
     void selectTest(){
-        Player p1 = Mockito.mock(Player.class);
-        Mini mini1 = mock(Mini.class);
-        when(mini1.drawsymbol(any(Player.class))).thenReturn(true);
-        Assertions.assertFalse(mini1.select(any(Player.class)));
-        Assertions.assertTrue(mini1.select(any(Player.class)));
-        Assertions.assertEquals(4,mini1.getSelected());
+        //doReturn(true).when(mini).drawsymbol(any(Player.class));
+        when(mini.drawsymbol(any(Player.class))).thenReturn(true);
+        when(mini.isOver()).thenReturn(false);
+        when(mini.select(any(Player.class))).thenCallRealMethod();
+
+        boolean flag = mini.select(any(Player.class));
+        Assertions.assertFalse(flag);
+        when(mini.getSelected()).thenCallRealMethod();
+        Assertions.assertEquals(4,mini.getSelected());
+
+        flag = mini.select(any(Player.class));
+        Assertions.assertTrue(flag);
+    }
+
+
+    /*@Test
+    void drawSymbolsTest() throws IOException {
+        Player p1 = new Player('X',0);
+        Player p2 = new Player('O',0);
+        Mini min = new Mini(p1,p2,0,0,DEFAULT_MINI_CONTENT);
+        min.drawsymbol(p1);
+        Assertions.assertEquals('X',min.getContents().get(4));
     }*/
 }
+//TODO Select Test not working
 //TODO mixed movement test
 //TODO GetMinPosition BIG game smell, perguntar (also viewer)

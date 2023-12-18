@@ -9,6 +9,9 @@ import project.Game;
 import project.states.GameState;
 import project.states.MenuState;
 import project.model.board.Mini;
+import project.viewer.BoardViewer;
+import project.viewer.MenuViewer;
+import project.viewer.Viewer;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,13 +42,20 @@ public class BoardController extends Controller<TicTacToe> {
                 if (!getModel().getIsPaused()){getModel().goRight();}
                 break;
             case QUIT:
-                game.setState(new MenuState(new Menu()));
+                Menu menu = new Menu();
+                MenuController controller = new MenuController(menu);
+                MenuViewer viewer = new MenuViewer(menu);
+                game.setState(new MenuState(menu,viewer,controller));
                 break;
             case SELECT:
                 if (!getModel().getIsPaused()){getModel().select(getModel().getPlayer());}
                 break;
             case PRESS_N:
-                if (getModel().getGameIsOver() != 0){game.setState(new MenuState(new Menu()));}
+                if (getModel().getGameIsOver() != 0){
+                    Menu menu1 = new Menu();
+                    MenuController controller1 = new MenuController(menu1);
+                    MenuViewer viewer1 = new MenuViewer(menu1);
+                    game.setState(new MenuState(menu1,viewer1,controller1));                }
                 break;
             case PRESS_Y:
                 if (getModel().getGameIsOver() != 0){
@@ -75,7 +85,11 @@ public class BoardController extends Controller<TicTacToe> {
                             bigSquaresL.add(new Mini(getModel().getp1(),getModel().getp2(),10+18*column,8+8*row, squares));
                         }
                     }
-                    game.setState(new GameState(new Big(getModel().getp1(),getModel().getp2(), 0, 0,bigSquaresL)));
+
+                    Big newGame = new Big(getModel().getp1(),getModel().getp2(), 0, 0,bigSquaresL);
+                    Viewer<TicTacToe> viewer1 = new BoardViewer(newGame);
+                    Controller<TicTacToe> controller1 = new BoardController(newGame);
+                    game.setState(new GameState(newGame,viewer1,controller1));
                     getModel().resetElapsedTime();
                 }
                 break;

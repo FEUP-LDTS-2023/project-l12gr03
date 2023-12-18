@@ -20,7 +20,11 @@ public class RulesStateTest {
     @BeforeEach
     void setUp() {
         this.mockRule = mock(Rule.class);
-        this.rulesState = new RulesState(mockRule);
+
+        RuleViewer viewer = mock(RuleViewer.class);
+        RuleController controller = mock(RuleController.class);
+
+        this.rulesState = new RulesState(mockRule,viewer,controller);
     }
 
     @Test

@@ -24,13 +24,6 @@ public class Mini extends TicTacToe {
         position= new Position(x,y);
     }
 
-    public int getMiniX(){
-        return getPosition().getX();
-    }
-    public int getMiniY(){
-        return getPosition().getY();
-    }
-
     public Integer getMiniGameState(){
         return this.state;
     }
@@ -105,12 +98,12 @@ public class Mini extends TicTacToe {
     public void goRight(){selected = (selected+1) % 9;}
 
     @Override
-    public void endGame(){}
+    public void endGame(){}//TODO Eliminate EndGame
 
     @Override
     public boolean select(Player player){
-        if (!isOver) {
-            if (selected == MINI_NOT_SELECTED) {
+        if (!isOver()) {
+            if (getSelected() == MINI_NOT_SELECTED) {
                 selected = DEFAULT_SQUARE;
             } else {
                 return drawsymbol(player);
@@ -135,5 +128,6 @@ public class Mini extends TicTacToe {
         return smallSquares;
     }
 
+    public boolean isOver(){return isOver;}
 
 }

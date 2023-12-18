@@ -18,7 +18,10 @@ public class RegistrationStateTest {
     @BeforeEach
     void setUp() {
         this.mockPlayerRegistrator = mock(PlayerRegistrator.class);
-        this.registrationState = new RegistrationState(mockPlayerRegistrator);
+
+        RegistrationView view = mock(RegistrationView.class);
+        RegistrationController controller = mock(RegistrationController.class);
+        this.registrationState = new RegistrationState(mockPlayerRegistrator,view,controller);
     }
 
     @Test
