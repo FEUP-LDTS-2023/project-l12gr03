@@ -7,8 +7,8 @@ import project.viewer.MenuViewer;
 import project.viewer.Viewer;
 
 public class MenuState extends State<Menu> {
-    public MenuState(Menu model) {
-        super(model);
+    public MenuState(Menu model, Viewer<Menu> viewer, Controller<Menu> controller) {
+        super(model,viewer,controller);
     }
 
     @Override

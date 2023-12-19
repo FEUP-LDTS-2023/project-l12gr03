@@ -6,9 +6,13 @@ import project.model.board.Mini;
 import project.model.board.Player;
 import project.gui.GUI;
 import project.model.Menu.Menu;
+import project.model.board.TicTacToe;
 import project.model.registation.PlayerRegistrator;
 import project.states.GameState;
 import project.states.MenuState;
+import project.viewer.BoardViewer;
+import project.viewer.MenuViewer;
+import project.viewer.Viewer;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,7 +32,10 @@ public class RegistrationController extends Controller<PlayerRegistrator> {
                 getModel().assignO();
                 break;
             case QUIT:
-                game.setState(new MenuState(new Menu()));
+                Menu menu = new Menu();
+                MenuViewer viewer = new MenuViewer(menu);
+                MenuController controller = new MenuController(menu);
+                game.setState(new MenuState(menu,viewer,controller));
                 break;
             case SELECT:
 
@@ -48,7 +55,11 @@ public class RegistrationController extends Controller<PlayerRegistrator> {
                             bigSquaresL.add(new Mini(player1,player2,10+18*column,8+8*row, squares));
                         }
                     }
-                    game.setState(new GameState(new Big(player1,player2, 0, 0,bigSquaresL)));
+
+                    Big newGame = new Big(player1,player2, 0, 0,bigSquaresL);
+                    Viewer<TicTacToe> viewer1 = new BoardViewer(newGame);
+                    Controller<TicTacToe> controller1 = new BoardController(newGame);
+                    game.setState(new GameState(newGame,viewer1,controller1));
                 }
                 break;
             default:

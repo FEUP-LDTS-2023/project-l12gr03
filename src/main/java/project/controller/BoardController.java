@@ -4,11 +4,15 @@ package project.controller;
 import project.gui.GUI;
 import project.model.Menu.Menu;
 import project.model.board.Big;
+import project.model.board.Player;
 import project.model.board.TicTacToe;
 import project.Game;
 import project.states.GameState;
 import project.states.MenuState;
 import project.model.board.Mini;
+import project.viewer.BoardViewer;
+import project.viewer.MenuViewer;
+import project.viewer.Viewer;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,28 +43,36 @@ public class BoardController extends Controller<TicTacToe> {
                 if (!getModel().getIsPaused()){getModel().goRight();}
                 break;
             case QUIT:
-                game.setState(new MenuState(new Menu()));
+                Menu menu = new Menu();
+                MenuController controller = new MenuController(menu);
+                MenuViewer viewer = new MenuViewer(menu);
+                game.setState(new MenuState(menu,viewer,controller));
                 break;
             case SELECT:
                 if (!getModel().getIsPaused()){getModel().select(getModel().getPlayer());}
                 break;
             case PRESS_N:
-                if (getModel().getGameIsOver() != 0){game.setState(new MenuState(new Menu()));}
+                if (getModel().getGameIsOver() != 0){
+                    Menu menu1 = new Menu();
+                    MenuController controller1 = new MenuController(menu1);
+                    MenuViewer viewer1 = new MenuViewer(menu1);
+                    game.setState(new MenuState(menu1,viewer1,controller1));                }
                 break;
             case PRESS_Y:
                 if (getModel().getGameIsOver() != 0){
+                    Player p1 = getModel().getp1(); Player p2 = getModel().getp2();
                     switch (getModel().getGameIsOver()){
                         case 1:
-                            if (getModel().getp1().getSymbol() == 'X' ) { getModel().getp1().addScore();}
-                            else {getModel().getp2().addScore();}
+                            if (p1.getSymbol() == 'X' ) { p1.addScore();}
+                            else {p2.addScore();}
                             break;
                         case 2:
-                            if (getModel().getp1().getSymbol() == 'O' ) { getModel().getp1().addScore();}
-                            else {getModel().getp2().addScore();}
+                            if (p1.getSymbol() == 'O' ) {p1.addScore();}
+                            else {p2.addScore();}
                             break;
                         case 3:
-                            getModel().getp1().addScoreTie();
-                            getModel().getp2().addScoreTie();
+                            p1.addScoreTie();
+                            p2.addScoreTie();
                             break;
                     }
 
@@ -72,10 +84,14 @@ public class BoardController extends Controller<TicTacToe> {
                         {
                             //Since objects are passed by reference the next line CAN NOT be moved to outside the cycle
                             ArrayList<Character> squares = new ArrayList<>(Collections.nCopies(9, ' '));
-                            bigSquaresL.add(new Mini(getModel().getp1(),getModel().getp2(),10+18*column,8+8*row, squares));
+                            bigSquaresL.add(new Mini(p1,p2,10+18*column,8+8*row, squares));
                         }
                     }
-                    game.setState(new GameState(new Big(getModel().getp1(),getModel().getp2(), 0, 0,bigSquaresL)));
+
+                    Big newGame = new Big(p1,p2, 0, 0,bigSquaresL);
+                    Viewer<TicTacToe> viewer1 = new BoardViewer(newGame);
+                    Controller<TicTacToe> controller1 = new BoardController(newGame);
+                    game.setState(new GameState(newGame,viewer1,controller1));
                     getModel().resetElapsedTime();
                 }
                 break;
