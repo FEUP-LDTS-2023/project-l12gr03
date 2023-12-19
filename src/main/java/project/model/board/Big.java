@@ -177,8 +177,34 @@ public class Big extends TicTacToe {
 
     public static boolean checkRows(List<Integer> states, int playerState) {
         for (int i = 0; i < 7; i += 3) {
-            if (((states.get(i) == playerState) || (states.get(i) == 3)) && ((states.get(i + 1) == playerState) || (states.get(i) == 3)) && ((states.get(i + 2) == playerState) || (states.get(i + 2) == 3)))
-            {
+            if (checkRowsCase0(states, playerState) || checkRowsCase1(states, playerState) || checkRowsCase2(states, playerState)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkRowsCase0(List<Integer> states, int playerState) {
+        for (int i = 0; i < 7; i += 3) {
+            if (states.get(i) == playerState && (states.get(i + 1) == playerState || states.get(i) == 3) && (states.get(i + 2) == playerState || states.get(i + 2) == 3) ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkRowsCase1(List<Integer> states, int playerState) {
+        for (int i = 0; i < 7; i += 3) {
+            if ((states.get(i) == playerState || states.get(i) == 3) && states.get(i + 1) == playerState && (states.get(i + 2) == playerState || states.get(i + 2) == 3)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkRowsCase2(List<Integer> states, int playerState) {
+        for (int i = 0; i < 7; i += 3) {
+            if ((states.get(i) == playerState || states.get(i) == 3) && (states.get(i + 1) == playerState || states.get(i) == 3) && states.get(i + 2) == playerState) {
                 return true;
             }
         }
@@ -187,7 +213,34 @@ public class Big extends TicTacToe {
 
     public static boolean checkColumns(List<Integer> states, int playerState) {
         for (int i = 0; i < 3; i++) {
-            if ((states.get(i) == playerState || states.get(i) == 3 ) && (states.get(i + 3) == playerState ||states.get(i + 3) == 3 ) && (states.get(i + 6) == playerState || states.get(i + 6) == 3)) {
+            if (checkColumnsCase0(states,playerState) || checkColumnsCase1(states, playerState) || checkColumnsCase2(states, playerState)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkColumnsCase0(List<Integer> states, int playerState) {
+        for (int i = 0; i < 3; i++) {
+            if ((states.get(i) == playerState) && (states.get(i + 3) == playerState || states.get(i + 3) == 3 ) && (states.get(i + 6) == playerState || states.get(i + 6) == 3)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkColumnsCase1(List<Integer> states, int playerState) {
+        for (int i = 0; i < 3; i++) {
+            if ((states.get(i) == playerState || states.get(i) == 3 ) && (states.get(i + 3) == playerState) && (states.get(i + 6) == playerState || states.get(i + 6) == 3)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkColumnsCase2(List<Integer> states, int playerState) {
+        for (int i = 0; i < 3; i++) {
+            if  ((states.get(i) == playerState || states.get(i) == 3 ) && (states.get(i + 3) == playerState ||states.get(i + 3) == 3 ) && (states.get(i + 6) == playerState)) {
                 return true;
             }
         }
@@ -195,8 +248,21 @@ public class Big extends TicTacToe {
     }
 
     public static boolean checkDiagonals(List<Integer> states, int playerState) {
-        return (((states.get(0) == playerState || states.get(0) == 3) && (states.get(4) == playerState || states.get(4) == 3) && (states.get(8) == playerState|| states.get(8) == 3)) ||
-                ((states.get(2) == playerState || states.get(2) == 3) && (states.get(4) == playerState || states.get(4) == 3)  && (states.get(6) == playerState || states.get(6) == 3)));
+        return (checkDiagonalsCase0(states, playerState) || checkDiagonalsCase1(states, playerState) || checkDiagonalsCase2(states,playerState));
     }
 
+    public static boolean checkDiagonalsCase0(List<Integer> states, int playerState) {
+        return (((states.get(0) == playerState) && (states.get(4) == playerState || states.get(4) == 3) && (states.get(8) == playerState|| states.get(8) == 3)) ||
+                ((states.get(2) == playerState) && (states.get(4) == playerState || states.get(4) == 3)  && (states.get(6) == playerState || states.get(6) == 3)));
+    }
+
+    public static boolean checkDiagonalsCase1(List<Integer> states, int playerState) {
+        return (((states.get(0) == playerState || states.get(0) == 3) && (states.get(4) == playerState) && (states.get(8) == playerState|| states.get(8) == 3)) ||
+                ((states.get(2) == playerState || states.get(2) == 3) && (states.get(4) == playerState)  && (states.get(6) == playerState || states.get(6) == 3)));
+    }
+
+    public static boolean checkDiagonalsCase2(List<Integer> states, int playerState) {
+        return (((states.get(0) == playerState || states.get(0) == 3) && (states.get(4) == playerState || states.get(4) == 3) && (states.get(8) == playerState)) ||
+                ((states.get(2) == playerState || states.get(2) == 3) && (states.get(4) == playerState || states.get(4) == 3)  && (states.get(6) == playerState)));
+    }
 }

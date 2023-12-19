@@ -38,10 +38,10 @@ public class Mini extends TicTacToe {
     @Override
     public void setGameState(){
         if (checkWinner(this.smallSquares, 'X')) {
-            this.state = 1; // jogador 1 ganha o jogo :)
+            this.state = 1; // jogador X ganha o jogo :)
             isOver = true;
         } else if (checkWinner(this.smallSquares, 'O')) {
-            this.state = 2; // jogador 2 ganha o jogo :(
+            this.state = 2; // jogador O ganha o jogo :(
             isOver = true;
         } else if (isGameTie(this.smallSquares)){
             this.state = 3; // ora bolas empatou
