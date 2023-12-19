@@ -22,21 +22,21 @@ This project was developed by Amanda Tartarotti (202211647@up.pt) Gonçalo Sousa
 - **Rules** - Shows on the screen a text describing the rules of the game.
 - **Symbol Assigment** - Allows player 1 to decide if it wants to have the crosses or circles symbol.
 - **Time** - Shows the players a clock with duration of the game and their best time.
+- **Pause** - Pressing 'P' the game time is paused until new order.
 - **Coin Toss** - the first player that gets to place its symbol is decided randomly.
+- **Move** - A player can change the selected square either on the bigger grid or a smaller one when appropriate.
+- **Select** - A player can choose to play its symbol on the square that it has selected.
+- **Score** - Each player has a score that starts at 0 and is incremented by 1 if they win the bigger tic-tac-toe game.
+- **Time Statistics** - When the game ends the time is stored. If it is better than the previous time a new Record Time is set.
+- **Continue** - After the game the players can choose to continue playing and keep their scores.
+
+
 
 ![img.png](resources/MainMenuPrint.png)
 
 ![img.png](resources/RulesPrint.png)
 
 ![img.png](resources/SquareSelectionPrint.png)
-
-### PLANNED FEATURES
-
-- **Move** - A player can change the selected square either on the bigger grid or a smaller one when appropriate.
-- **Select** - A player can choose to play its symbol on the square that it has selected.
-- **Score** - Each player has a score that starts at 0 and is incremented by 1 if they win the bigger tic-tac-toe game.
-- **Time Statistics** - When the game ends it is shown the time it took and what percentage each player took with its plays.
-- **Continue** - After the game the players can choose to continue playing and keep their scores.
 
 
 ### UML
