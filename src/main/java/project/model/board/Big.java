@@ -75,10 +75,11 @@ public class Big extends TicTacToe {
     }
 
     public void setBigGameState(){
-        if (checkWinner(getPlayState(), 1)) {
+        List<Integer> l = getPlayState();
+        if (checkWinner(l, 1)) {
             gameIsOver = 1; // X ganhou!!
             endGame();
-        } else if (checkWinner(getPlayState(), 2)) {
+        } else if (checkWinner(l, 2)) {
             gameIsOver = 2; // O ganhou.. que azar!
             endGame();
         } else if (isBigGameTie()){
@@ -187,4 +188,5 @@ public class Big extends TicTacToe {
                 ((states.get(2) == playerState || states.get(2) == 3) && (states.get(4) == playerState || states.get(4) == 3)  && (states.get(6) == playerState || states.get(6) == 3)));
     }
 
+    public boolean isCountingTime(){return countingTime;}
 }

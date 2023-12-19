@@ -12,6 +12,7 @@ import project.model.board.Player;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
@@ -22,9 +23,19 @@ public class BigTest {
     private Player mockP1;
     private Player mockP2;
     private List<Mini> squares = new ArrayList<Mini>();
+
+    @BeforeEach
+    void setp() throws IOException {
+        this.mockP1 = Mockito.mock(Player.class);
+        this.mockP2 = Mockito.mock(Player.class);
+        for (int col = 0; col < 9; col++){
+            Mini mini = Mockito.mock(Mini.class);
+            this.squares.add(mini);
+        }
+        this.big = Mockito.spy(new Big(mockP1, mockP2,0,0,this.squares));
+    }
     @Test
     void goUpTest() throws IOException {
-
         for (int it = 0; it < 4; it++){
             when(squares.get(big.getSelected()).getInnerSelected()).thenReturn(-1);
             if (it % 3 == 0) Assertions.assertEquals(4, big.getSelected());
@@ -38,47 +49,25 @@ public class BigTest {
         verify(squares.get(big.getSelected()),times(1)).goUp();
     }
 
-    @Property
-    void goDownTest(@ForAll int x, @ForAll int y) throws IOException {
-        Player p1 = Mockito.mock(Player.class);
-        Player p2 = Mockito.mock(Player.class);
-        Mini mockmini = Mockito.mock(Mini.class);
-        ArrayList<Mini> bigSquaresL = new ArrayList<>();
-        when(mockmini.getInnerSelected()).thenReturn(-1);
-        for (int row=0;row<3;row++)
-        {
-            for (int column=0; column<3; column++)
-            {
-                bigSquaresL.add(mockmini);
-            }
-        }
-        Big big = new Big(p1,p2,x,y,bigSquaresL);
-        for (int it = 0; it < 4; it++) {
+    @Test
+    void goDownTest() throws IOException {
+        for (int it = 0; it < 4; it++){
+            when(squares.get(big.getSelected()).getInnerSelected()).thenReturn(-1);
             if (it % 3 == 0) Assertions.assertEquals(4, big.getSelected());
             if (it % 3 == 1) Assertions.assertEquals(7, big.getSelected());
             if (it % 3 == 2) Assertions.assertEquals(1, big.getSelected());
             big.goDown();
         }
+
+        when(squares.get(big.getSelected()).getInnerSelected()).thenReturn(1);
+        big.goDown();
+        verify(squares.get(big.getSelected()),times(1)).goDown();
     }
 
-    @Property
-    void goLeftTest(@ForAll int x, @ForAll int y) throws IOException{
-        Player p1 = Mockito.mock(Player.class);
-        Player p2 = Mockito.mock(Player.class);
-        Mini mockmini = Mockito.mock(Mini.class);
-        when(mockmini.getInnerSelected()).thenReturn(-1);
-        ArrayList<Mini> bigSquaresL = new ArrayList<>();
-        for (int row=0;row<3;row++)
-        {
-            for (int column=0; column<3; column++)
-            {
-                bigSquaresL.add(mockmini);
-            }
-        }
-        Big big = new Big(p1,p2,x,y,bigSquaresL);
-
-        for (int it = 0; it < 9 ;it++)
-        {
+    @Test
+    void goLeftTest() throws IOException{
+        for (int it = 0; it < 9 ;it++) {
+            when(squares.get(big.getSelected()).getInnerSelected()).thenReturn(-1);
             switch (it%9){
                 case 0:
                     Assertions.assertEquals(4, big.getSelected());
@@ -110,25 +99,17 @@ public class BigTest {
             }
             big.goLeft();
         }
+
+        when(squares.get(big.getSelected()).getInnerSelected()).thenReturn(1);
+        big.goLeft();
+        verify(squares.get(big.getSelected()),times(1)).goLeft();
     }
 
-    @Property
-    void goRightTest(@ForAll int x, @ForAll int y) throws IOException{
-        Player p1 = Mockito.mock(Player.class);
-        Player p2 = Mockito.mock(Player.class);
-        Mini mockmini = Mockito.mock(Mini.class);
-        when(mockmini.getInnerSelected()).thenReturn(-1);
-        ArrayList<Mini> bigSquaresL = new ArrayList<>();
-        for (int row=0;row<3;row++)
-        {
-            for (int column=0; column<3; column++)
-            {
-                bigSquaresL.add(mockmini);
-            }
-        }
-        Big big = new Big(p1,p2,x,y,bigSquaresL);
+    @Test
+    void goRightTest() throws IOException{
         for (int it = 0; it < 9 ;it++)
         {
+            when(squares.get(big.getSelected()).getInnerSelected()).thenReturn(-1);
             switch (it%9){
                 case 0:
                     Assertions.assertEquals(4, big.getSelected());
@@ -160,23 +141,15 @@ public class BigTest {
             }
             big.goRight();
         }
+
+        when(squares.get(big.getSelected()).getInnerSelected()).thenReturn(1);
+        big.goRight();
+        verify(squares.get(big.getSelected()),times(1)).goRight();
     }
 
-    @Property
-    void MixedMovementTest(@ForAll int x, @ForAll int y) throws IOException {
-        Player p1 = Mockito.mock(Player.class);
-        Player p2 = Mockito.mock(Player.class);
-        Mini mockmini = Mockito.mock(Mini.class);
-        when(mockmini.getInnerSelected()).thenReturn(-1);
-        ArrayList<Mini> bigSquaresL = new ArrayList<>();
-        for (int row=0;row<3;row++)
-        {
-            for (int column=0; column<3; column++)
-            {
-                bigSquaresL.add(mockmini);
-            }
-        }
-        Big big = new Big(p1,p2,x,y,bigSquaresL);
+    @Test
+    void MixedMovementTest() throws IOException {
+        for (Mini mini : squares) when(mini.getInnerSelected()).thenReturn(-1);
         big.goRight();
         for (int it = 0; it < 3; it++) {
             if (it % 3 == 0) Assertions.assertEquals(5, big.getSelected());
@@ -209,16 +182,6 @@ public class BigTest {
         }
     }
 
-    @BeforeEach
-    void setp() throws IOException {
-        this.mockP1 = Mockito.mock(Player.class);
-        this.mockP2 = Mockito.mock(Player.class);
-        for (int col = 0; col < 9; col++){
-            Mini mini = Mockito.mock(Mini.class);
-            this.squares.add(mini);
-        }
-        this.big = new Big(mockP1, mockP2,0,0,this.squares);
-    }
     @Test
     void getPlayStateTest() {
         big.getPlayState();
@@ -227,38 +190,57 @@ public class BigTest {
         }
     }
 
-/*
+    /*
     @Test
-    void getPlayStateTest() throws IOException {
-        Player p1 = Mockito.mock(Player.class);
-        Player p2 = Mockito.mock(Player.class);
-        Mini mini = Mockito.mock(Mini.class);
-        Big big = new Big(p1,p2,0,0);
-        List<Integer> playStates = new ArrayList<>(big.getPlayState());
-        for (int comp=0; comp < 4; comp++){
+    void endGameTest() {
+        Assertions.assertTrue(big.isCountingTime());
+        doNothing().when(big).writeTotalTimeToFile(anyString());
+        big.endGame();
+        verify(big,times(1)).writeTotalTimeToFile(anyString());
+        Assertions.assertFalse(big.isCountingTime());
+    }*/
+    //TODO endGame funciona sozinho mas não em separado
 
-            Mockito.when(mini.getMiniGameState()).thenReturn(comp);
-            for (Integer i : playStates) Assertions.assertEquals(comp,i);
-        }
+    @Test
+    void setXBigGameStateTest() {
+
+        for (Mini m : squares) when(m.getMiniGameState()).thenReturn(1);
+        big.setBigGameState();
+
+        Assertions.assertEquals(1,big.getGameIsOver());
+        verify(big,times(1)).endGame();
     }
 
     @Test
-    void getContentsTest() throws IOException {
-        Player p1 = Mockito.mock(Player.class);
-        Player p2 = Mockito.mock(Player.class);
-        Big big = new Big(p1,p2,0,0);
-        List<Character> symbols = new ArrayList<>(Arrays.asList(' ','X','O'));
-        for (Character car : symbols){
-            Mini mini = Mockito.mock(Mini.class);
+    void setOBigGameStateTest() {
 
-            List<Character> mockedContents = new ArrayList<>();
-            for (int i=0; i<9; i++) mockedContents.add(car);
+        for (Mini m : squares) when(m.getMiniGameState()).thenReturn(2);
+        big.setBigGameState();
 
-            Mockito.when(mini.getContents()).thenReturn(mockedContents);
-            for (Character content : big.getContents()){
-                Assertions.assertEquals(car,content);
-            }
-        }
+        Assertions.assertEquals(2,big.getGameIsOver());
+        verify(big,times(1)).endGame();
     }
-*/
+
+    @Test
+    void setTieBigGameStateTest() {
+
+        when(squares.get(0).getMiniGameState()).thenReturn(1);
+        when(squares.get(1).getMiniGameState()).thenReturn(1);
+        when(squares.get(2).getMiniGameState()).thenReturn(2);
+        when(squares.get(3).getMiniGameState()).thenReturn(2);
+        when(squares.get(4).getMiniGameState()).thenReturn(2);
+        when(squares.get(5).getMiniGameState()).thenReturn(1);
+        when(squares.get(6).getMiniGameState()).thenReturn(1);
+        when(squares.get(7).getMiniGameState()).thenReturn(1);
+        when(squares.get(8).getMiniGameState()).thenReturn(2);
+
+
+        big.setBigGameState();
+
+        Assertions.assertEquals(3,big.getGameIsOver());
+        verify(big,times(1)).endGame();
+    }
+
+    //TODO perguntar setBigGamestate não funciona com mocks
+    //when(big.checkWinner(anyList(),1).thenReturn(1) não funciona
 }

@@ -100,7 +100,7 @@ public abstract class TicTacToe {
         return this.initialBoard.size();
     }
 
-    protected void writeTotalTimeToFile(String time) {
+    public void writeTotalTimeToFile(String time) {
         try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(Paths.get(System.getProperty("user.dir") + "/resources/total_time.txt"), StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND))) {
             writer.println(time);
         } catch (IOException e) {
