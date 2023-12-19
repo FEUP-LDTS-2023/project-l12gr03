@@ -5,6 +5,7 @@ import project.model.Position;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalTime;
@@ -101,30 +102,37 @@ public abstract class TicTacToe {
     }
 
     protected void writeTotalTimeToFile(String time) {
-        try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(Paths.get(System.getProperty("user.dir") + "/resources/total_time.txt"), StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND))) {
-            writer.println(time);
+        try {
+            Path filePath = Paths.get(System.getProperty("user.dir") + "/resources/total_time.txt");
+
+            String currentMinTime = findMinTimeFromFile();
+            if (compareTimes(time, currentMinTime) < 0) {
+                // Se o tempo atual for menor que o mínimo, substitua
+                Files.write(filePath, Collections.singletonList(time), StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            } else {
+                Files.write(filePath, Collections.singletonList(time), StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            }
         } catch (IOException e) {
-        throw new RuntimeException("Erro ao escrever no arquivo", e);
+            throw new RuntimeException("Erro ao escrever no arquivo", e);
+        }
     }
-}
+
 
     public abstract int getInnerSelected();
     public abstract void setGameState();
 
     public String findMinTimeFromFile() {
-        try (Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/resources/total_time.txt"), StandardCharsets.UTF_8)) {
-            String minTime = null;
+        try {
+            Path filePath = Paths.get(System.getProperty("user.dir") + "/resources/total_time.txt");
 
-            while (scanner.hasNext()) {
-                String currentTime = scanner.next();
+            if (Files.exists(filePath)) {
 
-                if (minTime == null || compareTimes(currentTime, minTime) < 0) {
-                    minTime = currentTime;
+                List<String> times = Files.readAllLines(filePath, StandardCharsets.UTF_8);
+                if (!times.isEmpty()) {
+                    return times.get(0);
                 }
             }
 
-            return minTime;
-        } catch (FileNotFoundException e) {
             return "00:00:00";
         } catch (IOException e) {
             throw new RuntimeException(e);
