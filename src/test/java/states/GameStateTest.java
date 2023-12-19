@@ -5,10 +5,13 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import project.Game;
 import project.controller.BoardController;
+import project.controller.RegistrationController;
 import project.gui.GUI;
 import project.model.board.TicTacToe;
 import project.states.GameState;
+import project.states.RegistrationState;
 import project.viewer.BoardViewer;
+import project.viewer.RegistrationView;
 
 import java.io.IOException;
 
@@ -23,7 +26,9 @@ public class GameStateTest {
     @BeforeEach
     void setUp() {
         this.mockBoard = mock(TicTacToe.class);
-        this.gameState = new GameState(mockBoard);
+        BoardViewer viewer = mock(BoardViewer.class);
+        BoardController controller = mock(BoardController.class);
+        this.gameState = new GameState(mockBoard,viewer,controller);
     }
 
 
@@ -47,14 +52,18 @@ public class GameStateTest {
 
     @Test
     void testStep() throws IOException {
-        Game game = Mockito.mock(Game.class);
-        GUI gui = Mockito.mock(GUI.class);
-        when(gui.getNextAction()).thenReturn(GUI.ACTION.DOWN);
+        BoardController controller = Mockito.mock(BoardController.class);
+        BoardViewer viewer = Mockito.mock(BoardViewer.class);
+        GameState gameStateSpy = Mockito.spy(new GameState(mockBoard,viewer,controller));
 
-        gameState = Mockito.mock(GameState.class);
-        //gameState.step(game,gui,100);
-        //verify(gui,times(1)).getNextAction();
-        //verify(gameState.)
+        Game mockGame = Mockito.mock(Game.class);
+        GUI mockGui = Mockito.mock(GUI.class);
+        when(mockGui.getNextAction()).thenReturn(GUI.ACTION.UP);
 
+        gameStateSpy.step(mockGame,mockGui,0);
+
+        verify(mockGui,times(1)).getNextAction();
+        verify(controller,times(1)).step(mockGame,GUI.ACTION.UP,0);
+        verify(viewer,times(1)).draw(mockGui);
     }
 }

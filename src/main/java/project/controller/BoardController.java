@@ -4,6 +4,7 @@ package project.controller;
 import project.gui.GUI;
 import project.model.Menu.Menu;
 import project.model.board.Big;
+import project.model.board.Player;
 import project.model.board.TicTacToe;
 import project.Game;
 import project.states.GameState;
@@ -59,18 +60,19 @@ public class BoardController extends Controller<TicTacToe> {
                 break;
             case PRESS_Y:
                 if (getModel().getGameIsOver() != 0){
+                    Player p1 = getModel().getp1(); Player p2 = getModel().getp2();
                     switch (getModel().getGameIsOver()){
                         case 1:
-                            if (getModel().getp1().getSymbol() == 'X' ) { getModel().getp1().addScore();}
-                            else {getModel().getp2().addScore();}
+                            if (p1.getSymbol() == 'X' ) { p1.addScore();}
+                            else {p2.addScore();}
                             break;
                         case 2:
-                            if (getModel().getp1().getSymbol() == 'O' ) { getModel().getp1().addScore();}
-                            else {getModel().getp2().addScore();}
+                            if (p1.getSymbol() == 'O' ) {p1.addScore();}
+                            else {p2.addScore();}
                             break;
                         case 3:
-                            getModel().getp1().addScoreTie();
-                            getModel().getp2().addScoreTie();
+                            p1.addScoreTie();
+                            p2.addScoreTie();
                             break;
                     }
 
@@ -82,11 +84,11 @@ public class BoardController extends Controller<TicTacToe> {
                         {
                             //Since objects are passed by reference the next line CAN NOT be moved to outside the cycle
                             ArrayList<Character> squares = new ArrayList<>(Collections.nCopies(9, ' '));
-                            bigSquaresL.add(new Mini(getModel().getp1(),getModel().getp2(),10+18*column,8+8*row, squares));
+                            bigSquaresL.add(new Mini(p1,p2,10+18*column,8+8*row, squares));
                         }
                     }
 
-                    Big newGame = new Big(getModel().getp1(),getModel().getp2(), 0, 0,bigSquaresL);
+                    Big newGame = new Big(p1,p2, 0, 0,bigSquaresL);
                     Viewer<TicTacToe> viewer1 = new BoardViewer(newGame);
                     Controller<TicTacToe> controller1 = new BoardController(newGame);
                     game.setState(new GameState(newGame,viewer1,controller1));

@@ -25,18 +25,19 @@ public class MenuStateTest {
 
     private Menu mockMenu;
     private MenuState menuState;
+    private MenuViewer viewer;
+    private MenuController controller;
 
     @BeforeEach
     void setUp() {
         this.mockMenu = mock(Menu.class);
 
-        MenuViewer viewer = new MenuViewer(mockMenu);
-        MenuController controller = new MenuController(mockMenu);
+        this.viewer = Mockito.mock(MenuViewer.class);
+        this.controller = Mockito.mock(MenuController.class);
         this.menuState = new MenuState(mockMenu,viewer,controller);
     }
 
-    @Spy
-    MenuState menuSpy;
+
 
     @Test
     void testGetViewer() {
@@ -57,16 +58,13 @@ public class MenuStateTest {
 
     @Test
     void stepTest() throws IOException {
-        MenuViewer mockMenuViewer = Mockito.mock(MenuViewer.class);
-        MenuController mockMenuController = Mockito.mock(MenuController.class);
+        MenuState menuSpy = Mockito.spy(new MenuState(mockMenu,viewer,controller));
 
 
+        when(menuSpy.getViewer()).thenReturn(viewer);
+        when(menuSpy.getController()).thenReturn(controller);
 
-        when(menuSpy.getViewer()).thenReturn(mockMenuViewer);
-        when(menuSpy.getController()).thenReturn(mockMenuController);
 
-
-        menuSpy = Mockito.spy(new MenuState(mockMenu,mockMenuViewer,mockMenuController));
         Game mockGame = Mockito.mock(Game.class);
         GUI mockGui = Mockito.mock(GUI.class);
         when(mockGui.getNextAction()).thenReturn(GUI.ACTION.UP);
@@ -75,7 +73,7 @@ public class MenuStateTest {
         menuSpy.step(mockGame,mockGui,0);
 
         verify(mockGui,times(1)).getNextAction();
-        verify(mockMenuController,times(1)).step(mockGame,GUI.ACTION.UP,0);
-        verify(mockMenuViewer,times(1)).draw(mockGui);
+        verify(controller,times(1)).step(mockGame,GUI.ACTION.UP,0);
+        verify(viewer,times(1)).draw(mockGui);
     }
 }
