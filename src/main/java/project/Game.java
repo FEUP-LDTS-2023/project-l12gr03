@@ -1,10 +1,13 @@
 package project;
 
+import project.controller.MenuController;
 import project.gui.LanternaGUI;
 import project.model.Menu.Menu;
 //import project.model.Music.MusicPlayer;
 import project.states.MenuState;
 import project.states.State;
+import project.viewer.MenuViewer;
+import project.viewer.Viewer;
 
 import javax.sound.sampled.*;
 import java.awt.*;
@@ -22,7 +25,10 @@ public class Game {
 
     public Game() throws IOException, URISyntaxException, FontFormatException {
         this.gui = new LanternaGUI(100, 50);
-        this.state = new MenuState(new Menu());
+        Menu menu = new Menu();
+        MenuViewer viewer = new MenuViewer(menu);
+        MenuController controller = new MenuController(menu);
+        this.state = new MenuState(menu,viewer,controller);
        // this.musicPlayer = new MusicPlayer();
 
     }

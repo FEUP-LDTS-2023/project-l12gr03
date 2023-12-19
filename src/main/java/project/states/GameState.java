@@ -8,8 +8,9 @@ import project.viewer.Viewer;
 
 public class GameState extends State<TicTacToe>{
 
-    public GameState(TicTacToe board) {
-        super(board);
+    public GameState(TicTacToe board, Viewer<TicTacToe> viewer, Controller<TicTacToe> controller)
+    {
+        super(board,viewer,controller);
     }
 
     @Override

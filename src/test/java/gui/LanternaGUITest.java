@@ -18,7 +18,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import javax.management.monitor.Monitor;
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -48,7 +50,7 @@ public class LanternaGUITest {
     }
 
     @Test
-    void LanternaGUITest() throws IOException {
+    void LanternaGUITest() throws IOException, URISyntaxException, FontFormatException {
 
         LanternaGUI lanternaGUI = new LanternaGUI(100, 50);
         Assertions.assertNotNull(lanternaGUI.getScreen());

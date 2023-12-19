@@ -8,7 +8,11 @@ import project.viewer.Viewer;
 
 public class RegistrationState extends State<PlayerRegistrator>{
 
-    public RegistrationState(PlayerRegistrator model) {super(model);}
+    public RegistrationState(PlayerRegistrator model,
+                             Viewer<PlayerRegistrator> viewer,
+                             Controller<PlayerRegistrator> controller) {
+        super(model,viewer,controller);
+    }
     @Override
     public Viewer<PlayerRegistrator> getViewer() {
         return new RegistrationView(getModel());
