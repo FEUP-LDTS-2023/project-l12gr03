@@ -7,7 +7,7 @@ After the game ends the players scores are updated accordingly to the result, it
 players also have the choice to keep playing in which case the game restarts. 
 
 
-    This project was developed by Amanda Tartarotti (202211647@up.pt) Gonçalo Sousa (202207320@up.pt) and Pedro Oliveira (up202206498@up.pt) for LDTS 2023⁄24.
+This project was developed by Amanda Tartarotti (202211647@up.pt) Gonçalo Sousa (202207320@up.pt) and Pedro Oliveira (up202206498@up.pt) for LDTS 2023⁄24.
 
 
 ### IMPLEMENTED FEATURES
