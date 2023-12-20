@@ -186,7 +186,7 @@ by forcing it to only deal with the interface which simplifies feature implement
 
 ### KNOWN CODE SMELLS
 
-- The way we implemented the drawing of a big and small tick-tack-toe grid requires us to draw it all white and 
+- The way we implemented the drawing of a big and small tic-tac-toe grid requires us to draw it all white and 
 after that draw on the same position again with a different color that symbolizes the square a player choose, resulting in an
 repeated use of drawText function. 
 
