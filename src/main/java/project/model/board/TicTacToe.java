@@ -1,7 +1,9 @@
 package project.model.board;
 
 import project.model.Position;
+import project.Music;
 
+import javax.security.auth.login.Configuration;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -33,6 +35,7 @@ public abstract class TicTacToe {
     public static int gameIsOver;
     protected static boolean countingTime;
     protected static boolean isTimePaused;
+    static Music backgroundMusic = new Music("game.wav");
 
     ArrayList<Mini> bigSquares;
 
@@ -46,6 +49,7 @@ public abstract class TicTacToe {
         countingTime = true;
         gameIsOver = 0;
         isTimePaused = false;
+        backgroundMusic.start();
     }
 
     public abstract List<Character> getContents();

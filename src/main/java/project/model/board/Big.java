@@ -72,6 +72,7 @@ public class Big extends TicTacToe {
     public void endGame() {
         writeTotalTimeToFile(getFormattedElapsedTime());
         countingTime = false;
+        backgroundMusic.stop();
     }
 
     public void setBigGameState(){
