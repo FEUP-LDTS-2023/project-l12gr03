@@ -111,7 +111,7 @@ public class BoardViewer extends Viewer<TicTacToe> {
 
         gui.drawText(new Position(68, 28), "Record time: " + getModel().findMinTimeFromFile(), "#FFFFFF");
         gui.drawText(new Position(68, 27), "Playtime: " + getModel().getFormattedElapsedTime(), "#FFFFFF");
-
+        gui.drawText(new Position(68, 18), "M - Start/Stop music", "#FFFFFF");
 
         List<Integer> states = getModel().getPlayState();
 

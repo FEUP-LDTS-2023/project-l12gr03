@@ -40,11 +40,20 @@ public abstract class TicTacToe {
     ArrayList<Mini> bigSquares;
 
     public void toggleTimePaused() {
-        if (isTimePaused==false){
-        backgroundMusic.stop();}else {
+        if (isTimePaused == false){
+        backgroundMusic.pause();
+        }else {
             backgroundMusic.start();
         }
-        isTimePaused = !isTimePaused;}
+        isTimePaused = !isTimePaused;
+    }
+    public void stopMusic(){
+        backgroundMusic.stop();
+    }
+    public void startMusic(){
+        backgroundMusic.setMsp();
+        backgroundMusic.start();
+    }
     public boolean getIsPaused(){return isTimePaused;}
     public int getGameIsOver() {return gameIsOver;}
 

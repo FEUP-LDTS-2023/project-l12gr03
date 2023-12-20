@@ -39,11 +39,17 @@ public class Music {
         sound.loop(Clip.LOOP_CONTINUOUSLY);
     }
 
-    public void stop() {
+    public void pause() {
         sound.stop();
         msp = sound.getMicrosecondPosition();
     }
 
+    public void stop(){
+        sound.stop();
+    }
+    public void setMsp(){
+        msp=0;
+    }
     public void setSound(Clip sound) {
         this.sound = sound;
     }
