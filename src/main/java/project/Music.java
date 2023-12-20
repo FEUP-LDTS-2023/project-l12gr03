@@ -1,4 +1,6 @@
 package project;
+
+
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -9,7 +11,7 @@ import java.io.File;
 
 public class Music {
     private Clip sound;
-
+    private long msp = 0;
     public Music(String sound) {
         this.sound = loadSound(sound);
     }
@@ -32,12 +34,15 @@ public class Music {
     }
 
     public void start() {
-        sound.setMicrosecondPosition(0);
+        sound.setMicrosecondPosition(msp);
         sound.start();
         sound.loop(Clip.LOOP_CONTINUOUSLY);
     }
 
-    public void stop() {sound.stop();}
+    public void stop() {
+        sound.stop();
+        msp = sound.getMicrosecondPosition();
+    }
 
     public void setSound(Clip sound) {
         this.sound = sound;

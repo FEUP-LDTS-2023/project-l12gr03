@@ -21,7 +21,7 @@ public class Game {
 
     private final LanternaGUI gui;
     private State state;
-   // private MusicPlayer musicPlayer;
+
 
     public Game() throws IOException, URISyntaxException, FontFormatException {
         this.gui = new LanternaGUI(100, 50);
@@ -29,7 +29,7 @@ public class Game {
         MenuViewer viewer = new MenuViewer(menu);
         MenuController controller = new MenuController(menu);
         this.state = new MenuState(menu,viewer,controller);
-       // this.musicPlayer = new MusicPlayer();
+
 
     }
 
@@ -39,7 +39,7 @@ public class Game {
     }
 
     public void start() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
-        //musicPlayer.playMusic("resources/gamemusic.wav");
+
 
         int FPS = 25;
         int frameTime = 1000 / FPS;

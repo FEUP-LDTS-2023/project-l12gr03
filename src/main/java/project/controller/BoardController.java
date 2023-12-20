@@ -1,6 +1,7 @@
 package project.controller;
 
 
+import project.Music;
 import project.gui.GUI;
 import project.model.Menu.Menu;
 import project.model.board.Big;
@@ -47,6 +48,7 @@ public class BoardController extends Controller<TicTacToe> {
                 MenuController controller = new MenuController(menu);
                 MenuViewer viewer = new MenuViewer(menu);
                 game.setState(new MenuState(menu,viewer,controller));
+
                 break;
             case SELECT:
                 if (!getModel().getIsPaused()){getModel().select(getModel().getPlayer());}
