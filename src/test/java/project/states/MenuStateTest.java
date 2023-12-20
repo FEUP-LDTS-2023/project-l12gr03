@@ -1,4 +1,4 @@
-package states;
+package project.states;
 
 import com.googlecode.lanterna.terminal.swing.TerminalScrollController;
 import org.junit.jupiter.api.Assertions;

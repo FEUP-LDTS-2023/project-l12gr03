@@ -1,4 +1,4 @@
-package model.TTTtest;
+package project.model.TTTtest;
 
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
@@ -293,37 +293,65 @@ public class MiniTest {
         }
     }
 
+    @Test
+    void endGame(){mini.endGame();}
+
     
 
-    /*@Test
+    @Test
     void selectTest(){
-        doReturn(true).when(mini).drawsymbol(any(Player.class));
-        mini.select(mock(Player.class));
-        //when(mini.drawsymbol(any(Player.class))).thenReturn(true);
-        when(mini.isOver()).thenReturn(false);
-        when(mini.select(any(Player.class))).thenCallRealMethod();
+        Player player = Mockito.mock(Player.class);
 
-        boolean flag = mini.select(any(Player.class));
+        when(mini.isOver()).thenReturn(true);
+        //when(mini.select(player)).thenCallRealMethod();
+
+        boolean flag = mini.select(player);
         Assertions.assertFalse(flag);
-        when(mini.getSelected()).thenCallRealMethod();
-        Assertions.assertEquals(4,mini.getSelected());
 
-        flag = mini.select(any(Player.class));
+        when(mini.isOver()).thenReturn(false);
+        flag = mini.select(player);
+        Assertions.assertEquals(4,mini.getSelected());
+        Assertions.assertFalse(flag);
+
+
+        when(mini.drawsymbol(player)).thenReturn(true);
+        when(mini.getSelected()).thenReturn(4);
+        flag = mini.select(player);
         Assertions.assertTrue(flag);
+
+        when(mini.drawsymbol(player)).thenReturn(false);
+        flag = mini.select(player);
+        Assertions.assertFalse(flag);
     }
 
-     */
 
-
-    /*@Test
+    @Test
     void drawSymbolsTest() throws IOException {
-        Player p1 = new Player('X',0);
-        Player p2 = new Player('O',0);
-        Mini min = new Mini(p1,p2,0,0,DEFAULT_MINI_CONTENT);
-        min.drawsymbol(p1);
-        Assertions.assertEquals('X',min.getContents().get(4));
-    }*/
+        when(mini.getSelected()).thenReturn(4);
+        Player player = Mockito.mock(Player.class);
+        when(player.getSymbol()).thenReturn('O');
+
+        boolean flag = mini.drawsymbol(player);
+        Assertions.assertTrue(flag);
+        when(mini.getSelected()).thenCallRealMethod();
+        Assertions.assertEquals(-1,mini.getSelected());
+        List<Character> ls = mini.getContents();
+        Assertions.assertEquals('O',ls.get(4));
+
+        mini = Mockito.spy(new Mini(player,player,0,0,Arrays.asList(' ',' ',' ',' ','X',' ',' ',' ',' ')));
+        when(mini.getSelected()).thenReturn(4);
+
+        flag = mini.drawsymbol(player);
+        Assertions.assertFalse(flag);
+        Assertions.assertEquals(4,mini.getSelected());
+
+    }
+
+    @Test
+    void getContentsTest(){
+        Assertions.assertEquals(Arrays.asList(' ',' ',' ',' ',' ',' ',' ',' ',' '),mini.getContents());
+    }
 }
-//TODO Select Test not working
-//TODO mixed movement test
+
+
 //TODO GetMinPosition BIG game smell, perguntar (also viewer)

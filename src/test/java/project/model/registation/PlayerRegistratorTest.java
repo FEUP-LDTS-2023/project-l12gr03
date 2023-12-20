@@ -1,4 +1,4 @@
-package model.registation;
+package project.model.registation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package model;
+package project.model;
 
 
 import net.jqwik.api.ForAll;

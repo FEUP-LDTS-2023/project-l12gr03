@@ -1,4 +1,4 @@
-package controller;
+package project.controller;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import project.Game;

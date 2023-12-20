@@ -1,4 +1,4 @@
-package model.TTTtest;
+package project.model.TTTtest;
 
 import net.jqwik.api.*;
 import org.junit.jupiter.api.Assertions;

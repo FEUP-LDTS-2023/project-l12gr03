@@ -101,11 +101,7 @@ public abstract class TicTacToe {
         return this.initialBoard.size();
     }
 
-<<<<<<< HEAD
-    public void writeTotalTimeToFile(String time) {
-        try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(Paths.get(System.getProperty("user.dir") + "/resources/total_time.txt"), StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND))) {
-            writer.println(time);
-=======
+
     protected void writeTotalTimeToFile(String time) {
         try {
             Path filePath = Paths.get(System.getProperty("user.dir") + "/resources/total_time.txt");
@@ -117,7 +113,6 @@ public abstract class TicTacToe {
             } else {
                 Files.write(filePath, Collections.singletonList(time), StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
             }
->>>>>>> af46e77467bbcffc703d2299186d15c8a0fafb63
         } catch (IOException e) {
             throw new RuntimeException("Erro ao escrever no arquivo", e);
         }

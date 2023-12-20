@@ -113,9 +113,9 @@ public class Mini extends TicTacToe {
     }
 
     public boolean drawsymbol(Player player){
-        if (smallSquares.get(selected) == ' '){
-            nextgame = selected;
-            smallSquares.set(selected, player.getSymbol());
+        if (smallSquares.get(getSelected()) == ' '){
+            nextgame = getSelected();
+            smallSquares.set(getSelected(), player.getSymbol());
             selected = MINI_NOT_SELECTED;
             return true;
         }

@@ -240,9 +240,8 @@ public class Big extends TicTacToe {
         return (checkDiagonalsCase0(states, playerState) || checkDiagonalsCase1(states, playerState) || checkDiagonalsCase2(states,playerState));
     }
 
-<<<<<<< HEAD
+
     public boolean isCountingTime(){return countingTime;}
-=======
     public static boolean checkDiagonalsCase0(List<Integer> states, int playerState) {
         return (((states.get(0) == playerState) && (states.get(4) == playerState || states.get(4) == 3) && (states.get(8) == playerState|| states.get(8) == 3)) ||
                 ((states.get(2) == playerState) && (states.get(4) == playerState || states.get(4) == 3)  && (states.get(6) == playerState || states.get(6) == 3)));
@@ -257,5 +256,4 @@ public class Big extends TicTacToe {
         return (((states.get(0) == playerState || states.get(0) == 3) && (states.get(4) == playerState || states.get(4) == 3) && (states.get(8) == playerState)) ||
                 ((states.get(2) == playerState || states.get(2) == 3) && (states.get(4) == playerState || states.get(4) == 3)  && (states.get(6) == playerState)));
     }
->>>>>>> af46e77467bbcffc703d2299186d15c8a0fafb63
 }
