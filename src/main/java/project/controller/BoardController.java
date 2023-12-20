@@ -1,6 +1,7 @@
 package project.controller;
 
 
+import project.Music;
 import project.gui.GUI;
 import project.model.Menu.Menu;
 import project.model.board.Big;
@@ -20,7 +21,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class BoardController extends Controller<TicTacToe> {
-
+    private boolean pressedM = false;
     public BoardController(TicTacToe board) { super(board);}
 
     @Override
@@ -47,6 +48,7 @@ public class BoardController extends Controller<TicTacToe> {
                 MenuController controller = new MenuController(menu);
                 MenuViewer viewer = new MenuViewer(menu);
                 game.setState(new MenuState(menu,viewer,controller));
+                getModel().stopMusic();
                 break;
             case SELECT:
                 if (!getModel().getIsPaused()){getModel().select(getModel().getPlayer());}
@@ -95,9 +97,21 @@ public class BoardController extends Controller<TicTacToe> {
                     getModel().resetElapsedTime();
                 }
                 break;
+
+            case PRESS_M:
+               if (pressedM==false){
+                   getModel().stopMusic();
+                   pressedM=true;
+               } else{
+                   getModel().startMusic();
+                   pressedM=false;
+               }
+               break;
+
             case PRESS_P:
                 getModel().toggleTimePaused();
                 break;
+
             default:
                 break;
 

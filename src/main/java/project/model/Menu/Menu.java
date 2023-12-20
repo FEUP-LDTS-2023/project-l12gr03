@@ -1,5 +1,7 @@
 package project.model.Menu;
 
+import project.Music;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,6 +11,7 @@ public class Menu {
 
     public Menu() {
         this.entries = Arrays.asList("Start", "Rules" ,"Exit");
+
     }
 
     public void nextEntry() {
