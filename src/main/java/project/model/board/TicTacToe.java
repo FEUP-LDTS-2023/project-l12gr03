@@ -54,6 +54,7 @@ public abstract class TicTacToe {
         backgroundMusic.setMsp();
         backgroundMusic.start();
     }
+
     public boolean getIsPaused(){return isTimePaused;}
     public int getGameIsOver() {return gameIsOver;}
 

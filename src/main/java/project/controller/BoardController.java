@@ -111,6 +111,7 @@ public class BoardController extends Controller<TicTacToe> {
             case PRESS_P:
                 getModel().toggleTimePaused();
                 break;
+
             default:
                 break;
 
