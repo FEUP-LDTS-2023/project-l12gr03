@@ -1,24 +1,8 @@
 ## LDTS_1203 - Tick Tock Toe
-### Description
-
-In this 2 player game we have a tic-tac-toe grid where each square has inside it a traditional game of tic-tac-toe.
-At first a player chooses in which smaller tic-tac-toe square it wants to play, after that,the next player
-is forced to play on the smaller game whose position on the bigger grid corresponds to the one played by the last player,
-this means that if a player places its symbol on the middle square of a small tic-tac-toe then the next player
-has to place his on any square from the small tick-tac-toe that it's placed at the center of the bigger grid,
-when a small tic-tac-toe ends then that square in the bigger grid is considered won by the victorious symbol or as none if the smaller game ended in a tie.
-
-The game is over when one player has won 3 smaller games in adjacent positions (identically to a tradition game of tick-tac-to)
-or when there aren't any more spaces to be filled.
-
-After the game ends the players scores are updated accordingly to the result, it is shown how much time the game lasted and the time of the shortest game,
-players also have the choice to keep playing in which case the game restarts. 
-
-
 
 ### UML
 
-The Final version of our project is planned to have the following UML representation
+The Final version of our project has the following UML representation:
 
 ![img.png](../resources/UML/UMLModel.png)
 
