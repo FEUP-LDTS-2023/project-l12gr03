@@ -128,6 +128,11 @@ public class LanternaGUITest {
         Assertions.assertEquals(GUI.ACTION.PRESS_P,gui.getNextAction());
         when(mockKeyStroke.getCharacter()).thenReturn('p');
         Assertions.assertEquals(GUI.ACTION.PRESS_P,gui.getNextAction());
+
+        when(mockKeyStroke.getCharacter()).thenReturn('M');
+        Assertions.assertEquals(GUI.ACTION.PRESS_M,gui.getNextAction());
+        when(mockKeyStroke.getCharacter()).thenReturn('m');
+        Assertions.assertEquals(GUI.ACTION.PRESS_M,gui.getNextAction());
     }
 
     @Test

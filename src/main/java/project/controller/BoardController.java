@@ -99,7 +99,7 @@ public class BoardController extends Controller<TicTacToe> {
                 break;
 
             case PRESS_M:
-               if (pressedM==false){
+               if (!pressedM){
                    getModel().stopMusic();
                    pressedM=true;
                } else{

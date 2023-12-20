@@ -198,8 +198,6 @@ public class BoardControllerTest {
         boardController.step(mockGame, GUI.ACTION.PRESS_Y,0);
         verify(mockPlayer1,times(1)).addScoreTie();
         verify(mockPlayer2,times(1)).addScoreTie();
-
-
     }
 
     @Test
@@ -211,5 +209,20 @@ public class BoardControllerTest {
         boardController.step(mockGame, GUI.ACTION.PRESS_P,0);
 
         verify(mockBoard,times(1)).toggleTimePaused();
+    }
+
+    @Test
+    void press_M_Test() throws IOException {
+        TicTacToe mockBoard = mock(TicTacToe.class);
+        BoardController boardController = new BoardController(mockBoard);
+        Game mockGame = mock(Game.class);
+
+        boardController.step(mockGame, GUI.ACTION.PRESS_M,0);
+        verify(mockBoard,times(1)).stopMusic();
+        verify(mockBoard,times(0)).startMusic();
+
+        boardController.step(mockGame, GUI.ACTION.PRESS_M,0);
+        verify(mockBoard,times(1)).stopMusic();
+        verify(mockBoard,times(1)).startMusic();
     }
 }

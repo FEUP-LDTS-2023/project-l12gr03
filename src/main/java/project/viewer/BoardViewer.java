@@ -5,6 +5,7 @@ import project.model.Position;
 import project.model.board.TicTacToe;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.List;
 
 public class BoardViewer extends Viewer<TicTacToe> {
@@ -83,6 +84,15 @@ public class BoardViewer extends Viewer<TicTacToe> {
         }
     }
 
+    public void drawScores(GUI gui){
+        gui.drawText(new Position(80, 8), String.valueOf(getModel().getp2().getScore() + getModel().getp1().getScore()), DEFAULT_COLOUR);
+
+        int posP1Y = 10; int posP2Y = 11;
+        if(getModel().getp1().getSymbol() == 'X' ){posP1Y = 11; posP2Y = 10;}
+        gui.drawText(new Position(77, posP1Y), String.valueOf(getModel().getp1().getScore()), DEFAULT_COLOUR);
+        gui.drawText(new Position(77, posP2Y), String.valueOf(getModel().getp2().getScore()), DEFAULT_COLOUR);
+    }
+
     public void handleEndGame(GUI gui){
         switch (getModel().getGameIsOver()){
             case 0:
@@ -106,12 +116,7 @@ public class BoardViewer extends Viewer<TicTacToe> {
 
         drawBasicGrid(gui);
 
-        gui.drawText(new Position(80, 8), String.valueOf(getModel().getp2().getScore() + getModel().getp1().getScore()), DEFAULT_COLOUR);
-
-        int posP1Y = 10; int posP2Y = 11;
-        if(getModel().getp1().getSymbol() == 'X' ){posP1Y = 11; posP2Y = 10;}
-        gui.drawText(new Position(77, posP1Y), String.valueOf(getModel().getp1().getScore()), DEFAULT_COLOUR);
-        gui.drawText(new Position(77, posP2Y), String.valueOf(getModel().getp2().getScore()), DEFAULT_COLOUR);
+        drawScores(gui);
 
 
         switch (getModel().getSelected()) {
@@ -196,7 +201,7 @@ public class BoardViewer extends Viewer<TicTacToe> {
         handleEndGame(gui);
     }
 
-    private void highlightMini(GUI gui, Position upperCorner, int MiniSelected){
+    public void highlightMini(GUI gui, Position upperCorner, int MiniSelected){
         switch (MiniSelected){
             case 0:
                 gui.drawText(new Position(upperCorner.getX()+3,upperCorner.getY()), "|", "#FFFF00");
