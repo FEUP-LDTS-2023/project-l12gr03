@@ -14,6 +14,7 @@ or when there aren't any more spaces to be filled.
 
 After the game ends the players scores are updated accordingly to the result, it is shown how much time the game lasted and the time of the shortest game,
 players also have the choice to keep playing in which case the game restarts.
+If a player wins a match his score is increased by 1, if the game ends up tie each player earns 0.5 points.
 
 
 This project was developed by Amanda Tartarotti (202211647@up.pt) Gonçalo Sousa (202207320@up.pt) and Pedro Oliveira (up202206498@up.pt) for LDTS 2023⁄24.
