@@ -106,7 +106,7 @@ public abstract class TicTacToe {
     }
 
 
-    protected void writeTotalTimeToFile(String time) {
+    public void writeTotalTimeToFile(String time) {
         try {
             Path filePath = Paths.get(System.getProperty("user.dir") + "/resources/total_time.txt");
 

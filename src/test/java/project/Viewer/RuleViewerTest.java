@@ -1,32 +1,46 @@
 package project.Viewer;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import project.gui.GUI;
+import project.gui.LanternaGUI;
 import project.model.Position;
 import project.model.rules.Rule;
 import project.viewer.RuleViewer;
 
-import static org.mockito.ArgumentMatchers.any;
+import java.io.IOException;
+
 import static org.mockito.Mockito.*;
 
 public class RuleViewerTest {
 
-    /*@Test
-    void drawElementsTest(){
-        GUI mockGUI = Mockito.mock(GUI.class);
-        Rule mockRule = Mockito.mock(Rule.class);
-        when(mockRule.getNumberLines()).thenReturn(3);
-        when(mockRule.getLine(0)).thenReturn("Line 0");
-        when(mockRule.getLine(1)).thenReturn("Line 1");
-        when(mockRule.getLine(2)).thenReturn("Line 2");
-        RuleViewer ruleViewer = new RuleViewer(mockRule);
-        ruleViewer.drawElements(mockGUI);
-        verify(mockGUI,times(3)).drawText(any(Position.class),any(String.class),"#FFFFFF");
-        //Assertions.assertEquals("Line 0",mockRule.getLine(0));
+    @Test
+    void drawTest() throws IOException {
+        Rule rule = Mockito.mock(Rule.class);
+        RuleViewer ruleViewer = Mockito.spy(new RuleViewer(rule));
+        GUI gui = Mockito.mock(LanternaGUI.class);
+        doNothing().when(ruleViewer).drawElements(gui);
+
+        ruleViewer.draw(gui);
+        verify(gui,times(1)).clear();
+        verify(ruleViewer,times(1)).drawElements(gui);
+        verify(gui,times(1)).refresh();
+
     }
 
-     */
+    @Test
+    void drawElementsTest(){
+        Rule rule = Mockito.mock(Rule.class);
+        RuleViewer ruleViewer = new RuleViewer(rule);
+        when(rule.getNumberLines()).thenReturn(3);
+        when(rule.getLine(0)).thenReturn("1");
+        when(rule.getLine(1)).thenReturn("2");
+        when(rule.getLine(2)).thenReturn("3");
 
+        GUI gui = Mockito.mock(LanternaGUI.class);
+        ruleViewer.drawElements(gui);
+        verify(gui,times(1)).drawText(new Position(10,7),"1","#FFFFFF");
+        verify(gui,times(1)).drawText(new Position(10,8),"2","#FFFFFF");
+        verify(gui,times(1)).drawText(new Position(10,9),"3","#FFFFFF");
+    }
 }

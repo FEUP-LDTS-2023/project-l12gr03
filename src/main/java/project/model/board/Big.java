@@ -3,6 +3,7 @@ package project.model.board;
 import project.model.Position;
 
 import java.io.*;
+import java.lang.annotation.Target;
 import java.nio.charset.Charset;
 
 import java.util.*;
@@ -102,7 +103,7 @@ public class Big extends TicTacToe {
 
     @Override
     public boolean select(Player player){
-        if(bigSquaresL.get(selected).select(currentPlayer)){
+        if(bigSquaresL.get(getSelected()).select(getPlayer())){
             selected = nextgame;
             switchPlayer();
             setGameState();
@@ -126,12 +127,12 @@ public class Big extends TicTacToe {
     @Override
     public Position getMinPosition()
     {
-        return bigSquaresL.get(selected).getMinPosition();
+        return bigSquaresL.get(getSelected()).getMinPosition();
     }
 
     @Override
     public int getInnerSelected() {
-        return bigSquaresL.get(selected).getInnerSelected();
+        return bigSquaresL.get(getSelected()).getInnerSelected();
     }
 
     @Override
@@ -185,7 +186,7 @@ public class Big extends TicTacToe {
 
     public static boolean checkRowsCase1(List<Integer> states, int playerState) {
         for (int i = 0; i < 7; i += 3) {
-            if ((states.get(i) == playerState || states.get(i) == 3) && states.get(i + 1) == playerState && (states.get(i + 2) == playerState || states.get(i + 2) == 3)) {
+            if ((states.get(i) == playerState || states.get(i) == 3) && (states.get(i + 1) == playerState)  && (states.get(i + 2) == playerState || states.get(i + 2) == 3)) {
                 return true;
             }
         }
@@ -257,4 +258,6 @@ public class Big extends TicTacToe {
         return (((states.get(0) == playerState || states.get(0) == 3) && (states.get(4) == playerState || states.get(4) == 3) && (states.get(8) == playerState)) ||
                 ((states.get(2) == playerState || states.get(2) == 3) && (states.get(4) == playerState || states.get(4) == 3)  && (states.get(6) == playerState)));
     }
+
+
 }

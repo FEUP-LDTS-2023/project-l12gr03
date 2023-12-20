@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import project.model.Position;
 import project.model.board.Big;
 import project.model.board.Mini;
 import project.model.board.Player;
@@ -190,31 +191,24 @@ public class BigTest {
         }
     }
 
-    /*
-    @Test
-    void endGameTest() {
-        Assertions.assertTrue(big.isCountingTime());
-        doNothing().when(big).writeTotalTimeToFile(anyString());
-        big.endGame();
-        verify(big,times(1)).writeTotalTimeToFile(anyString());
-        Assertions.assertFalse(big.isCountingTime());
-    }*/
     //TODO endGame funciona sozinho mas não em separado
 
     @Test
     void setXBigGameStateTest() {
 
         for (Mini m : squares) when(m.getMiniGameState()).thenReturn(1);
+        doNothing().when(big).endGame();
         big.setBigGameState();
 
         Assertions.assertEquals(1,big.getGameIsOver());
         verify(big,times(1)).endGame();
     }
 
-    /*@Test
+    @Test
     void setOBigGameStateTest() {
 
         for (Mini m : squares) when(m.getMiniGameState()).thenReturn(2);
+        doNothing().when(big).endGame();
         big.setBigGameState();
 
         Assertions.assertEquals(2,big.getGameIsOver());
@@ -234,12 +228,202 @@ public class BigTest {
         when(squares.get(7).getMiniGameState()).thenReturn(1);
         when(squares.get(8).getMiniGameState()).thenReturn(2);
 
-
+        doNothing().when(big).endGame();
         big.setBigGameState();
 
         Assertions.assertEquals(3,big.getGameIsOver());
         verify(big,times(1)).endGame();
-    }*/
+    }
+
+    @Test
+    void getConstentsTest() {
+        for (Mini mockMini : squares){when(mockMini.getContents()).thenReturn(Arrays.asList(' ',' ',' ',
+                                                                                            ' ',' ',' ',
+                                                                                            ' ',' ',' '));}
+        List<Character> res = big.getContents();
+        for (Mini mockMini : squares){
+            verify(mockMini,times(1)).getContents();
+        }
+        Assertions.assertEquals(81,res.size());
+    }
+
+    @Test
+    void selectTest() {
+        when(big.getPlayer()).thenReturn(mockP1);
+        when(big.getSelected()).thenReturn(4);
+        when(squares.get(4).select(mockP1)).thenReturn(false);
+        big.select(mockP1);
+        Assertions.assertFalse(big.select(mockP1));
+
+        when(squares.get(4).select(mockP1)).thenReturn(true);
+        boolean flag = squares.get(4).select(mockP1);
+        big.select(mockP1);
+        Assertions.assertTrue(flag);
+        //verify(big,times(1)).switchPlayer();
+        //verify(big,times(1)).setGameState();
+    }
+
+    @Test
+    void endGameTest(){
+        when(big.getFormattedElapsedTime()).thenReturn("W");
+        doNothing().when(big).writeTotalTimeToFile(anyString());
+        big.endGame();
+
+        verify(big,times(1)).getFormattedElapsedTime();
+        verify(big,times(1)).writeTotalTimeToFile("W");
+        Assertions.assertFalse(big.isCountingTime());
+    }
+
+    @Test
+    void getMinPositionTest() {
+        when(big.getSelected()).thenReturn(0);
+        when(squares.get(0).getMinPosition()).thenReturn(new Position(0,1));
+        for (int i = 1 ; i<9; i++) when(squares.get(i).getMinPosition()).thenReturn(new Position(2,3));
+
+        Position pos = big.getMinPosition();
+        Assertions.assertEquals(0,pos.getX());
+        Assertions.assertEquals(1,pos.getY());
+    }
+
+    @Test
+    void getInnerSelectedTest() {
+        when(big.getSelected()).thenReturn(0);
+        when(squares.get(0).getInnerSelected()).thenReturn(7);
+        int res = big.getInnerSelected();
+        Assertions.assertEquals(7,res);
+
+        when(squares.get(0).getInnerSelected()).thenReturn(1);
+        res = big.getInnerSelected();
+        Assertions.assertEquals(1,res);
+
+    }
+
+    @Test
+    void toggleTimePaused(){
+        boolean flag = big.getIsPaused();
+        big.toggleTimePaused();
+        Assertions.assertNotEquals(flag, big.getIsPaused());
+    }
+
+    @Test
+    void getPlayersTest() {
+        Assertions.assertEquals(mockP1,big.getp1());
+        Assertions.assertEquals(mockP2,big.getp2());
+    }
+
+    @Test
+    void setPositonTest() {
+        big.setPosition(new Position(0,0));
+        Assertions.assertNotEquals(1,big.getPosition().getX());
+        Assertions.assertNotEquals(1,big.getPosition().getY());
+
+        big.setPosition(new Position(1,1));
+        Assertions.assertEquals(1,big.getPosition().getX());
+        Assertions.assertEquals(1,big.getPosition().getY());
+    }
+
+    @Test
+    void getNumberLinesTest() {
+        Assertions.assertEquals(23,big.getNumberLines());
+    }
+
+    @Test
+    void writeTotalTimeToFile() {
+
+    }
+
+    @Test
+    void checkRows() {
+        List<Integer> states1 = Arrays.asList(1,1,1
+                                            ,0,0,0,
+                                             0,0,0);
+
+        Assertions.assertTrue(Big.checkRowsCase0(states1,1));
+        Assertions.assertFalse(Big.checkRowsCase0(states1,2));
+
+        //Assertions.assertFalse(Big.checkRowsCase1(states1,1));
+        //Assertions.assertFalse(Big.checkRowsCase1(states1,2));
+        //Assertions.assertFalse(Big.checkRowsCase2(states1,1));
+        //Assertions.assertFalse(Big.checkRowsCase2(states1,2));
+
+
+        List<Integer> states2 = Arrays.asList(0,1,1
+                                             ,2,2,2,
+                                              3,1,0);
+
+        //Assertions.assertFalse(Big.checkRowsCase1(states2,1));
+        //Assertions.assertTrue(Big.checkRowsCase1(states2,2));
+
+        //Assertions.assertFalse(Big.checkRowsCase0(states2,1));
+        //Assertions.assertFalse(Big.checkRowsCase0(states2,2));
+        //Assertions.assertFalse(Big.checkRowsCase2(states2,1));
+        //Assertions.assertFalse(Big.checkRowsCase2(states2,2));
+
+        List<Integer> states3 = Arrays.asList(0,1,1
+                                             ,0,0,0,
+                                              1,1,1);
+
+        Assertions.assertTrue(Big.checkRowsCase2(states3,1));
+        Assertions.assertFalse(Big.checkRowsCase2(states3,2));
+
+        //Assertions.assertFalse(Big.checkRowsCase1(states3,1));
+        //Assertions.assertFalse(Big.checkRowsCase1(states3,2));
+        //Assertions.assertFalse(Big.checkRowsCase0(states3,1));
+        //Assertions.assertFalse(Big.checkRowsCase0(states3,2));
+
+    }
+
+    @Test
+    void checkColumns() {
+        List<Integer> states1 = Arrays.asList(1,0,0
+                                             ,1,0,0,
+                                              1,0,0);
+
+        Assertions.assertTrue(Big.checkColumnsCase0(states1,1));
+        Assertions.assertFalse(Big.checkColumnsCase0(states1,2));
+
+        //Assertions.assertFalse(Big.checkColumnsCase1(states1,1));
+        //Assertions.assertFalse(Big.checkColumnsCase1(states1,2));
+        //Assertions.assertFalse(Big.checkColumnsCase2(states1,1));
+        //Assertions.assertFalse(Big.checkColumnsCase2(states1,2));
+
+
+        List<Integer> states2 = Arrays.asList(0,2,1
+                                             ,1,2,3,
+                                              1,2,0);
+
+        Assertions.assertFalse(Big.checkColumnsCase1(states2,1));
+        Assertions.assertTrue(Big.checkColumnsCase1(states2,2));
+
+        //Assertions.assertFalse(Big.checkColumnsCase0(states2,1));
+        //Assertions.assertFalse(Big.checkColumnsCase0(states2,2));
+        //Assertions.assertFalse(Big.checkColumnsCase2(states2,1));
+        //Assertions.assertFalse(Big.checkColumnsCase2(states2,2));
+
+        List<Integer> states3 = Arrays.asList(0,0,1
+                                             ,0,1,1,
+                                              1,1,1);
+
+        Assertions.assertTrue(Big.checkColumnsCase2(states3,1));
+        Assertions.assertFalse(Big.checkColumnsCase2(states3,2));
+
+        //Assertions.assertFalse(Big.checkColumnsCase1(states3,1));
+        //Assertions.assertFalse(Big.checkColumnsCase1(states3,2));
+        //Assertions.assertFalse(Big.checkColumnsCase0(states3,1));
+        //Assertions.assertFalse(Big.checkColumnsCase0(states3,2));
+
+        List<Integer> states4 = Arrays.asList(1,1,1
+                                             ,0,1,2,
+                                              1,2,1);
+
+        Assertions.assertFalse(Big.checkColumnsCase0(states4,1));
+        Assertions.assertFalse(Big.checkColumnsCase1(states4,1));
+        Assertions.assertFalse(Big.checkColumnsCase2(states4,1));
+
+        Assertions.assertFalse(Big.checkColumnsCase0(states4,2));
+        Assertions.assertFalse(Big.checkColumnsCase1(states4,2));
+        Assertions.assertFalse(Big.checkColumnsCase2(states4,2));    }
+
 
     //TODO perguntar setBigGamestate não funciona com mocks
     //when(big.checkWinner(anyList(),1).thenReturn(1) não funciona
