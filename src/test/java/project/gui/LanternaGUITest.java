@@ -10,6 +10,7 @@ import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
 import net.jqwik.api.constraints.Positive;
 import org.junit.jupiter.api.Assertions;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import project.gui.GUI;
 import project.gui.LanternaGUI;
@@ -49,10 +50,13 @@ public class LanternaGUITest {
         verify(tg, Mockito.times(1)).putString(1, 1, "Testing draw Text");
     }
 
+    //Faulty test
     @Test
-    void LanternaGUITest() throws IOException, URISyntaxException, FontFormatException {
-
-        LanternaGUI lanternaGUI = new LanternaGUI(100, 50);
+    void LanternaGUITest() throws IOException {
+        LanternaGUI lanternaGUI = Mockito.spy(LanternaGUI.class);
+        doNothing().when(lanternaGUI.createScreen(any(Terminal.class)));
+        doNothing().when(lanternaGUI.createTerminal(any(Integer.class),any(Integer.class)));
+        lanternaGUI = Mockito.spy(new LanternaGUI(100,50));
         Assertions.assertNotNull(lanternaGUI.getScreen());
         Assertions.assertEquals(100,lanternaGUI.getScreen().getTerminalSize().getColumns());
         Assertions.assertEquals(50,lanternaGUI.getScreen().getTerminalSize().getRows());

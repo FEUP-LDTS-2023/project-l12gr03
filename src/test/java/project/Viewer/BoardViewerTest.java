@@ -352,7 +352,6 @@ public class BoardViewerTest {
 
         int row = 10;
         int col = 8;
-        int index = 0;
         for (int y = 0; y < 3; y ++) {
             for (int x = 0; x < 3; x ++) {
                 verify(gui, times(1)).drawText(eq(new Position(row + x * 18, col - 1 + y * 8)),     eq("  \\     /  "), eq("#29C3F4"));
@@ -375,16 +374,40 @@ public class BoardViewerTest {
 
         int row = 10;
         int col = 8;
-        int index = 0;
         for (int y = 0; y < 3; y ++) {
             for (int x = 0; x < 3; x ++) {
-                verify(gui, times(1)).drawText(eq(new Position(row + x * 18, col - 1 + y * 8)),     eq("   *******  "), eq("#FF0000"));
-                verify(gui, times(1)).drawText(eq(new Position(row + x * 18, col + y * 8)),         eq("  *       * "), eq("#FF0000"));
-                verify(gui, times(1)).drawText(eq(new Position(row + x * 18, col + 1 + y * 8)),     eq("  *       * "), eq("#FF0000"));
+                verify(gui, times(1)).drawText(eq(new Position(row - 1 + x * 18, col - 1 + y * 8)), eq("   *******  "), eq("#FF0000"));
+                verify(gui, times(1)).drawText(eq(new Position(row - 1 + x * 18, col     + y * 8)), eq("  *       * "), eq("#FF0000"));
+                verify(gui, times(1)).drawText(eq(new Position(row - 1 + x * 18, col + 1 + y * 8)), eq("  *       * "), eq("#FF0000"));
                 verify(gui, times(1)).drawText(eq(new Position(row - 1 + x * 18, col + 2 + y * 8)), eq("  *   0   * "), eq("#FF0000"));
                 verify(gui, times(1)).drawText(eq(new Position(row - 1 + x * 18, col + 3 + y * 8)), eq("  *       * "), eq("#FF0000"));
                 verify(gui, times(1)).drawText(eq(new Position(row - 1 + x * 18, col + 4 + y * 8)), eq("  *       * "), eq("#FF0000"));
                 verify(gui, times(1)).drawText(eq(new Position(row - 1 + x * 18, col + 5 + y * 8)), eq("   *******  "), eq("#FF0000"));
+            }
+        }
+    }
+    @Test
+    void drawMinisMiniGridTest() {
+        when(ticTacToe.getPlayState()).thenReturn(Arrays.asList(0,0,0,0,0,0,0,0,0));
+        ArrayList<Character> squares = new ArrayList<>(Collections.nCopies(81, ' '));
+        when(ticTacToe.getContents()).thenReturn(squares);
+
+        viewer.drawMinis(gui);
+
+        int row = 10;
+        int col = 8;
+        for (int y = 0; y < 3; y ++) {
+            for (int x = 0; x < 3; x++) {
+                for (int i = 0; i < 6; i += 2) {
+                    String text = "   |   |    ";
+                    Position positionDraw = new Position(row + x * 18, col + y * 8 + i);
+                    String o_COLOUR = "#FF0000";
+                    String x_COLOUR = "#29C3F4";
+                    verify(gui,times(1)).drawWith2Exceptions( eq(positionDraw), eq(text), eq(DEFAULT_COLOUR), eq('X'), eq(x_COLOUR), eq('O'), eq(o_COLOUR));
+                    verify(gui,times(1)).drawText(eq(new Position(row + x * 18, col + y * 8 + 1)), eq("---+---+--- "), eq("#FFFFFF"));
+                    verify(gui,times(1)).drawText(eq(new Position(row + x * 18, col + y * 8 + 3)), eq("---+---+--- "), eq("#FFFFFF"));
+
+                }
             }
         }
     }
