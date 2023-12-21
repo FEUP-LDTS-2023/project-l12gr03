@@ -355,13 +355,10 @@ public class BigTest {
 
         doReturn(tempFile).when(big).getTotalTimeFilePath();
 
-        // Chamando o método a ser testado
         String minTime = big.findMinTimeFromFile();
 
-        // Verificando se os métodos relevantes foram chamados
         verify(big, times(1)).getTotalTimeFilePath();
 
-        // Verificando o resultado
         assertEquals("01:23:45", minTime);
     }
 
