@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import project.model.Menu.Menu;
 
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class MenuTest {
@@ -90,22 +91,28 @@ public class MenuTest {
 
     @Test
     void selectedTest() {
-        menu = Mockito.spy(new Menu());
-        when(menu.isSelected(2)).thenReturn(true);
-        Assertions.assertTrue(menu.isSelectedExit());
-        when(menu.isSelected(2)).thenReturn(false);
-        Assertions.assertFalse(menu.isSelectedExit());
+        Menu menu2 = Mockito.spy(new Menu());
+        when(menu2.isSelected(2)).thenReturn(true);
+        boolean flag = menu2.isSelectedExit();
+        Assertions.assertTrue(flag);
+        when(menu2.isSelected(2)).thenReturn(false);
+        flag = menu2.isSelectedExit();
+        Assertions.assertFalse(flag);
 
 
-        when(menu.isSelected(1)).thenReturn(true);
-        Assertions.assertTrue(menu.isSelectedRules());
-        when(menu.isSelected(1)).thenReturn(false);
-        Assertions.assertFalse(menu.isSelectedRules());
+        when(menu2.isSelected(1)).thenReturn(true);
+        flag = menu2.isSelectedRules();
+        Assertions.assertTrue(flag);
+        when(menu2.isSelected(1)).thenReturn(false);
+        flag = menu2.isSelectedRules();
+        Assertions.assertFalse(flag);
 
 
-        when(menu.isSelected(0)).thenReturn(true);
-        Assertions.assertTrue(menu.isSelectedStart());
-        when(menu.isSelected(0)).thenReturn(false);
-        Assertions.assertFalse(menu.isSelectedStart());
+        when(menu2.isSelected(0)).thenReturn(true);
+        flag = menu2.isSelectedStart();
+        Assertions.assertTrue(flag);
+        when(menu2.isSelected(0)).thenReturn(false);
+        flag = menu2.isSelectedStart();
+        Assertions.assertFalse(flag);
     }
 }
