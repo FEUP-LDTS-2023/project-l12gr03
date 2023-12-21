@@ -4,6 +4,8 @@ package project.model;
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import project.model.Position;
 
@@ -39,8 +41,19 @@ class PositionTest {
 
     @Property
     void hash(@ForAll int x, @ForAll int y){
-        Position pos = new Position(1,1);
-        Position pos2 = new Position(1,1);
+        Position pos = new Position(x,y);
+        Position pos2 = new Position(x,y);
         assertEquals(pos.hashCode(),pos2.hashCode());
+    }
+
+    @Test
+    void equalsTest() {
+        Character car = 'J';
+        Position pos = new Position(0,0);
+        Assertions.assertNotEquals(pos, car);
+        assertEquals(pos, pos);
+        Assertions.assertNotEquals(pos, pos.getDown());
+
+
     }
 }

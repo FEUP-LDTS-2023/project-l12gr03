@@ -22,12 +22,18 @@ public class MenuTest {
         Menu menu2 = new Menu();
         menu2.previousEntry();
         Assertions.assertTrue(menu2.isSelected(2));
+        Assertions.assertFalse(menu2.isSelected(0));
+        Assertions.assertFalse(menu2.isSelected(1));
 
         menu2.previousEntry();
         Assertions.assertTrue(menu2.isSelected(1));
+        Assertions.assertFalse(menu2.isSelected(0));
+        Assertions.assertFalse(menu2.isSelected(2));
 
         menu2.previousEntry();
         Assertions.assertTrue(menu2.isSelected(0));
+        Assertions.assertFalse(menu2.isSelected(1));
+        Assertions.assertFalse(menu2.isSelected(2));
     }
 
     @Test
@@ -80,5 +86,26 @@ public class MenuTest {
         Menu menu2 = new Menu();
 
         Assertions.assertEquals(3,menu2.getNumberEntries());
+    }
+
+    @Test
+    void selectedTest() {
+        menu = Mockito.spy(new Menu());
+        when(menu.isSelected(2)).thenReturn(true);
+        Assertions.assertTrue(menu.isSelectedExit());
+        when(menu.isSelected(2)).thenReturn(false);
+        Assertions.assertFalse(menu.isSelectedExit());
+
+
+        when(menu.isSelected(1)).thenReturn(true);
+        Assertions.assertTrue(menu.isSelectedRules());
+        when(menu.isSelected(1)).thenReturn(false);
+        Assertions.assertFalse(menu.isSelectedRules());
+
+
+        when(menu.isSelected(0)).thenReturn(true);
+        Assertions.assertTrue(menu.isSelectedStart());
+        when(menu.isSelected(0)).thenReturn(false);
+        Assertions.assertFalse(menu.isSelectedStart());
     }
 }
