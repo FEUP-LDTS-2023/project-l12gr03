@@ -115,10 +115,12 @@ public abstract class TicTacToe {
         return this.initialBoard.size();
     }
 
+    public abstract int getInnerSelected();
+    public abstract void setGameState();
 
     public void writeTotalTimeToFile(String time) {
         try {
-            Path filePath = Paths.get(System.getProperty("user.dir") + "/resources/total_time.txt");
+            Path filePath =  getTotalTimeFilePath();
 
             String currentMinTime = findMinTimeFromFile();
             if (compareTimes(time, currentMinTime) < 0) {
@@ -132,13 +134,22 @@ public abstract class TicTacToe {
         }
     }
 
+    public int compareTimes(String time1, String time2) {
+        if (Objects.equals(time1, "null")) System.out.println("error in 1");
+        if (Objects.equals(time2, "null")) System.out.println("error in 2");
+        LocalTime localTime1 = LocalTime.parse(time1);
+        LocalTime localTime2 = LocalTime.parse(time2);
 
-    public abstract int getInnerSelected();
-    public abstract void setGameState();
+        return localTime1.compareTo(localTime2);
+    }
+
+    public Path getTotalTimeFilePath() {
+        return Paths.get(System.getProperty("user.dir"), "resources", "total_time.txt");
+    }
 
     public String findMinTimeFromFile() {
         try {
-            Path filePath = Paths.get(System.getProperty("user.dir") + "/resources/total_time.txt");
+            Path filePath =  getTotalTimeFilePath();
 
             if (Files.exists(filePath)) {
 
@@ -152,15 +163,6 @@ public abstract class TicTacToe {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private int compareTimes(String time1, String time2) {
-        if (Objects.equals(time1, "null")) System.out.println("error in 1");
-        if (Objects.equals(time2, "null")) System.out.println("error in 2");
-        LocalTime localTime1 = LocalTime.parse(time1);
-        LocalTime localTime2 = LocalTime.parse(time2);
-
-        return localTime1.compareTo(localTime2);
     }
 
     public String getFormattedElapsedTime() {

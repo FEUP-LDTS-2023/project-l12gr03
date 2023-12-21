@@ -12,10 +12,14 @@ import project.model.board.Mini;
 import project.model.board.Player;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class BigTest {
@@ -39,9 +43,9 @@ public class BigTest {
     void goUpTest() throws IOException {
         for (int it = 0; it < 4; it++){
             when(squares.get(big.getSelected()).getInnerSelected()).thenReturn(-1);
-            if (it % 3 == 0) Assertions.assertEquals(4, big.getSelected());
-            if (it % 3 == 1) Assertions.assertEquals(1, big.getSelected());
-            if (it % 3 == 2) Assertions.assertEquals(7, big.getSelected());
+            if (it % 3 == 0) assertEquals(4, big.getSelected());
+            if (it % 3 == 1) assertEquals(1, big.getSelected());
+            if (it % 3 == 2) assertEquals(7, big.getSelected());
             big.goUp();
         }
 
@@ -54,9 +58,9 @@ public class BigTest {
     void goDownTest() throws IOException {
         for (int it = 0; it < 4; it++){
             when(squares.get(big.getSelected()).getInnerSelected()).thenReturn(-1);
-            if (it % 3 == 0) Assertions.assertEquals(4, big.getSelected());
-            if (it % 3 == 1) Assertions.assertEquals(7, big.getSelected());
-            if (it % 3 == 2) Assertions.assertEquals(1, big.getSelected());
+            if (it % 3 == 0) assertEquals(4, big.getSelected());
+            if (it % 3 == 1) assertEquals(7, big.getSelected());
+            if (it % 3 == 2) assertEquals(1, big.getSelected());
             big.goDown();
         }
 
@@ -71,31 +75,31 @@ public class BigTest {
             when(squares.get(big.getSelected()).getInnerSelected()).thenReturn(-1);
             switch (it%9){
                 case 0:
-                    Assertions.assertEquals(4, big.getSelected());
+                    assertEquals(4, big.getSelected());
                     break;
                 case 1:
-                    Assertions.assertEquals(3, big.getSelected());
+                    assertEquals(3, big.getSelected());
                     break;
                 case 2:
-                    Assertions.assertEquals(2, big.getSelected());
+                    assertEquals(2, big.getSelected());
                     break;
                 case 3:
-                    Assertions.assertEquals(1, big.getSelected());
+                    assertEquals(1, big.getSelected());
                     break;
                 case 4:
-                    Assertions.assertEquals(0, big.getSelected());
+                    assertEquals(0, big.getSelected());
                     break;
                 case 5:
-                    Assertions.assertEquals(8, big.getSelected());
+                    assertEquals(8, big.getSelected());
                     break;
                 case 6:
-                    Assertions.assertEquals(7, big.getSelected());
+                    assertEquals(7, big.getSelected());
                     break;
                 case 7:
-                    Assertions.assertEquals(6, big.getSelected());
+                    assertEquals(6, big.getSelected());
                     break;
                 case 8:
-                    Assertions.assertEquals(5, big.getSelected());
+                    assertEquals(5, big.getSelected());
                     break;
             }
             big.goLeft();
@@ -113,31 +117,31 @@ public class BigTest {
             when(squares.get(big.getSelected()).getInnerSelected()).thenReturn(-1);
             switch (it%9){
                 case 0:
-                    Assertions.assertEquals(4, big.getSelected());
+                    assertEquals(4, big.getSelected());
                     break;
                 case 1:
-                    Assertions.assertEquals(5, big.getSelected());
+                    assertEquals(5, big.getSelected());
                     break;
                 case 2:
-                    Assertions.assertEquals(6, big.getSelected());
+                    assertEquals(6, big.getSelected());
                     break;
                 case 3:
-                    Assertions.assertEquals(7, big.getSelected());
+                    assertEquals(7, big.getSelected());
                     break;
                 case 4:
-                    Assertions.assertEquals(8, big.getSelected());
+                    assertEquals(8, big.getSelected());
                     break;
                 case 5:
-                    Assertions.assertEquals(0, big.getSelected());
+                    assertEquals(0, big.getSelected());
                     break;
                 case 6:
-                    Assertions.assertEquals(1, big.getSelected());
+                    assertEquals(1, big.getSelected());
                     break;
                 case 7:
-                    Assertions.assertEquals(2, big.getSelected());
+                    assertEquals(2, big.getSelected());
                     break;
                 case 8:
-                    Assertions.assertEquals(3, big.getSelected());
+                    assertEquals(3, big.getSelected());
                     break;
             }
             big.goRight();
@@ -153,32 +157,32 @@ public class BigTest {
         for (Mini mini : squares) when(mini.getInnerSelected()).thenReturn(-1);
         big.goRight();
         for (int it = 0; it < 3; it++) {
-            if (it % 3 == 0) Assertions.assertEquals(5, big.getSelected());
-            if (it % 3 == 1) Assertions.assertEquals(8, big.getSelected());
-            if (it % 3 == 2) Assertions.assertEquals(2, big.getSelected());
+            if (it % 3 == 0) assertEquals(5, big.getSelected());
+            if (it % 3 == 1) assertEquals(8, big.getSelected());
+            if (it % 3 == 2) assertEquals(2, big.getSelected());
             big.goDown();
         }
 
         for (int it = 0; it < 3; it++) {
-            if (it % 3 == 0) Assertions.assertEquals(5, big.getSelected());
-            if (it % 3 == 1) Assertions.assertEquals(2, big.getSelected());
-            if (it % 3 == 2) Assertions.assertEquals(8, big.getSelected());
+            if (it % 3 == 0) assertEquals(5, big.getSelected());
+            if (it % 3 == 1) assertEquals(2, big.getSelected());
+            if (it % 3 == 2) assertEquals(8, big.getSelected());
             big.goUp();
         }
 
         big.goLeft(); big.goLeft();
 
         for (int it = 0; it < 3; it++) {
-            if (it % 3 == 0) Assertions.assertEquals(3, big.getSelected());
-            if (it % 3 == 1) Assertions.assertEquals(6, big.getSelected());
-            if (it % 3 == 2) Assertions.assertEquals(0, big.getSelected());
+            if (it % 3 == 0) assertEquals(3, big.getSelected());
+            if (it % 3 == 1) assertEquals(6, big.getSelected());
+            if (it % 3 == 2) assertEquals(0, big.getSelected());
             big.goDown();
         }
 
         for (int it = 0; it < 3; it++) {
-            if (it % 3 == 0) Assertions.assertEquals(3, big.getSelected());
-            if (it % 3 == 1) Assertions.assertEquals(0, big.getSelected());
-            if (it % 3 == 2) Assertions.assertEquals(6, big.getSelected());
+            if (it % 3 == 0) assertEquals(3, big.getSelected());
+            if (it % 3 == 1) assertEquals(0, big.getSelected());
+            if (it % 3 == 2) assertEquals(6, big.getSelected());
             big.goUp();
         }
     }
@@ -200,7 +204,7 @@ public class BigTest {
         doNothing().when(big).endGame();
         big.setBigGameState();
 
-        Assertions.assertEquals(1,big.getGameIsOver());
+        assertEquals(1,big.getGameIsOver());
         verify(big,times(1)).endGame();
     }
 
@@ -211,7 +215,7 @@ public class BigTest {
         doNothing().when(big).endGame();
         big.setBigGameState();
 
-        Assertions.assertEquals(2,big.getGameIsOver());
+        assertEquals(2,big.getGameIsOver());
         verify(big,times(1)).endGame();
     }
 
@@ -231,7 +235,7 @@ public class BigTest {
         doNothing().when(big).endGame();
         big.setBigGameState();
 
-        Assertions.assertEquals(3,big.getGameIsOver());
+        assertEquals(3,big.getGameIsOver());
         verify(big,times(1)).endGame();
     }
 
@@ -244,7 +248,7 @@ public class BigTest {
         for (Mini mockMini : squares){
             verify(mockMini,times(1)).getContents();
         }
-        Assertions.assertEquals(81,res.size());
+        assertEquals(81,res.size());
     }
 
     @Test
@@ -281,8 +285,8 @@ public class BigTest {
         for (int i = 1 ; i<9; i++) when(squares.get(i).getMinPosition()).thenReturn(new Position(2,3));
 
         Position pos = big.getMinPosition();
-        Assertions.assertEquals(0,pos.getX());
-        Assertions.assertEquals(1,pos.getY());
+        assertEquals(0,pos.getX());
+        assertEquals(1,pos.getY());
     }
 
     @Test
@@ -290,11 +294,11 @@ public class BigTest {
         when(big.getSelected()).thenReturn(0);
         when(squares.get(0).getInnerSelected()).thenReturn(7);
         int res = big.getInnerSelected();
-        Assertions.assertEquals(7,res);
+        assertEquals(7,res);
 
         when(squares.get(0).getInnerSelected()).thenReturn(1);
         res = big.getInnerSelected();
-        Assertions.assertEquals(1,res);
+        assertEquals(1,res);
 
     }
 
@@ -307,8 +311,8 @@ public class BigTest {
 
     @Test
     void getPlayersTest() {
-        Assertions.assertEquals(mockP1,big.getp1());
-        Assertions.assertEquals(mockP2,big.getp2());
+        assertEquals(mockP1,big.getp1());
+        assertEquals(mockP2,big.getp2());
     }
 
     @Test
@@ -318,18 +322,46 @@ public class BigTest {
         Assertions.assertNotEquals(1,big.getPosition().getY());
 
         big.setPosition(new Position(1,1));
-        Assertions.assertEquals(1,big.getPosition().getX());
-        Assertions.assertEquals(1,big.getPosition().getY());
+        assertEquals(1,big.getPosition().getX());
+        assertEquals(1,big.getPosition().getY());
     }
 
     @Test
     void getNumberLinesTest() {
-        Assertions.assertEquals(23,big.getNumberLines());
+        assertEquals(23,big.getNumberLines());
     }
 
     @Test
     void writeTotalTimeToFile() { }
+    void writeTotalTimeToFileTest() throws IOException {
+        Big big = Mockito.spy(new Big(mockP1, mockP2, 0, 0, this.squares));
+        String time = "01:23:45";
 
+        doReturn("00:59:59").when(big).findMinTimeFromFile();
+
+        big.writeTotalTimeToFile(time);
+
+        verify(big, times(1)).findMinTimeFromFile();
+        verify(big, times(1)).compareTimes(time, "00:59:59");
+
+        doCallRealMethod().when(big).findMinTimeFromFile();
+    }
+
+    @Test
+    void findMinTimeFromFileTest() throws IOException {
+        Big big = Mockito.spy(new Big(mockP1, mockP2, 0, 0, this.squares));
+
+        Path tempFile = Files.createTempFile("tempTotalTime", ".txt");
+        Files.write(tempFile, Arrays.asList("01:23:45", "03:59:59", "02:30:00"), StandardCharsets.UTF_8);
+
+        doReturn(tempFile).when(big).getTotalTimeFilePath();
+
+        String minTime = big.findMinTimeFromFile();
+
+        verify(big, times(1)).getTotalTimeFilePath();
+
+        assertEquals("01:23:45", minTime);
+    }
     @Test
     void checkRows() {
         List<Integer> states1 = Arrays.asList(1,3,1
