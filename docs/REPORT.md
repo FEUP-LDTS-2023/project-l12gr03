@@ -187,15 +187,23 @@ by forcing it to only deal with the interface which simplifies feature implement
 ### KNOWN CODE SMELLS
 
 - The way we implemented the drawing of a big and small tic-tac-toe grid requires us to draw it all white and 
-after that draw on the same position again with a different color that symbolizes the square a player choose, resulting in an
-repeated use of drawText function. 
+after that draw on the same position again with a different color that symbolizes the square a player choose, resulting in a
+repeated use of drawText function.
+
+
+- Some of the methods in the 'Mini' class are only defined because the Viewer and Controller of a 'TicTacToe' must have information
+as to which smaller game is being selected, the 'getSelected' function should be able to return both the bigger square that is being selected and the smaller one,
+however, with the composite pattern this is not as simple since both 'Big' and 'Mini' classes share the declaration of 'getSelected' but the 'Mini' class
+only returns one value while the 'Big' class should return two,
+some kind of refactor is advised possibly with a new type of object that could represent this two circumstances.
 
 ### TESTING
 
-Note:the test for the Game module and Controller have not been implemented yet.
+The Coverage Tests results are as follows
+![img_1.png](img_1.png)
 
-![img.png](../resources/TestCoverage.png)
 
-
+And the Mutation Tests are this ones
+![img.png](img.png)
 
 This project was developed by Amanda Tartarotti (202211647@up.pt) Gonçalo Sousa (202207320@up.pt) and Pedro Oliveira (up202206498@up.pt) for LDTS 2023⁄24.

@@ -195,8 +195,6 @@ public class BigTest {
         }
     }
 
-    //TODO endGame funciona sozinho mas não em separado
-
     @Test
     void setXBigGameStateTest() {
 
