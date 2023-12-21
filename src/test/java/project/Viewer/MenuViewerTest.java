@@ -22,7 +22,9 @@ public class MenuViewerTest {
         when(menu.isSelected(0)).thenReturn(false);
         when(menu.isSelected(1)).thenReturn(true);
         menuViewer.drawElements(gui);
-        verify(gui,times(1)).drawText(new Position(10,5),"Menu","#FFFFFF");
+        verify(gui,times(1)).drawText(new Position(9,5),"M E N U","#FFFFFF");
+        for (int x=6; x<19;x++)
+            verify(gui,times(1)).drawText(new Position(x, 6), "-", "#FFFFFF");
         verify(gui,times(1)).drawText(new Position(10,7),"Entry 1","#FFFFFF");
         verify(gui,times(1)).drawText(new Position(10,8),"Entry 2","#FFD700");
 
