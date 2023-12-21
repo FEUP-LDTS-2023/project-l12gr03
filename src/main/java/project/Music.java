@@ -48,9 +48,4 @@ public class Music {
     public void setMsp(){
         msp=0;
     }
-    public void setSound(Clip sound) {
-        this.sound = sound;
-    }
-
-    public Clip getSound() {return sound;}
 }

@@ -4,8 +4,7 @@ import project.gui.GUI;
 import project.model.Position;
 import project.model.board.TicTacToe;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+
 import java.util.List;
 
 public class BoardViewer extends Viewer<TicTacToe> {
