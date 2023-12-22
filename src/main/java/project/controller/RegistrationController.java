@@ -13,7 +13,6 @@ import project.states.MenuState;
 import project.viewer.BoardViewer;
 import project.viewer.MenuViewer;
 import project.viewer.Viewer;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;

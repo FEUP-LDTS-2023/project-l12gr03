@@ -10,10 +10,8 @@ import project.states.RulesState;
 import project.viewer.RegistrationView;
 import project.viewer.RuleViewer;
 import project.viewer.Viewer;
-
 import java.io.IOException;
 
-import static java.lang.System.exit;
 
 public class MenuController extends Controller<Menu> {
     public MenuController(Menu menu) {

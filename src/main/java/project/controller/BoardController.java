@@ -1,7 +1,7 @@
 package project.controller;
 
 
-import project.Music;
+
 import project.gui.GUI;
 import project.model.Menu.Menu;
 import project.model.board.Big;
@@ -14,11 +14,10 @@ import project.model.board.Mini;
 import project.viewer.BoardViewer;
 import project.viewer.MenuViewer;
 import project.viewer.Viewer;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+
 
 public class BoardController extends Controller<TicTacToe> {
     private boolean pressedM = false;

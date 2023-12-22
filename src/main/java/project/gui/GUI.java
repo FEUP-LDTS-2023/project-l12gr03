@@ -1,7 +1,7 @@
 package project.gui;
 
 import java.io.IOException;
-import java.io.StringReader;
+
 
 import project.model.Position;
 
@@ -23,5 +23,5 @@ public interface GUI {
 
     void close() throws IOException;
 
-    enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, PRESS_X, PRESS_O, PRESS_Y, PRESS_N, PRESS_P, PRESS_M, PLUS, MINUS}
+    enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, PRESS_X, PRESS_O, PRESS_Y, PRESS_N, PRESS_P, PRESS_M}
 }
