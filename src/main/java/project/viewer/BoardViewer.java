@@ -195,8 +195,6 @@ public class BoardViewer extends Viewer<TicTacToe> {
 
         handleTime(gui);
 
-        gui.drawText(new Position(68, 18), "M - Start/Stop music", "#FFFFFF");
-
 
         handleEndGame(gui);
     }
