@@ -140,7 +140,6 @@ public class MiniTest {
         }
     }
 
-    //TODO add (is over) tests to chackXWON
     @Test
     void checkXWon() throws IOException {
         Player p1 = Mockito.mock(Player.class);
@@ -187,7 +186,6 @@ public class MiniTest {
         mini.setGameState();
         Assertions.assertEquals(0,mini.getMiniGameState());
     }
- //TODO check setGameState perguntar ao professor problema com mocks
 
     @Test
     void GoUp(){
@@ -352,6 +350,3 @@ public class MiniTest {
         Assertions.assertEquals(Arrays.asList(' ',' ',' ',' ',' ',' ',' ',' ',' '),mini.getContents());
     }
 }
-
-
-//TODO GetMinPosition BIG game smell, perguntar (also viewer)

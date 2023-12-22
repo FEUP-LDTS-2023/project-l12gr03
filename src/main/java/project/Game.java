@@ -38,7 +38,7 @@ public class Game {
         this.state = state;
     }
 
-    public void start() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+    public void start() throws IOException{
 
 
         int FPS = 25;

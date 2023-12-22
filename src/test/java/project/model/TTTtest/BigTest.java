@@ -195,8 +195,6 @@ public class BigTest {
         }
     }
 
-    //TODO endGame funciona sozinho mas não em separado
-
     @Test
     void setXBigGameStateTest() {
 
@@ -332,6 +330,7 @@ public class BigTest {
     }
 
     @Test
+    void writeTotalTimeToFile() { }
     void writeTotalTimeToFileTest() throws IOException {
         Big big = Mockito.spy(new Big(mockP1, mockP2, 0, 0, this.squares));
         String time = "01:23:45";
@@ -361,100 +360,89 @@ public class BigTest {
 
         assertEquals("01:23:45", minTime);
     }
-
     @Test
     void checkRows() {
-        List<Integer> states1 = Arrays.asList(1,1,1
+        List<Integer> states1 = Arrays.asList(1,3,1
                                             ,0,0,0,
                                              0,0,0);
-
-        Assertions.assertTrue(Big.checkRowsCase0(states1,1));
-        Assertions.assertFalse(Big.checkRowsCase0(states1,2));
-
-        //Assertions.assertFalse(Big.checkRowsCase1(states1,1));
-        //Assertions.assertFalse(Big.checkRowsCase1(states1,2));
-        //Assertions.assertFalse(Big.checkRowsCase2(states1,1));
-        //Assertions.assertFalse(Big.checkRowsCase2(states1,2));
-
+        Assertions.assertTrue(Big.checkRows(states1,1));
+        Assertions.assertFalse(Big.checkRows(states1,2));
 
         List<Integer> states2 = Arrays.asList(0,1,1
-                                             ,2,2,2,
+                                             ,3,3,2,
                                               3,1,0);
-
-        //Assertions.assertFalse(Big.checkRowsCase1(states2,1));
-        //Assertions.assertTrue(Big.checkRowsCase1(states2,2));
-
-        //Assertions.assertFalse(Big.checkRowsCase0(states2,1));
-        //Assertions.assertFalse(Big.checkRowsCase0(states2,2));
-        //Assertions.assertFalse(Big.checkRowsCase2(states2,1));
-        //Assertions.assertFalse(Big.checkRowsCase2(states2,2));
+        Assertions.assertTrue(Big.checkRows(states2,2));
+        Assertions.assertFalse(Big.checkRows(states2,1));
 
         List<Integer> states3 = Arrays.asList(0,1,1
                                              ,0,0,0,
-                                              1,1,1);
+                                              1,1,3);
 
-        Assertions.assertTrue(Big.checkRowsCase2(states3,1));
-        Assertions.assertFalse(Big.checkRowsCase2(states3,2));
-
-        //Assertions.assertFalse(Big.checkRowsCase1(states3,1));
-        //Assertions.assertFalse(Big.checkRowsCase1(states3,2));
-        //Assertions.assertFalse(Big.checkRowsCase0(states3,1));
-        //Assertions.assertFalse(Big.checkRowsCase0(states3,2));
+        Assertions.assertTrue(Big.checkRows(states3,1));
+        Assertions.assertFalse(Big.checkRows(states3,2));
 
     }
-
     @Test
     void checkColumns() {
         List<Integer> states1 = Arrays.asList(1,0,0
-                                             ,1,0,0,
+                                             ,3,0,0,
                                               1,0,0);
+        Assertions.assertTrue(Big.checkColumns(states1,1));
+        Assertions.assertFalse(Big.checkColumns(states1,2));
 
-        Assertions.assertTrue(Big.checkColumnsCase0(states1,1));
-        Assertions.assertFalse(Big.checkColumnsCase0(states1,2));
+        List<Integer> states2 = Arrays.asList(1,2,0
+                                             ,1,3,1,
+                                              0,3,3);
 
-        //Assertions.assertFalse(Big.checkColumnsCase1(states1,1));
-        //Assertions.assertFalse(Big.checkColumnsCase1(states1,2));
-        //Assertions.assertFalse(Big.checkColumnsCase2(states1,1));
-        //Assertions.assertFalse(Big.checkColumnsCase2(states1,2));
+        Assertions.assertFalse(Big.checkColumns(states2,1));
+        Assertions.assertTrue(Big.checkColumns(states2,2));
 
+        List<Integer> states3 = Arrays.asList(1,0,3
+                                             ,1,0,1,
+                                              0,0,1);
 
-        List<Integer> states2 = Arrays.asList(0,2,1
-                                             ,1,2,3,
-                                              1,2,0);
+        Assertions.assertTrue(Big.checkColumns(states3,1));
+        Assertions.assertFalse(Big.checkColumns(states3,2));
+    }
 
-        Assertions.assertFalse(Big.checkColumnsCase1(states2,1));
-        Assertions.assertTrue(Big.checkColumnsCase1(states2,2));
+    @Test
+    void checkDiagonals() {
+        List<Integer> states1 = Arrays.asList(3,0,0
+                                             ,2,1,0,
+                                              1,0,1);
+        Assertions.assertTrue(Big.checkDiagonals(states1,1));
+        Assertions.assertFalse(Big.checkDiagonals(states1,2));
 
-        //Assertions.assertFalse(Big.checkColumnsCase0(states2,1));
-        //Assertions.assertFalse(Big.checkColumnsCase0(states2,2));
-        //Assertions.assertFalse(Big.checkColumnsCase2(states2,1));
-        //Assertions.assertFalse(Big.checkColumnsCase2(states2,2));
+        List<Integer> states2 = Arrays.asList(1,0,0
+                                             ,2,3,0,
+                                              1,0,1);
+        Assertions.assertTrue(Big.checkDiagonals(states2,1));
+        Assertions.assertFalse(Big.checkDiagonals(states2,2));
 
-        List<Integer> states3 = Arrays.asList(0,0,1
-                                             ,0,1,1,
-                                              1,1,1);
+        List<Integer> states3 = Arrays.asList(2,0,0
+                                             ,2,2,0,
+                                              1,0,3);
+        Assertions.assertTrue(Big.checkDiagonals(states3,2));
+        Assertions.assertFalse(Big.checkDiagonals(states3,1));
 
-        Assertions.assertTrue(Big.checkColumnsCase2(states3,1));
-        Assertions.assertFalse(Big.checkColumnsCase2(states3,2));
-
-        //Assertions.assertFalse(Big.checkColumnsCase1(states3,1));
-        //Assertions.assertFalse(Big.checkColumnsCase1(states3,2));
-        //Assertions.assertFalse(Big.checkColumnsCase0(states3,1));
-        //Assertions.assertFalse(Big.checkColumnsCase0(states3,2));
-
-        List<Integer> states4 = Arrays.asList(1,1,1
-                                             ,0,1,2,
-                                              1,2,1);
-
-        Assertions.assertFalse(Big.checkColumnsCase0(states4,1));
-        Assertions.assertFalse(Big.checkColumnsCase1(states4,1));
-        Assertions.assertFalse(Big.checkColumnsCase2(states4,1));
-
-        Assertions.assertFalse(Big.checkColumnsCase0(states4,2));
-        Assertions.assertFalse(Big.checkColumnsCase1(states4,2));
-        Assertions.assertFalse(Big.checkColumnsCase2(states4,2));    }
+        List<Integer> states4 = Arrays.asList(0,0,3
+                                             ,2,1,0,
+                                              1,0,1);
+        Assertions.assertTrue(Big.checkDiagonals(states4,1));
+        Assertions.assertFalse(Big.checkDiagonals(states4,2));
 
 
-    //TODO perguntar setBigGamestate não funciona com mocks
-    //when(big.checkWinner(anyList(),1).thenReturn(1) não funciona
+        List<Integer> states5 = Arrays.asList(2,0,1
+                                             ,2,3,0,
+                                              1,0,1);
+        Assertions.assertTrue(Big.checkDiagonals(states5,1));
+        Assertions.assertFalse(Big.checkDiagonals(states5,2));
+
+        List<Integer> states6 = Arrays.asList(1,0,1
+                                             ,2,1,0,
+                                              3,0,3);
+        Assertions.assertTrue(Big.checkDiagonals(states6,1));
+        Assertions.assertFalse(Big.checkDiagonals(states6,2));
+    }
+
 }

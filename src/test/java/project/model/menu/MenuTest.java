@@ -6,10 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import project.model.Menu.Menu;
 
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class MenuTest {
-
+//In certain cases, using the 'menu' variable would generate issues with the errorprone program
     private Menu menu;
     @BeforeEach
     void set_up()
@@ -19,38 +20,50 @@ public class MenuTest {
 
     @Test
     void menuLoopsUpwards() {
-        menu.previousEntry();
-        Assertions.assertTrue(menu.isSelected(2));
+        Menu menu2 = new Menu();
+        menu2.previousEntry();
+        Assertions.assertTrue(menu2.isSelected(2));
+        Assertions.assertFalse(menu2.isSelected(0));
+        Assertions.assertFalse(menu2.isSelected(1));
 
-        menu.previousEntry();
-        Assertions.assertTrue(menu.isSelected(1));
+        menu2.previousEntry();
+        Assertions.assertTrue(menu2.isSelected(1));
+        Assertions.assertFalse(menu2.isSelected(0));
+        Assertions.assertFalse(menu2.isSelected(2));
 
-        menu.previousEntry();
-        Assertions.assertTrue(menu.isSelected(0));
+        menu2.previousEntry();
+        Assertions.assertTrue(menu2.isSelected(0));
+        Assertions.assertFalse(menu2.isSelected(1));
+        Assertions.assertFalse(menu2.isSelected(2));
     }
 
     @Test
     void menuLoopsDownwards () {
-        menu.nextEntry();
-        Assertions.assertTrue(menu.isSelected(1));
+        Menu menu2 = new Menu();
 
-        menu.nextEntry();
-        Assertions.assertTrue(menu.isSelected(2));
+        menu2.nextEntry();
+        Assertions.assertTrue(menu2.isSelected(1));
 
-        menu.nextEntry();
-        Assertions.assertTrue(menu.isSelected(0));
+        menu2.nextEntry();
+        Assertions.assertTrue(menu2.isSelected(2));
+
+        menu2.nextEntry();
+        Assertions.assertTrue(menu2.isSelected(0));
     }
 
     @Test
     void getEntryTest() {
-        Assertions.assertEquals("Start",menu.getEntry(0));
-        Assertions.assertEquals("Rules",menu.getEntry(1));
-        Assertions.assertEquals("Exit",menu.getEntry(2));
+        Menu menu2 = new Menu();
+        Assertions.assertEquals("Start",menu2.getEntry(0));
+        Assertions.assertEquals("Rules",menu2.getEntry(1));
+        Assertions.assertEquals("Exit",menu2.getEntry(2));
     }
 
     @Test
     void startSelected() {
-        Assertions.assertTrue(menu.isSelectedStart());
+        Menu menu2 = new Menu();
+
+        Assertions.assertTrue(menu2.isSelectedStart());
     }
 
     @Test
@@ -71,6 +84,35 @@ public class MenuTest {
 
     @Test
     void numEntriesTest(){
-        Assertions.assertEquals(3,menu.getNumberEntries());
+        Menu menu2 = new Menu();
+
+        Assertions.assertEquals(3,menu2.getNumberEntries());
+    }
+
+    @Test
+    void selectedTest() {
+        Menu menu2 = Mockito.spy(new Menu());
+        when(menu2.isSelected(2)).thenReturn(true);
+        boolean flag = menu2.isSelectedExit();
+        Assertions.assertTrue(flag);
+        when(menu2.isSelected(2)).thenReturn(false);
+        flag = menu2.isSelectedExit();
+        Assertions.assertFalse(flag);
+
+
+        when(menu2.isSelected(1)).thenReturn(true);
+        flag = menu2.isSelectedRules();
+        Assertions.assertTrue(flag);
+        when(menu2.isSelected(1)).thenReturn(false);
+        flag = menu2.isSelectedRules();
+        Assertions.assertFalse(flag);
+
+
+        when(menu2.isSelected(0)).thenReturn(true);
+        flag = menu2.isSelectedStart();
+        Assertions.assertTrue(flag);
+        when(menu2.isSelected(0)).thenReturn(false);
+        flag = menu2.isSelectedStart();
+        Assertions.assertFalse(flag);
     }
 }

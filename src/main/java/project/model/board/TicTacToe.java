@@ -69,11 +69,6 @@ public abstract class TicTacToe {
 
     public abstract List<Character> getContents();
 
-    /**
-    public ArrayList<Mini> getBigSquares(){
-        return bigSquares;
-    }**/
-
 
     public abstract List<Integer> getPlayState();
     public abstract void goUp();

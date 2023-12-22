@@ -98,7 +98,7 @@ public class Mini extends TicTacToe {
     public void goRight(){selected = (selected+1) % 9;}
 
     @Override
-    public void endGame(){}//TODO Eliminate EndGame
+    public void endGame(){}
 
     @Override
     public boolean select(Player player){

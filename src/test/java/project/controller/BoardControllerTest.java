@@ -108,7 +108,6 @@ public class BoardControllerTest {
 
         verify(mockBoard, times(1)).getPlayer();
         verify(mockBoard, times(1)).select(any(Player.class));
-        //TODO beware pit tests
     }
 
     @Test
