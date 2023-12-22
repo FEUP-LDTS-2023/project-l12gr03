@@ -1,23 +1,15 @@
 package project.states;
 
-import com.googlecode.lanterna.terminal.swing.TerminalScrollController;
-import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import project.Game;
 import project.controller.MenuController;
 import project.gui.GUI;
 import project.model.Menu.Menu;
-import project.states.GameState;
-import project.states.MenuState;
-import project.states.RulesState;
-import project.states.State;
 import project.viewer.MenuViewer;
-
 import java.io.IOException;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 

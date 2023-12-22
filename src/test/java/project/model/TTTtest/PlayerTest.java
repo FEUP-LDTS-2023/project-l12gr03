@@ -2,7 +2,6 @@ package project.model.TTTtest;
 
 import net.jqwik.api.*;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import project.model.board.Player;
 
 public class PlayerTest {

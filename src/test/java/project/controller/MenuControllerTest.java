@@ -1,14 +1,11 @@
 package project.controller;
-import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.Test;
 import project.Game;
-import project.controller.MenuController;
 import project.gui.GUI;
 import project.model.Menu.Menu;
 import project.states.RegistrationState;
 import project.states.RulesState;
-
-import static java.lang.System.exit;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 

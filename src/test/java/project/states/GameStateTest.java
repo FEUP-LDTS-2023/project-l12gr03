@@ -5,16 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import project.Game;
 import project.controller.BoardController;
-import project.controller.RegistrationController;
 import project.gui.GUI;
 import project.model.board.TicTacToe;
-import project.states.GameState;
-import project.states.RegistrationState;
 import project.viewer.BoardViewer;
-import project.viewer.RegistrationView;
-
 import java.io.IOException;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 

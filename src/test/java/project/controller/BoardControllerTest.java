@@ -3,7 +3,6 @@ package project.controller;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import project.Game;
-import project.controller.BoardController;
 import project.gui.GUI;
 import project.model.board.Player;
 import project.model.board.TicTacToe;

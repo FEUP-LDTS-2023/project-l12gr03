@@ -3,15 +3,10 @@ package project.model;
 
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import project.model.Position;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+
 
 class PositionTest {
 

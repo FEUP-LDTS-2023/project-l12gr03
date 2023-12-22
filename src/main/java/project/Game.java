@@ -3,15 +3,10 @@ package project;
 import project.controller.MenuController;
 import project.gui.LanternaGUI;
 import project.model.Menu.Menu;
-//import project.model.Music.MusicPlayer;
 import project.states.MenuState;
 import project.states.State;
 import project.viewer.MenuViewer;
-import project.viewer.Viewer;
-
-import javax.sound.sampled.*;
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 

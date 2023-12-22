@@ -7,7 +7,6 @@ import project.Game;
 import project.controller.RegistrationController;
 import project.gui.GUI;
 import project.model.registation.PlayerRegistrator;
-import project.states.RegistrationState;
 import project.viewer.RegistrationView;
 
 import java.io.IOException;

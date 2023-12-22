@@ -4,16 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import project.Game;
-import project.controller.Controller;
-import project.controller.RegistrationController;
+
 import project.controller.RuleController;
 import project.gui.GUI;
 import project.model.rules.Rule;
-import project.states.RegistrationState;
-import project.states.RulesState;
-import project.viewer.RegistrationView;
+
 import project.viewer.RuleViewer;
-import project.viewer.Viewer;
+
 
 import java.io.IOException;
 
