@@ -43,7 +43,7 @@ This project was developed by Amanda Tartarotti (202211647@up.pt) Gonçalo Sousa
 ![img.png](resources/SquareSelectionPrint.png)
 
 ### Full Project Report
-To review the full project report [click here](docs/REPORT.md)
+To review the full project report [click here](docs/REPORT.md) or find in on [docs](docs) folder.
 
 
 ### SELF-EVALUATION
