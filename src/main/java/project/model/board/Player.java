@@ -2,7 +2,7 @@ package project.model.board;
 
 public class Player {
     private char symbol;
-    private float score = 0;
+    private float score;
 
     //public Player(char symbol){this.symbol = symbol;}
     public Player(char symbol, int score){this.symbol=symbol; this.score=score;}

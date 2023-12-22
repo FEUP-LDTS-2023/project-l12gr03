@@ -1,9 +1,6 @@
 package project.model.board;
 
 import project.model.Position;
-
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,7 +12,7 @@ public class Mini extends TicTacToe {
     private boolean isOver = false;
 
     protected int state;
-    public Mini(Player player1, Player player2, int x, int y, List<Character> squares) throws IOException {
+    public Mini(Player player1, Player player2, int x, int y, List<Character> squares){
         this.p1 = player1;
         this.p2 = player2;
         this.state = 0; // O estado default é que o jogo está a acontecer

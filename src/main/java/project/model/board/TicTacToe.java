@@ -2,8 +2,6 @@ package project.model.board;
 
 import project.model.Position;
 import project.Music;
-
-import javax.security.auth.login.Configuration;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -15,15 +13,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.Scanner;
+
 
 
 public abstract class TicTacToe {
 
     static final int MINI_NOT_SELECTED = -1;
     final int DEFAULT_SQUARE = 4;
-    final ArrayList<Character> DEFAULT_MINI_CONTENT =  new ArrayList<>(Collections.nCopies(9, ' '));
-    protected String totalTime;
+
+
     protected String formattedElapsedTime;
     protected Player currentPlayer;
     protected Player p1;
@@ -37,10 +35,10 @@ public abstract class TicTacToe {
     protected static boolean isTimePaused;
     static Music backgroundMusic = new Music("game.wav");
 
-    ArrayList<Mini> bigSquares;
+
 
     public void toggleTimePaused() {
-        if (isTimePaused == false){
+        if (!isTimePaused){
         backgroundMusic.pause();
         }else {
             backgroundMusic.start();

@@ -1,24 +1,15 @@
 package project.model.board;
 
-import project.Music;
 import project.model.Position;
 
 import java.io.*;
-import java.lang.annotation.Target;
 import java.nio.charset.Charset;
-
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.time.LocalTime;
 import java.util.*;
 
 
 public class Big extends TicTacToe {
 
-    List<Mini>  bigSquaresL = new ArrayList<>();
+    List<Mini>  bigSquaresL;
     boolean isLocked = false;
 
     public Big(Player player1, Player player2, int x, int y,List<Mini> squares) throws IOException {
@@ -101,7 +92,7 @@ public class Big extends TicTacToe {
     @Override
     public List<Character> getContents()
     {
-        List<Character> res = new ArrayList<Character>();
+        List<Character> res = new ArrayList<>();
         for (Mini mini : bigSquaresL)
         {
             res.addAll(mini.getContents());
