@@ -206,4 +206,7 @@ The Coverage Tests results are as follows
 And the Mutation Tests are this ones
 ![img.png](img.png)
 
+**Pitest Note:** The pitest report could not be generated through the './gradlew pitest' command,
+only being created through the 'pitest' section on the 'buil.gradle' file.
+
 This project was developed by Amanda Tartarotti (202211647@up.pt) Gonçalo Sousa (202207320@up.pt) and Pedro Oliveira (up202206498@up.pt) for LDTS 2023⁄24.
