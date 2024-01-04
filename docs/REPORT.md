@@ -206,4 +206,10 @@ The Coverage Tests results are as follows
 And the Mutation Tests are this ones
 ![img.png](img.png)
 
+#### SOURCES
+
+The music functionality was based on the one with the same name from the provided pac-man project from previous years.
+
+### DEVELOPERS
+
 This project was developed by Amanda Tartarotti (202211647@up.pt) Gonçalo Sousa (202207320@up.pt) and Pedro Oliveira (up202206498@up.pt) for LDTS 2023⁄24.
